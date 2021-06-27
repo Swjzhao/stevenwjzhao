@@ -1,0 +1,46 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "unused-imports",
+    "simple-import-sort",
+    "react-hooks"
+  ],
+  "rules": {
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "import/extensions": 0,
+    "react/jsx-filename-extension": [0],
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "require-jsdoc": 0,
+    "no-invalid-this": 0,
+    "max-len": 0,
+    "unused-imports/no-unused-imports": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "react/prop-types": 0,
+    "operator-linebreak": ["error", "after"],
+    "no-unused-vars": 1
+  }
+}
