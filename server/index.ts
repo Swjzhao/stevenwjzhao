@@ -3,8 +3,11 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-
 dotenv.config();
+
+import connectDB from './config/db'
+
+
 
 const app = express();
 app.use(express.json());
@@ -17,7 +20,7 @@ app.get('/', (req, res) => {
     res.json({msg: 'Hello'})
 })
 
-import './config/db'
+connectDB();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
