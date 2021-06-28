@@ -7,12 +7,18 @@ const userSchema = new mongoose.Schema({
     trim: true,
     maxLength: [20, 'You name needs to be within 20 characters'],
   },
-  accountId: {
+  email: {
     type: String,
-    required: [true, 'Please add your email or phone'],
     trim: true,
+    required: [true, 'Please add your email'],
     unique: true,
+    match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Please use a valid email.'],
   },
+  signInMethod: {
+    type: String,
+    default: 'email',
+  },
+
   password: {
     type: String,
     required: [true, 'Please add your password'],

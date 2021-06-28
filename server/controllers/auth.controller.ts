@@ -7,10 +7,11 @@ import Users from '../models/user.model';
 
 export const signUp = async (req: Request, res: Response) => {
   try {
-    const { accountId, password } = req.body;
-    const user = await Users.find({ accountId });
+    const { email, password } = req.body;
+    const user = await Users.find({ email });
     if (!user) return res.status(400).json({ message: 'Email already exists. Please sign in' });
     const hashPassword = await bcrypt.hash(password, 12);
+
     const newUser = await Users.create({
       ...req.body,
       password: hashPassword,
@@ -27,10 +28,10 @@ export const signUp = async (req: Request, res: Response) => {
 
 export const signIn = async (req: Request, res: Response) => {
   try {
-    const { accountId, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await Users.findOne({ accountId });
-    if (!user) return res.status(400).json({ message: 'This account does not exits.' });
+    const user = await Users.findOne({ email });
+    if (!user) return res.status(400).json({ message: 'This account does not exist.' });
     const correct = await bcrypt.compare(password, user.password);
     if (!correct) {
       return res.status(400).json({ message: 'Password not correct' });
