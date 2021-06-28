@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import redis from './middleware/redis.middleware';
 import routes from './routes';
 
 // eslint-disable-next-line
@@ -17,6 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(cookieParser());
+
+app.use(redis);
 
 app.use('/auth', routes.authRoutes);
 

@@ -18,6 +18,7 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "no-plusplus": "off",
     "import/extensions": 0,
     "no-console": "off",
     "no-underscore-dangle": "off"
