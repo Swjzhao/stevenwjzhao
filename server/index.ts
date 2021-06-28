@@ -4,14 +4,14 @@ import dotenv from 'dotenv';
 import express from 'express';
 import morgan from 'morgan';
 
-import redis from './middleware/redis.middleware';
-import routes from './routes';
-
-// eslint-disable-next-line
 dotenv.config();
 
 // eslint-disable-next-line
 import connectDB from './config/db';
+// eslint-disable-next-line
+import redis from './middleware/redis.middleware';
+// eslint-disable-next-line
+import routes from './routes';
 
 const app = express();
 app.use(express.json());
@@ -19,7 +19,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(cookieParser());
-
 app.use(redis);
 
 app.use('/auth', routes.authRoutes);
@@ -28,9 +27,10 @@ app.get('/', (req, res) => {
   res.json({ msg: 'Hello' });
 });
 
-connectDB();
-
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Service is running on port ${PORT}`);
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Service is running on port ${PORT}`);
+  });
 });
