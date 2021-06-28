@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
+import { Request, Response } from 'express';
 import _ from 'lodash';
+
+import { generateAccessToken, generateActiveToken, generateRefreshToken } from '../config/generateToken';
 import Users from '../models/user.model';
-import { generateActiveToken, generateAccessToken, generateRefreshToken } from '../config/generateToken';
 
 export const signUp = async (req: Request, res: Response) => {
   try {

@@ -16,11 +16,15 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
   "rules": {
     "no-plusplus": "off",
     "import/extensions": 0,
     "no-console": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "operator-linebreak": ["error", "after"],
+    "no-unused-vars": 1
   }
 }

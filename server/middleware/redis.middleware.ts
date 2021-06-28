@@ -1,6 +1,6 @@
-import redis from 'redis';
+import { NextFunction, Request, Response } from 'express';
 import moment from 'moment';
-import { Request, Response, NextFunction } from 'express';
+import redis from 'redis';
 
 const redisClient = redis.createClient();
 
@@ -66,8 +66,8 @@ export default (req: Request, res: Response, next: NextFunction) => {
       //  if interval has not passed since last request log,
       //   increment counter
       if (
-        lastRequestLog.requestTimeStamp
-        > potentialCurrentWindowIntervalStartTimeStamp
+        lastRequestLog.requestTimeStamp >
+        potentialCurrentWindowIntervalStartTimeStamp
       ) {
         lastRequestLog.requestCount++;
         data[data.length - 1] = lastRequestLog;

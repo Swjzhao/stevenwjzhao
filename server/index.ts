@@ -1,8 +1,9 @@
-import express from 'express';
-import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import morgan from 'morgan';
+import cors from 'cors';
 import dotenv from 'dotenv';
+import express from 'express';
+import morgan from 'morgan';
+
 import redis from './middleware/redis.middleware';
 import routes from './routes';
 
