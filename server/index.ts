@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(() => {
+export default connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Service is running on port ${PORT}`);
   });
