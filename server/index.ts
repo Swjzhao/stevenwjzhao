@@ -24,7 +24,7 @@ app.use(redis);
 app.use('/auth', routes.authRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ msg: 'Hello' });
+  res.json({ message: 'Hello' });
 });
 
 const PORT = process.env.PORT || 5000;
