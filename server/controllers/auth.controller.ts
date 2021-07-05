@@ -51,14 +51,15 @@ export const signIn = async (req: Request, res: Response) => {
     const resUser = _.omit(user.toObject(), ['password']);
     const accessToken = generateAccessToken({ sub: user._id });
     const refreshToken = generateRefreshToken({ sub: user._id });
-    const decoded = jwt.verify(accessToken, `${ACCESS_TOKEN_SECRET}`);
+    // const decoded = jwt.verify(accessToken, `${ACCESS_TOKEN_SECRET}`);
+    // console.log(refreshToken);
     res.set('Authorization', `Bearer ${accessToken}`);
     res.cookie('refreshtoken', refreshToken, {
       httpOnly: true,
       path: '/auth/refresh_token',
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
     });
-    console.log(decoded);
+    //  console.log(decoded);
     // const refresh_token = generateRefreshToken({id: user._id})
     return res.status(200).json({ resUser, accessToken });
   } catch (err: any) {
@@ -70,15 +71,16 @@ export const refreshToken = async (req: Request, res: Response) => {
   try {
     const rfToken = req.cookies.refreshtoken;
     if (!rfToken) return res.status(400).json({ msg: 'Not token found' });
-
-    const decoded = <IDecodedToken>jwt.verify(rfToken, `${process.env.REFRESH_TOKEN_SECRET}`);
+    console.log(jwt.verify(rfToken, `${REFRESH_TOKEN_SECRET}`));
+    const decoded = <IDecodedToken>jwt.verify(rfToken, `${REFRESH_TOKEN_SECRET}`);
     if (!decoded.sub) return res.status(400).json({ msg: 'Please login now!' });
 
     const user = await Users.findById(decoded.sub).select('-password');
     if (!user) return res.status(400).json({ msg: 'This account does not exist.' });
 
-    const accessToken = generateAccessToken({ id: user._id });
-    res.cookie('refreshtoken', refreshToken, {
+    const newRefreshToken = generateRefreshToken({ sub: user._id });
+    const accessToken = generateAccessToken({ sub: user._id });
+    res.cookie('refreshtoken', newRefreshToken, {
       httpOnly: true,
       path: '/auth/refresh_token',
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
@@ -90,11 +92,11 @@ export const refreshToken = async (req: Request, res: Response) => {
   }
 };
 
-export const activeAccount = async (req: Request, res: Response) => {
+export const activateAccount = async (req: Request, res: Response) => {
   try {
     const { activeToken } = req.body;
 
-    const decoded = <IDecodedToken>jwt.verify(activeToken, `${process.env.ACTIVE_TOKEN_SECRET}`);
+    const decoded = <IDecodedToken>jwt.verify(activeToken, `${ACTIVE_TOKEN_SECRET}`);
 
     const { newUser } = decoded;
 
@@ -123,5 +125,14 @@ export const verifyToken = async (req: Request, res: Response) => {
     return res.status(200).json({ decoded });
   } catch (err: any) {
     return refreshToken(req, res);
+  }
+};
+
+export const signOut = async (req: Request, res: Response) => {
+  try {
+    res.clearCookie('refreshtoken', { path: '/auth/refresh_token' });
+    return res.json({ msg: 'Logged out!' });
+  } catch (err: any) {
+    return res.status(500).json({ msg: err.message });
   }
 };

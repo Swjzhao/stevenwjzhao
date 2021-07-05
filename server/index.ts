@@ -22,6 +22,7 @@ app.use(cookieParser());
 app.use(redis);
 
 app.use('/auth', routes.authRoutes);
+app.use('/user', routes.userRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello' });
