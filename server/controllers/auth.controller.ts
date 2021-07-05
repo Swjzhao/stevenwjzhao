@@ -32,8 +32,7 @@ export const signUp = async (req: Request, res: Response) => {
     const subject = 'Welcome! Please verify your email address.';
     sendEmail(email, url, subject);
 
-    const resUser = _.omit(newUser, ['password']);
-    return res.status(200).json({ user: resUser, activateToken });
+    return res.status(200).json({ msg: 'Please verify your email. Check the spam' });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
@@ -110,7 +109,7 @@ export const activeAccount = async (req: Request, res: Response) => {
 
     const resUser = _.omit(createdUser.toObject(), ['password']);
 
-    res.status(200).json({ user: resUser });
+    return res.status(200).json({ user: resUser });
   } catch (err: any) {
     return res.status(500).json({ msg: err.message });
   }
