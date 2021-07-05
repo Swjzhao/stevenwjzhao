@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 
-import { generateAccessToken, generateActiveToken, generateRefreshToken } from '../config/generateToken';
+import { generateAccessToken, generateActivateToken, generateRefreshToken } from '../config/generateToken';
 import { IDecodedToken } from '../interface';
 import Users from '../models/user.model';
 
@@ -25,7 +25,7 @@ export const signUp = async (req: Request, res: Response) => {
       password: hashPassword,
     });
 
-    const token = generateActiveToken({ role: newUser.role, sub: newUser._id });
+    const token = generateActivateToken({ role: newUser.role, sub: newUser._id });
 
     const resUser = _.omit(newUser.toObject(), ['password']);
     return res.status(200).json({ user: resUser, token });
