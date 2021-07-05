@@ -4,31 +4,36 @@ import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 
 import { generateAccessToken, generateActivateToken, generateRefreshToken } from '../config/generateToken';
+import sendEmail from '../config/sendEmail';
 import { IDecodedToken } from '../interface';
 import Users from '../models/user.model';
 
-const { ACTIVE_TOKEN_SECRET, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
+const {
+  ACTIVE_TOKEN_SECRET, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET, BASE_URL,
+} = process.env;
 
 export const signUp = async (req: Request, res: Response) => {
   try {
-    const { email, password } = req.body;
-    const user = await Users.find({ email });
-    console.log(password);
-    if (!user) return res.status(400).json({ message: 'Email already exists. Please sign in' });
-    if (!password.match('.{8,}')) {
-      return res.status(400).json({ message: 'Password must contain minimum eight characters' });
-    }
+    const { name, email, password } = req.body;
+    const user = await Users.findOne({ email });
+    if (user) return res.status(400).json({ message: 'Email already exists. Please sign in' });
+
     const hashPassword = await bcrypt.hash(password, 12);
 
-    const newUser = await Users.create({
+    /* const newUser = await Users.create({
       ...req.body,
       password: hashPassword,
-    });
+    }); */
 
-    const token = generateActivateToken({ role: newUser.role, sub: newUser._id });
+    const newUser = { name, email, password: hashPassword };
 
-    const resUser = _.omit(newUser.toObject(), ['password']);
-    return res.status(200).json({ user: resUser, token });
+    const activateToken = generateActivateToken({ newUser });
+    const url = `${BASE_URL}/auth/activate/${activateToken}`;
+    const subject = 'Welcome! Please verify your email address.';
+    sendEmail(email, url, subject);
+
+    const resUser = _.omit(newUser, ['password']);
+    return res.status(200).json({ user: resUser, activateToken });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
@@ -81,6 +86,31 @@ export const refreshToken = async (req: Request, res: Response) => {
     });
 
     return res.json({ accessToken, user });
+  } catch (err: any) {
+    return res.status(500).json({ msg: err.message });
+  }
+};
+
+export const activeAccount = async (req: Request, res: Response) => {
+  try {
+    const { activeToken } = req.body;
+
+    const decoded = <IDecodedToken>jwt.verify(activeToken, `${process.env.ACTIVE_TOKEN_SECRET}`);
+
+    const { newUser } = decoded;
+
+    if (!newUser) return res.status(400).json({ msg: 'Invalid authentication.' });
+
+    const user = await Users.findOne({ account: newUser.account });
+    if (user) return res.status(400).json({ msg: 'Account already exists.' });
+
+    const createdUser = new Users(newUser);
+
+    await createdUser.save();
+
+    const resUser = _.omit(createdUser.toObject(), ['password']);
+
+    res.status(200).json({ user: resUser });
   } catch (err: any) {
     return res.status(500).json({ msg: err.message });
   }

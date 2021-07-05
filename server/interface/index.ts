@@ -1,5 +1,12 @@
+export interface INewUser {
+  name: string;
+  account: string;
+  password: string;
+}
+
 export interface IDecodedToken {
-  sub?: string
-  iat: number
-  exp: number
+  sub?: string;
+  newUser?: INewUser;
+  iat: number;
+  exp: number;
 }
