@@ -1,15 +1,52 @@
 import './index.css';
 
+import { CssBaseline } from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import store from './store';
+// eslint-disable-next-line
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#FFF',
+    },
+    error: {
+      main: '#FF0000',
+    },
+  },
+  overrides: {
+    MuiButton: {
+
+      root: {
+        backgroundColor: 'transparent',
+      },
+      text: {
+
+        backgroundColor: 'transparent',
+      },
+    },
+    MuiIconButton: {
+      root: {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+  <Provider store={store}>
+    <CssBaseline />
+    <ThemeProvider theme={theme}>
+
+      <App />
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root'),
 );
 
