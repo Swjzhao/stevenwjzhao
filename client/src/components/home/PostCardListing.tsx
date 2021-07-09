@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from '@material-ui/core';
 import React, { useEffect } from 'react';
 
 import PostCard from './PostCard';
-import useStyles from './style';
+import useStyles from './styles/PostCardListingStyles';
 
 const PostCardListing = (props:any) => {
   useEffect(() => {

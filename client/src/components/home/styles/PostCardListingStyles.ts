@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({
     width: '120px',
     marginTop: '10px',
     marginBottom: '20px',
-
   },
   sectionWrapper: {
     padding: '10px 0',
