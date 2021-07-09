@@ -11,7 +11,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../../assets/HeaderLogoicon.png';
-import useStyles from './styles';
+import useStyles from './style';
 
 const NavBar = () => {
   const classes = useStyles();

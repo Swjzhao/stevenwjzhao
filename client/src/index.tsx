@@ -11,17 +11,21 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 // eslint-disable-next-line
 const theme = createTheme({
+  typography: {
+    fontFamily: 'Open Sans',
+    h6: {
+      fontWeight: 600,
+      color: '#333',
+    },
+  },
   palette: {
     primary: {
       main: '#FFF',
-    },
-    error: {
-      main: '#FF0000',
+      dark: '#4a4a4a',
     },
   },
   overrides: {
     MuiButton: {
-
       root: {
         backgroundColor: 'transparent',
       },
@@ -41,9 +45,9 @@ const theme = createTheme({
 ReactDOM.render(
 
   <Provider store={store}>
-    <CssBaseline />
-    <ThemeProvider theme={theme}>
 
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <App />
     </ThemeProvider>
   </Provider>,
