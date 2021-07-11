@@ -6,6 +6,7 @@ import {
   Facebook, GitHub, Instagram, LinkedIn,
 } from '@material-ui/icons';
 import React from 'react';
+import MailchimpSubscribe from 'react-mailchimp-subscribe';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -127,25 +128,11 @@ const Footer = (props:any) => {
       <div className={classes.outerContainer}>
         <Container>
           <Grid container spacing={1}>
-            <Grid item xs={6} style={{ textAlign: 'center' }}>
-              <Grid>
-                <h4 className={classes.subheader}>Subscribe to our newsletter!</h4>
-                <div className="input-group mb-3" style={{ justifyContent: 'center' }}>
-                  <input
-                    type="text"
-                    className={classes.email}
-                    placeholder="Enter your email"
-                  />
-                  <div className="input-group-append">
-                    <button className={classes.subscribeBtn} type="button">
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-              </Grid>
+            <Grid item xs={12} style={{ textAlign: 'center' }}>
+              <MailchimpSubscribe url={process.env.REACT_APP_MAILCHIMP_URL} />
             </Grid>
 
-            <Grid container item xs={6} justifyContent="center">
+            <Grid container item xs={12} justifyContent="center">
               <Grid className={classes.iconGrid}>
                 <IconButton>
                   <Facebook />

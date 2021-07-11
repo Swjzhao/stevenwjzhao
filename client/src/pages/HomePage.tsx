@@ -1,7 +1,11 @@
+import 'react-popupbox/dist/react-popupbox.css';
+
 import { Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+import { PopupboxContainer, PopupboxManager } from 'react-popupbox';
 
+import Logo from '../assets/logo.png';
 import WelcomeImage from '../assets/welcome3.png';
 import Footer from '../components/global/footer/Footer.js';
 import NavBar from '../components/global/navbar/NavBar';
@@ -25,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     // background: 'linear-gradient(0.25turn, #000, #111, #000)',
     height: '1000px',
-
+    position: 'relative',
     maxHeight: '70vh',
     '& img': {
       width: 'auto',
@@ -36,6 +40,24 @@ const useStyles = makeStyles((theme) => ({
       width: 'auto',
       height: '1000px',
       maxHeight: '70vh',
+    },
+  },
+  logoContainer: {
+    position: 'absolute',
+    height: '100%',
+    width: '100% !important',
+    top: 0,
+    '& img': {
+      width: '50%',
+      height: 'auto',
+      objectFit: 'contain',
+      marginRight: '50px',
+    },
+    '& .MuiGrid-item': {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+
     },
   },
   mainPanelGrid: {
@@ -50,9 +72,21 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
   const classes = useStyles();
   const sections = ['Books', 'Health and Fitness'];
+  const openPopupbox = () => {
+    const content = (
+      <div>
+        <p className="quotes">Work like you don&apos;t need the money.</p>
+        <p className="quotes">Dance like no one is watching.</p>
+        <p className="quotes">And love like you&apos;ve never been hurt.</p>
+        <span className="quotes-from">― Mark Twain</span>
+      </div>
+    );
+    PopupboxManager.open({ content });
+  };
 
   return (
     <div className={classes.root}>
+      <PopupboxContainer />
       <NavBar />
       <div
         className={classes.welcomeImage}
@@ -63,6 +97,13 @@ const HomePage = () => {
         }}
       >
         <div />
+        <Grid container className={classes.logoContainer} justifyContent="center">
+          <Grid item xs={12} sm={6}>
+            <img src={Logo} alt="WeAreStillDreamers" />
+          </Grid>
+          <Grid item sm={6} />
+
+        </Grid>
       </div>
       <br />
       <Container maxWidth="lg">

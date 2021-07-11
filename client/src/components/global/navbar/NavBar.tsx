@@ -9,9 +9,11 @@ import {
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import React, { useEffect } from 'react';
+import { PopupboxManager } from 'react-popupbox';
 import { Link } from 'react-router-dom';
 
 import logo from '../../../assets/HeaderLogoicon.png';
+import AuthForm from '../auth/AuthForm';
 import useStyles from './style';
 
 const NavBar = (props:any) => {
@@ -22,10 +24,14 @@ const NavBar = (props:any) => {
     };
     window.addEventListener('scroll', handleScroll, true);
   }, []);
-
+  const openPopupbox = () => {
+    const content = (
+      <AuthForm />
+    );
+    PopupboxManager.open({ content });
+  };
   return (
-    <AppBar position="fixed" className={classes.appBar} color={trigger ? 'primary' : 'transparent'}>
-      {console.log(trigger)}
+    <AppBar position="fixed" className={classes.appBar} color={trigger ? 'info' : 'transparent'}>
       <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="h6">
@@ -42,14 +48,19 @@ const NavBar = (props:any) => {
           <div className={classes.grow} />
           <div>
             <Button
-              color={trigger ? 'inherit' : 'primary'}
+              color={trigger ? 'inherit' : ''}
+              className={trigger ? '' : classes.activeButton}
+              disableRipple
             >
               About
             </Button>
           </div>
           <div>
             <Button
-              color={trigger ? 'inherit' : 'primary'}
+              color={trigger ? 'inherit' : ''}
+              className={trigger ? '' : classes.activeButton}
+              onClick={openPopupbox}
+              disableRipple
             >
               SignUp/Login
             </Button>
@@ -57,7 +68,8 @@ const NavBar = (props:any) => {
           <div>
             <IconButton
               aria-label="SearchIcon"
-              color={trigger ? 'inherit' : 'primary'}
+              color={trigger ? 'inherit' : ''}
+              className={trigger ? '' : classes.activeButton}
               disableRipple
             >
               <Search />

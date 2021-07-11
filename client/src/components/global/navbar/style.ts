@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     boxShadow: 'none',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    // background: theme.palette.nav.light,
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
@@ -67,6 +68,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
+  },
+  activeButton: {
+    color: '#FFF',
+  },
+  defaultButton: {
+
   },
 }));
 

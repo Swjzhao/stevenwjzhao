@@ -20,7 +20,9 @@ const theme = createTheme({
     },
   },
   palette: {
-    primary: {
+    // @ts-ignore
+    info: {
+      light: '#FFF',
       main: '#FFF',
       dark: '#4a4a4a',
     },
