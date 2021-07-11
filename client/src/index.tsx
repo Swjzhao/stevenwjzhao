@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 // eslint-disable-next-line
 const theme = createTheme({
+
   typography: {
     fontFamily: 'Open Sans',
     h6: {

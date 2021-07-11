@@ -20,7 +20,7 @@ const PostCardListing = (props:any) => {
       <Divider className={classes.divider} />
       <Grid container spacing={2}>
         {posts.map((post) => (
-          <Grid item xs={12} sm={6}>
+          <Grid key={post} item xs={12} sm={6}>
             <PostCard title={post} />
           </Grid>
         ))}

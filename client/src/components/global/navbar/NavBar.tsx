@@ -5,19 +5,27 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  useScrollTrigger,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../../assets/HeaderLogoicon.png';
 import useStyles from './style';
 
-const NavBar = () => {
+const NavBar = (props:any) => {
   const classes = useStyles();
+  const trigger = useScrollTrigger();
+  useEffect(() => {
+    const handleScroll = (event:any) => {
+    };
+    window.addEventListener('scroll', handleScroll, true);
+  }, []);
 
   return (
-    <AppBar position="fixed" className={classes.appBar} color="transparent">
+    <AppBar position="fixed" className={classes.appBar} color={trigger ? 'primary' : 'transparent'}>
+      {console.log(trigger)}
       <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="h6">
@@ -34,13 +42,24 @@ const NavBar = () => {
           <div className={classes.grow} />
           <div>
             <Button
-              color="primary"
+              color={trigger ? 'inherit' : 'primary'}
             >
               About
             </Button>
           </div>
           <div>
-            <IconButton aria-label="SearchIcon" color="primary">
+            <Button
+              color={trigger ? 'inherit' : 'primary'}
+            >
+              SignUp/Login
+            </Button>
+          </div>
+          <div>
+            <IconButton
+              aria-label="SearchIcon"
+              color={trigger ? 'inherit' : 'primary'}
+              disableRipple
+            >
               <Search />
             </IconButton>
           </div>

@@ -29,7 +29,7 @@
   ],
   "rules": {
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-use-before-define": "off",
     "import/extensions": 0,
     "react/jsx-filename-extension": [0],
     "react/jsx-uses-react": 1,
