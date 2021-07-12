@@ -3,7 +3,8 @@ import 'react-popupbox/dist/react-popupbox.css';
 import { Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { PopupboxContainer, PopupboxManager } from 'react-popupbox';
+// @ts-ignore
+import { PopupboxContainer } from 'react-popupbox';
 
 import Logo from '../assets/logo.png';
 import WelcomeImage from '../assets/welcome3.png';
@@ -72,17 +73,6 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
   const classes = useStyles();
   const sections = ['Books', 'Health and Fitness'];
-  const openPopupbox = () => {
-    const content = (
-      <div>
-        <p className="quotes">Work like you don&apos;t need the money.</p>
-        <p className="quotes">Dance like no one is watching.</p>
-        <p className="quotes">And love like you&apos;ve never been hurt.</p>
-        <span className="quotes-from">― Mark Twain</span>
-      </div>
-    );
-    PopupboxManager.open({ content });
-  };
 
   return (
     <div className={classes.root}>

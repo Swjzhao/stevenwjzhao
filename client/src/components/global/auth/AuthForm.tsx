@@ -1,80 +1,49 @@
-import {
-  Button, Container, Grid, Typography,
-} from '@material-ui/core';
-import React, { useEffect } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { Container } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { PopupboxManager } from 'react-popupbox';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { clearStatus, signIn } from '../../../store/actions';
-import CustomTextField from '../utils/CustomTextField';
+import { IUserCredientials, RootStore } from '../../../models';
+import { clearStatus, signIn, signUp } from '../../../store/actions';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 import useStyles from './style';
 
 const AuthForm = () => {
   const classes = useStyles();
+  const [isSignIn, setIsSignIn] = useState(true);
   const methods = useForm();
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.status.error);
+  const status = useSelector((state:RootStore) => state?.status);
+  const user = useSelector((state:RootStore) => state?.user);
+  useEffect(() => {
+    if (user) {
+      if (isSignIn) {
+        PopupboxManager.close();
+      }
+    }
+  }, [user]);
   useEffect(() => {
     dispatch(clearStatus());
   }, []);
+
+  const handleSubmit = (data:IUserCredientials) => {
+    if (isSignIn) {
+      dispatch(signIn(data));
+    } else {
+      dispatch(signUp(data));
+    }
+  };
+
+  const handleChange = () => {
+    dispatch(clearStatus());
+  };
   return (
     <Container component="main" maxWidth="xs">
-
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <FormProvider {...methods}>
-          <form
-            className={classes.form}
-            onChange={() => dispatch(clearStatus())}
-            onSubmit={methods.handleSubmit((data) => {
-              dispatch(signIn(data));
-            })}
-          >
-            <Grid container spacing={2}>
-              <CustomTextField
-                required
-                label="Email Address"
-                name="email"
-                autoFocus
-              />
-              <CustomTextField
-                required
-                name="password"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Typography color="secondary" style={{ minHeight: '19px', fontSize: '10px' }} component="p">{error}</Typography>
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                Forgot password?
-
-              </Grid>
-              <Grid item>
-                Don&apos;t have an account? Sign Up
-
-              </Grid>
-            </Grid>
-          </form>
-        </FormProvider>
-      </div>
+      {isSignIn ?
+        <SignIn handleSubmit={handleSubmit} handleChange={handleChange} setIsSignIn={setIsSignIn} classes={classes} error={status.error} /> :
+        <SignUp handleSubmit={handleSubmit} handleChange={handleChange} setIsSignIn={setIsSignIn} classes={classes} error={status.error} /> }
     </Container>
   );
 };

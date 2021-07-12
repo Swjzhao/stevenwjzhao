@@ -5,12 +5,12 @@ import { IUserCredientials } from '../../models';
 import * as types from '../constants';
 import { clearStatus, setStatus } from './status.action';
 
-export const signIn = (data: IUserCredientials) => async (dispatch: Dispatch<Action>) => {
+export const signIn = (data: IUserCredientials) => async (dispatch: Dispatch<any | Action>) => {
   try {
     dispatch(setStatus({ status: 'loading' }));
 
     const res = await api.signIn(data);
-
+    console.log(res.data);
     dispatch({ type: types.SET_USER, payload: res.data.user });
 
     dispatch(clearStatus());
@@ -20,7 +20,7 @@ export const signIn = (data: IUserCredientials) => async (dispatch: Dispatch<Act
   }
 };
 
-export const signUp = (data: IUserCredientials) => async (dispatch: Dispatch<Action>) => {
+export const signUp = (data: IUserCredientials) => async (dispatch: Dispatch<any | Action>) => {
   try {
     dispatch(setStatus({ status: 'loading' }));
     const res = await api.signUp(data);
@@ -31,7 +31,7 @@ export const signUp = (data: IUserCredientials) => async (dispatch: Dispatch<Act
     dispatch(setStatus({ status: 'error', error: err.response.data.message }));
   }
 };
-export const refreshToken = () => async (dispatch: Dispatch<Action>) => {
+export const refreshToken = () => async (dispatch: Dispatch<any | Action>) => {
   const token = localStorage.getItem('token');
   if (!token) return;
 
@@ -48,9 +48,9 @@ export const refreshToken = () => async (dispatch: Dispatch<Action>) => {
   }
 };
 
-export const logout = () => async (dispatch: Dispatch<Action>) => {
+export const logout = () => async (dispatch: Dispatch<any | Action>) => {
   try {
-    localStorage.removeItem('logged');
+    localStorage.removeItem('token');
     // await getAPI('logout');
     window.location.href = '/';
   } catch (err: any) {
@@ -58,7 +58,7 @@ export const logout = () => async (dispatch: Dispatch<Action>) => {
   }
 };
 
-export const googleSignIn = (token: string) => async (dispatch: Dispatch<Action>) => {
+export const googleSignIn = (token: string) => async (dispatch: Dispatch<any | Action>) => {
   try {
     dispatch(setStatus({ status: 'loading' }));
     dispatch(clearStatus());
@@ -67,7 +67,7 @@ export const googleSignIn = (token: string) => async (dispatch: Dispatch<Action>
   }
 };
 
-export const facebookSignIn = (token: string, userID: string) => async (dispatch: Dispatch<Action>) => {
+export const facebookSignIn = (token: string, userID: string) => async (dispatch: Dispatch<any | Action>) => {
   try {
     dispatch(setStatus({ status: 'loading' }));
     dispatch(clearStatus());

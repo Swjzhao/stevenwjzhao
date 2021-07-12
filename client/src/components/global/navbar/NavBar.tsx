@@ -8,22 +8,28 @@ import {
   useScrollTrigger,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { PopupboxManager } from 'react-popupbox';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import logo from '../../../assets/HeaderLogoicon.png';
+import { RootStore } from '../../../models';
 import AuthForm from '../auth/AuthForm';
 import useStyles from './style';
 
 const NavBar = (props:any) => {
   const classes = useStyles();
   const trigger = useScrollTrigger();
+  const user = useSelector((state: RootStore) => state?.user);
+
+  /*
   useEffect(() => {
     const handleScroll = (event:any) => {
     };
     window.addEventListener('scroll', handleScroll, true);
   }, []);
+  */
   const openPopupbox = () => {
     const content = (
       <AuthForm />
@@ -31,7 +37,7 @@ const NavBar = (props:any) => {
     PopupboxManager.open({ content });
   };
   return (
-    <AppBar position="fixed" className={classes.appBar} color={trigger ? 'info' : 'transparent'}>
+    <AppBar position="fixed" className={classes.appBar} color={trigger ? 'default' : 'transparent'}>
       <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="h6">
@@ -56,14 +62,24 @@ const NavBar = (props:any) => {
             </Button>
           </div>
           <div>
-            <Button
-              color={trigger ? 'inherit' : undefined}
-              className={trigger ? '' : classes.activeButton}
-              onClick={openPopupbox}
-              disableRipple
-            >
-              SignUp/Login
-            </Button>
+            {user ? (
+              <Button
+                color={trigger ? 'inherit' : undefined}
+                className={trigger ? '' : classes.activeButton}
+                disableRipple
+              >
+                {user.name}
+              </Button>
+            ) : (
+              <Button
+                color={trigger ? 'inherit' : undefined}
+                className={trigger ? '' : classes.activeButton}
+                onClick={openPopupbox}
+                disableRipple
+              >
+                SignUp / Login
+              </Button>
+            )}
           </div>
           <div>
             <IconButton

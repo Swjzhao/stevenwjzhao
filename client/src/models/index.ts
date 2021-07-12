@@ -1,10 +1,14 @@
+import rootReducer from '../store/reducers/index';
+
+export type RootStore = ReturnType<typeof rootReducer>
+
 export interface IUserCredientials {
   name?:string,
   email: string
   password: string
 }
 
-export interface IUser extends IUserCredientials {
+export interface IUser{
   name: string,
   email: string,
   signInMethod: string,
@@ -14,7 +18,7 @@ export interface IUser extends IUserCredientials {
   _id: string
 }
 
-export interface IPatchUser extends IUserCredientials {
+export interface IPatchUser {
   name?: string,
   signInMethod?: string,
   role?: number,
@@ -24,5 +28,6 @@ export interface IPatchUser extends IUserCredientials {
 
 export interface IStatus {
   status?: 'loading' | 'error',
+  error?: string,
   errors?: string[]
 }

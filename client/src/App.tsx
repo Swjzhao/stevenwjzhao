@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 
 const App = () => (
-  <BrowserRouter basename="qra">
+  <BrowserRouter>
     <Switch>
       <Route
         path="/"

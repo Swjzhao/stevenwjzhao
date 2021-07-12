@@ -16,7 +16,12 @@ export const signUp = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body;
     const user = await Users.findOne({ email });
-    if (user) return res.status(400).json({ message: 'Email already exists. Please sign in' });
+    if (user) {
+      if (user.verified) {
+        return res.status(400).json({ message: 'Email already exists. Please sign in' });
+      }
+      return res.status(400).json({ message: 'Email already exists. An verification email has been sent to your email' });
+    }
 
     const hashPassword = await bcrypt.hash(password, 12);
 
@@ -24,7 +29,7 @@ export const signUp = async (req: Request, res: Response) => {
       ...req.body,
       password: hashPassword,
     }); */
-
+    // newly signed up users will not persist login state until they verify their email
     const newUser = { name, email, password: hashPassword };
 
     const activateToken = generateActivateToken({ newUser });
@@ -32,7 +37,15 @@ export const signUp = async (req: Request, res: Response) => {
     const subject = 'Welcome! Please verify your email address.';
     sendEmail(email, url, subject);
 
+    const createUser = await Users.create({
+      ...newUser,
+    });
+    const accessToken = generateAccessToken({ sub: createUser._id });
+    const resUser = _.omit(createUser.toObject(), ['password']);
+    return res.status(200).json({ user: resUser, token: accessToken });
+    /*
     return res.status(200).json({ msg: 'Please verify your email. Check the spam' });
+    */
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
@@ -54,14 +67,17 @@ export const signIn = async (req: Request, res: Response) => {
     // const decoded = jwt.verify(accessToken, `${ACCESS_TOKEN_SECRET}`);
     // console.log(refreshToken);
     res.set('Authorization', `Bearer ${accessToken}`);
-    res.cookie('refreshtoken', refreshToken, {
-      httpOnly: true,
-      path: '/auth/refresh_token',
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
-    });
+    // Only verified users get a refresh token
+    if (user.verified) {
+      res.cookie('refreshtoken', refreshToken, {
+        httpOnly: true,
+        path: '/auth/refresh_token',
+        maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
+      });
+    }
     //  console.log(decoded);
     // const refresh_token = generateRefreshToken({id: user._id})
-    return res.status(200).json({ resUser, accessToken });
+    return res.status(200).json({ user: resUser, token: accessToken });
   } catch (err: any) {
     return res.status(500).json({ message: err.message });
   }
@@ -79,7 +95,9 @@ export const refreshToken = async (req: Request, res: Response) => {
     if (!user) return res.status(400).json({ msg: 'This account does not exist.' });
 
     const newRefreshToken = generateRefreshToken({ sub: user._id });
+
     const accessToken = generateAccessToken({ sub: user._id });
+
     res.cookie('refreshtoken', newRefreshToken, {
       httpOnly: true,
       path: '/auth/refresh_token',
