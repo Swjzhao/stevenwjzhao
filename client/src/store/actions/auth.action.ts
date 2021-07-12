@@ -48,12 +48,15 @@ export const refreshToken = () => async (dispatch: Dispatch<any | Action>) => {
   }
 };
 
-export const logout = () => async (dispatch: Dispatch<any | Action>) => {
+export const signOut = () => async (dispatch: Dispatch<any | Action>) => {
   try {
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
     // await getAPI('logout');
-    window.location.href = '/';
+    const res = await api.signOut();
+    dispatch({ type: types.SIGN_OUT });
+    // window.location.href = '/';
   } catch (err: any) {
+    console.log(err);
     dispatch(setStatus({ status: 'error', errors: err.response.data.message }));
   }
 };
