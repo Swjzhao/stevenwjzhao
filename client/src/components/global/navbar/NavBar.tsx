@@ -48,7 +48,7 @@ const NavBar = (props:any) => {
           <div className={classes.grow} />
           <div>
             <Button
-              color={trigger ? 'inherit' : ''}
+              color={trigger ? 'inherit' : undefined}
               className={trigger ? '' : classes.activeButton}
               disableRipple
             >
@@ -57,7 +57,7 @@ const NavBar = (props:any) => {
           </div>
           <div>
             <Button
-              color={trigger ? 'inherit' : ''}
+              color={trigger ? 'inherit' : undefined}
               className={trigger ? '' : classes.activeButton}
               onClick={openPopupbox}
               disableRipple
@@ -68,7 +68,7 @@ const NavBar = (props:any) => {
           <div>
             <IconButton
               aria-label="SearchIcon"
-              color={trigger ? 'inherit' : ''}
+              color={trigger ? 'inherit' : undefined}
               className={trigger ? '' : classes.activeButton}
               disableRipple
             >
