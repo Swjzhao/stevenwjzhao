@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'email',
   },
-
   password: {
     type: String,
     required: [true, 'Please add your password'],
@@ -33,6 +32,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: '0', // 2:admin, 1:manager, 0:normal
   },
+  verified: {
+    type: Boolean,
+    default: 'false'
+  }
 }, {
   timestamps: true,
 });
