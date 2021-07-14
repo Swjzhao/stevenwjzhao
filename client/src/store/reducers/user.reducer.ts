@@ -8,7 +8,7 @@ const userReducer = (state: IUser | null, action: AnyAction): IUser | null => {
     case types.SET_USER:
       return action.payload;
     case types.SIGN_OUT:
-      localStorage.removeItem('token');
+
       return null;
     default:
       return state ?? null;

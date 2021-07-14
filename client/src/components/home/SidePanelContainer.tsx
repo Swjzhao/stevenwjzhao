@@ -25,7 +25,7 @@ const SidePanelContainer = (props: any) => {
   }, []);
   const classes = useStyles();
   return (
-    <Container>
+    <Container maxWidth={'md'}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="subtitle1" style={{ marginTop: '65px' }} className={classes.sectionTitle}>
