@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import moment from 'moment';
-import redis from 'redis';
+import redis, { ClientOpts } from 'redis';
 
 // let redisClient: redis.RedisClient;
 
-const redisClient = redis.createClient({ host: process.env.REDIS_URL });
+const redisClient = redis.createClient(<ClientOpts>process.env.REDIS_URL);
 
 const WINDOW_SIZE_IN_HOURS = 24;
 const MAX_WINDOW_REQUEST_COUNT = 1000;
