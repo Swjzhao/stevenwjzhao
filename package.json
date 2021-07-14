@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "postinstall": "npm run build",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "lint:fix": "eslint --fix --ext .ts,.tsx ."
+    "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "deployToHeroku": "npm push heroku master"
   },
   "engines": {
     "node": "14.x"
