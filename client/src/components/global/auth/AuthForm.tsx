@@ -1,6 +1,8 @@
 import { Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+// @ts-ignore
+import { PopupboxManager } from 'react-popupbox';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { IUserCredientials, RootStore } from '../../../models';

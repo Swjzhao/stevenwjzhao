@@ -2,7 +2,9 @@ import '../index.css';
 
 import { CssBaseline } from '@material-ui/core';
 import {
+  createGenerateClassName,
   createTheme,
+  StylesProvider,
   ThemeProvider,
 } from '@material-ui/core/styles';
 import { createWrapper } from 'next-redux-wrapper';
@@ -49,8 +51,16 @@ const theme = createTheme({
 // axios.defaults.retry = 3;
 // axios.defaults.retryDelay = 1000;
 
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'myclasses-',
+});
 // @ts-ignore
 const MyApp = ({ Component, pageProps }) => {
+  const [key, setKey] = React.useState(0);
+
+  React.useEffect(() => {
+    setKey(1);
+  }, []);
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
 
@@ -60,12 +70,16 @@ const MyApp = ({ Component, pageProps }) => {
   });
 
   return (
+     <StylesProvider key={key} generateClassName={generateClassName}>
+
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Component {...pageProps} />
         </ThemeProvider>
       </Provider>
+
+    </StylesProvider>
   );
 };
 
