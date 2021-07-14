@@ -2,7 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import moment from 'moment';
 import redis from 'redis';
 
-const redisClient = redis.createClient();
+let redisClient: redis.RedisClient;
+if (process.env.REDIS_URL) {
+  redisClient = redis.createClient(process.env.REDIS_URL);
+} else {
+  redisClient = redis.createClient();
+}
 
 const WINDOW_SIZE_IN_HOURS = 24;
 const MAX_WINDOW_REQUEST_COUNT = 1000;
