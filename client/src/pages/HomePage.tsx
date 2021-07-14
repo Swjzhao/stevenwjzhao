@@ -6,7 +6,7 @@ import React from 'react';
 // @ts-ignore
 import { PopupboxContainer } from 'react-popupbox';
 
-import Logo from '../assets/logo.png';
+import Logo from '../assets/Logo-white.png';
 import WelcomeImage from '../assets/welcome3.png';
 import Footer from '../components/global/footer/Footer.js';
 import NavBar from '../components/global/navbar/NavBar';
