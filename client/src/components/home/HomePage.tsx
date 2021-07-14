@@ -3,6 +3,8 @@ import 'react-popupbox/dist/react-popupbox.css';
 import { Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+// @ts-ignore
+import { PopupboxContainer } from 'react-popupbox';
 
 // @ts-ignore
 import Footer from '../global/footer/Footer';
@@ -73,7 +75,7 @@ const HomePage = () => {
 
   return (
     <div className={classes.root}>
-
+      <PopupboxContainer />
       <NavBar />
       <div
         className={classes.welcomeImage}
@@ -83,7 +85,6 @@ const HomePage = () => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div />
         <Grid container className={classes.logoContainer} justifyContent="center">
           <Grid item xs={12} sm={6}>
             <img src="/Logo-white.png" alt="WeAreStillDreamers" />
@@ -102,7 +103,6 @@ const HomePage = () => {
               <PostCardListing key={section} title={section} />
             ))}
           </Grid>
-
           <Grid item sm={4} xs={12} className={classes.sidePanelGrid}>
             <SidePanelContainer />
           </Grid>
