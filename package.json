@@ -9,6 +9,7 @@
     "build": "tsc",
     "lint": "eslint .",
     "postinstall": "npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "lint:fix": "eslint --fix --ext .ts,.tsx ."
   },
   "repository": {

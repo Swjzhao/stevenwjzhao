@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import morgan from 'morgan';
+import * as path from 'path';
 
 dotenv.config();
 
@@ -24,8 +25,11 @@ app.use(cookieParser());
 app.use('/auth', routes.authRoutes);
 app.use('/user', routes.userRoutes);
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello' });
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '..', 'client/build')));
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client/build/index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
