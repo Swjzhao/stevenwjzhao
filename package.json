@@ -12,6 +12,9 @@
     "heroku-postbuild": "cd client && npm install && npm run build",
     "lint:fix": "eslint --fix --ext .ts,.tsx ."
   },
+  "engines": {
+    "node": "14.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Swjzhao/stevenwjzhao.git"
