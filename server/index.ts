@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(redis);
+// app.use(redis);
 
 app.use('/auth', routes.authRoutes);
 app.use('/user', routes.userRoutes);
