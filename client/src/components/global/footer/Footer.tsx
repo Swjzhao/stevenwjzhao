@@ -6,6 +6,7 @@ import {
   Facebook, GitHub, Instagram, LinkedIn,
 } from '@material-ui/icons';
 import React from 'react';
+// @ts-ignore
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 
 const useStyles = makeStyles((theme) => ({
