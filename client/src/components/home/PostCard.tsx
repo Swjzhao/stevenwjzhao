@@ -13,9 +13,10 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Share } from '@material-ui/icons';
 import React from 'react';
 import { FaRegComment } from 'react-icons/fa';
+
+import ShareOptionsPopover from '../global/utils/ShareOptionsPopover';
 
 const useStyles = makeStyles((theme) => ({
   cardWrapper: {
@@ -88,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
 const PostCard = (props: any) => {
   const classes = useStyles();
   const { photoUrl, title } = props;
+  const post = { id: 0, title, description: '' };
   return (
     <Card key={title} className={classes.mainMediaWrapper} elevation={0}>
       <CardActionArea>
@@ -133,9 +135,7 @@ const PostCard = (props: any) => {
           <FaRegComment />
         </IconButton>
 
-        <IconButton aria-label='share' className={classes.actionButton}>
-          <Share />
-        </IconButton>
+        <ShareOptionsPopover post={post} />
       </CardActions>
     </Card>
   );
