@@ -43,7 +43,7 @@
   },
   "scripts": {
     "start": "next start",
-    "build": "next build",
+    "build": "next build && next export",
     "dev": "next dev",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

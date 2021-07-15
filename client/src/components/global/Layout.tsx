@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from 'react';
 import { PopupboxContainer } from 'react-popupbox';
 
 import Footer from './footer/Footer';
-import Navbar from './navbar/Navbar';
+import Navbar from './navbar/NavBar';
 
 interface IProps { }
 

@@ -26,10 +26,11 @@ app.use('/auth', routes.authRoutes);
 app.use('/user', routes.userRoutes);
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '..', 'client/.next/server/pages')));
+
+app.use(express.static(path.join(__dirname, '..', 'client/out')));
 // Anything that doesn't match the above, send back index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client/.next/server/pages/index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client/out/index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
