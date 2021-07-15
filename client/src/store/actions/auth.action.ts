@@ -14,7 +14,9 @@ export const signIn = (data: IUserCredientials) => async (dispatch: Dispatch<any
     dispatch({ type: types.SET_USER, payload: res.data.user });
 
     dispatch(clearStatus());
-    // localStorage.setItem('token', `Bearer ${res.data.token}`);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('token', `Bearer ${res.data.token}`);
+    }
   } catch (err: any) {
     dispatch(setStatus({ status: 'error', error: err.response.data.message }));
   }
@@ -25,7 +27,9 @@ export const signUp = (data: IUserCredientials) => async (dispatch: Dispatch<any
     dispatch(setStatus({ status: 'loading' }));
     const res = await api.signUp(data);
     dispatch({ type: types.SET_USER, payload: res.data.user });
-    // localStorage.setItem('token', `Bearer ${res.data.token}`);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('token', `Bearer ${res.data.token}`);
+    }
     dispatch(clearStatus());
   } catch (err: any) {
     dispatch(setStatus({ status: 'error', error: err.response.data.message }));

@@ -24,7 +24,7 @@ import useStyles from './style';
 
 const NavBar = (props:any) => {
   const classes = useStyles();
-  const trigger = useScrollTrigger({ threshold: 0 });
+  const trigger = useScrollTrigger({ disableHysteresis: true });
   const user:IUser = useSelector((state: RootStore) => state?.user);
 
   const dispatch = useDispatch();
