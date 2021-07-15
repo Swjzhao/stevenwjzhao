@@ -12,13 +12,12 @@ import {
 } from '@material-ui/core';
 import { ExitToApp, Menu as MenuIcon, Search } from '@material-ui/icons';
 import React, { useState } from 'react';
+// @ts-ignore
 import { PopupboxManager } from 'react-popupbox';
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
-import { Link } from 'react-router-dom';
 
-import logo from '../../../assets/HeaderLogoicon.png';
-import { RootStore } from '../../../models';
+import { IUser, RootStore } from '../../../models';
 import { signOut } from '../../../store/actions';
 import AuthForm from '../auth/AuthForm';
 import useStyles from './style';
@@ -26,7 +25,7 @@ import useStyles from './style';
 const NavBar = (props:any) => {
   const classes = useStyles();
   const trigger = useScrollTrigger();
-  const user = useSelector((state: RootStore) => state?.user);
+  const user:IUser = useSelector((state: RootStore) => state?.user);
 
   const dispatch = useDispatch();
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
@@ -118,15 +117,14 @@ const NavBar = (props:any) => {
                 <MenuIcon />
               </IconButton>
             </MediaQuery>
-            <Link to="/">
               <IconButton
                 aria-label="Logo"
                 color="primary"
                 disableRipple
               >
-                <img src={logo} alt="Title" height={40} />
+                <img src="/HeaderLogoicon.png" alt="Title" height={40} />
               </IconButton>
-            </Link>
+
           </Typography>
           <div className={classes.grow} />
 

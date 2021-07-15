@@ -1,19 +1,15 @@
 import { Divider, Grid, Typography } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import PostCard from './PostCard';
 import useStyles from './styles/PostCardListingStyles';
 
 const PostCardListing = (props:any) => {
-  useEffect(() => {
-
-  }, []);
-
-  const { title } = props;
+  const { title, key } = props;
   const classes = useStyles();
   const posts = ['post1', 'post2'];
   return (
-    <div className={classes.sectionWrapper}>
+    <div key={title} className={classes.sectionWrapper}>
       <Typography variant="h6">
         {title}
       </Typography>
@@ -21,7 +17,7 @@ const PostCardListing = (props:any) => {
       <Grid container spacing={2}>
         {posts.map((post) => (
           <Grid key={post} item xs={12} sm={6}>
-            <PostCard title={post} />
+            <PostCard key={post} title={post} />
           </Grid>
         ))}
       </Grid>

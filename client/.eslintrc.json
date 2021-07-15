@@ -45,6 +45,9 @@
     "no-unused-vars": 1,
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-underscore-dangle": "off",
-    "react/jsx-props-no-spreading": ["off"]
+    "react/jsx-props-no-spreading": ["off"],
+    "class-methods-use-this": "off",
+    "no-plusplus": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }

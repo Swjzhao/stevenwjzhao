@@ -6,10 +6,12 @@ axios.defaults.baseURL = process.env.REACT_APP_ENV !== 'dev' ?
   'http://localhost:5000';
 // http://localhost:5000
 
-const token = localStorage.getItem('token');
-if (token) {
-  const bearerToken = `Bearer ${token}`;
-  axios.defaults.headers.common.Authorization = bearerToken;
+if (typeof window !== 'undefined') {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const bearerToken = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = bearerToken;
+  }
 }
 
 export const getCurrentUserData = () => axios.get('/user/get');
