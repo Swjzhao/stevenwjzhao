@@ -3,13 +3,9 @@ import 'react-popupbox/dist/react-popupbox.css';
 import { Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-// @ts-ignore
-import { PopupboxContainer } from 'react-popupbox';
 
 // @ts-ignore
-import Footer from '../global/footer/Footer';
-import NavBar from '../global/navbar/NavBar';
-import PostCardListing from './PostCardListing';
+import PostSection from './PostSection';
 import SidePanelContainer from './SidePanelContainer';
 
 const useStyles = makeStyles((theme) => ({
@@ -71,12 +67,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 const HomePage = () => {
   const classes = useStyles();
-  const sections = ['Books', 'Health and Fitness'];
+  const sections = ['Books', 'Health and Fitness', 'Other'];
 
   return (
-    <div className={classes.root}>
-      <PopupboxContainer />
-      <NavBar />
+    <>
       <div
         className={classes.welcomeImage}
         style={{
@@ -95,21 +89,18 @@ const HomePage = () => {
 
         </Grid>
       </div>
-      <br />
+        <br/>
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item sm={8} xs={12} className={classes.mainPanelGrid}>
-            {sections.map((section) => (
-              <PostCardListing key={section} title={section} />
-            ))}
+            <PostSection sections={sections} />
           </Grid>
           <Grid item sm={4} xs={12} className={classes.sidePanelGrid}>
-            <SidePanelContainer />
+            <SidePanelContainer key={0}/>
           </Grid>
         </Grid>
       </Container>
-      <Footer />
-    </div>
+      </>
   );
 };
 

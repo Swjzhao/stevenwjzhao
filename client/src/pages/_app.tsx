@@ -8,9 +8,10 @@ import {
   ThemeProvider,
 } from '@material-ui/core/styles';
 import { createWrapper } from 'next-redux-wrapper';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 
+import Layout from '../components/global/Layout';
 import store from '../store';
 
 const theme = createTheme({
@@ -61,25 +62,19 @@ const MyApp = ({ Component, pageProps }) => {
   React.useEffect(() => {
     setKey(1);
   }, []);
-  useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side');
-
-    if (jssStyles) {
-      jssStyles.parentElement?.removeChild(jssStyles);
-    }
-  });
 
   return (
-     <StylesProvider key={key} generateClassName={generateClassName}>
 
+     <StylesProvider key={key} generateClassName={generateClassName}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Component {...pageProps} />
+          <Layout>
+            <Component key={key} {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </Provider>
-
-    </StylesProvider>
+      </StylesProvider>
   );
 };
 

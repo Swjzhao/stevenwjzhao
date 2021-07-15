@@ -43,8 +43,7 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '56.25%', // 16:9
     },
   },
-  actionButtons: {
-  },
+  actionButtons: {},
   actionButton: {
     width: '30px',
     height: '30px',
@@ -88,53 +87,56 @@ const useStyles = makeStyles((theme) => ({
 
 const PostCard = (props: any) => {
   const classes = useStyles();
-  const { photoUrl } = props;
+  const { photoUrl, title } = props;
   return (
-    <Card className={classes.mainMediaWrapper} elevation={0}>
+    <Card key={title} className={classes.mainMediaWrapper} elevation={0}>
       <CardActionArea>
         <div className={classes.thumbnailWrapper}>
           <CardMedia
             className={classes.media}
             image={
-                photoUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Clouds_over_the_Atlantic_Ocean.jpg/330px-Clouds_over_the_Atlantic_Ocean.jpg'
-              }
+              photoUrl ||
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Clouds_over_the_Atlantic_Ocean.jpg/330px-Clouds_over_the_Atlantic_Ocean.jpg'
+            }
           />
           <CardContent>
-            <Typography component="h2">
+            <Typography component='h2'>
               Title Title Title Title Title
             </Typography>
-            <Typography variant="subtitle2" color="textSecondary" component="p">
-              This impressive paella is a perfect party dish and a fun meal to cook together with your
-              guests. Add 1 cup of frozen peas along with the mussels, if you like.
+            <Typography variant='subtitle2' color='textSecondary' component='p'>
+              This impressive paella is a perfect party dish and a fun meal to
+              cook together with your guests. Add 1 cup of frozen peas along
+              with the mussels, if you like.
             </Typography>
           </CardContent>
-          <CardActions className={classes.actionButtons} disableSpacing>
-            <List className={classes.actionList}>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar
-                    alt="User"
-                    src=""
-                    style={{ width: '30px', height: '30px' }}
-                  />
-                </ListItemAvatar>
-                <ListItemText
-                  primary="John Smith"
-                />
-              </ListItem>
-            </List>
-            <IconButton aria-label="comment" style={{ marginLeft: 'auto' }} className={classes.actionButton}>
-              <FaRegComment />
-            </IconButton>
-
-            <IconButton aria-label="share" className={classes.actionButton}>
-              <Share />
-            </IconButton>
-
-          </CardActions>
         </div>
         <CardActions />
       </CardActionArea>
+      <CardActions className={classes.actionButtons} disableSpacing>
+        <List className={classes.actionList}>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar
+                alt='User'
+                src=''
+                style={{ width: '30px', height: '30px' }}
+              />
+            </ListItemAvatar>
+            <ListItemText primary='John Smith' />
+          </ListItem>
+        </List>
+        <IconButton
+          aria-label='comment'
+          style={{ marginLeft: 'auto' }}
+          className={classes.actionButton}
+        >
+          <FaRegComment />
+        </IconButton>
+
+        <IconButton aria-label='share' className={classes.actionButton}>
+          <Share />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 };
