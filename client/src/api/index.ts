@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const proxyUrl = 'https://cors-anywhere-steven.herokuapp.com/';
-axios.defaults.baseURL = process.env.REACT_APP_ENV !== 'dev' ?
-  `${proxyUrl}https://travel-app-steven-api.herokuapp.com` :
-  'http://localhost:5000';
+// const proxyUrl = 'https://cors-anywhere-steven.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:5000';
 // http://localhost:5000
 
 if (typeof window !== 'undefined') {
