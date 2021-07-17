@@ -37,6 +37,7 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "express": "^4.17.1",
     "google-auth-library": "^7.2.0",
+     "husky": "^4.3.8",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
@@ -66,7 +67,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^4.3.8",
     "lint-staged": "^11.0.1",
     "mrm": "^3.0.2",
     "prettier": "^2.3.2"
