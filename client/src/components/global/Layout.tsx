@@ -7,7 +7,7 @@ import { PopupboxContainer } from 'react-popupbox';
 import Footer from './footer/Footer';
 import Navbar from './navbar/NavBar';
 
-interface IProps { }
+interface IProps { needToolBar: boolean }
 
 const Layout = ({ needToolBar, children }: PropsWithChildren<IProps>) => (
     <div style={{
