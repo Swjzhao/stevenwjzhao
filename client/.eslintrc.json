@@ -22,7 +22,6 @@
   },
   "plugins": ["react", "@typescript-eslint", "unused-imports", "simple-import-sort", "react-hooks"],
   "rules": {
-    "prettier/prettier": "error",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "import/extensions": 0,
@@ -36,7 +35,7 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "react/prop-types": 0,
-    "operator-linebreak": ["error", "after"],
+    "operator-linebreak": ["error"],
     "no-unused-vars": 1,
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-underscore-dangle": "off",
