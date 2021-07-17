@@ -12,8 +12,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "prettier": "prettier --write \"./**/*.{md,jsx,json,html,css,js,yml}\"",
     "prettier:check": "prettier --check \"./**/*.{md,jsx,json,html,css,js,yml}\"",
-    "deployToHeroku": "git push heroku master",
-    "prepare": "husky install"
+    "deployToHeroku": "git push heroku master"
   },
   "engines": {
     "node": "14.x"
@@ -37,7 +36,7 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "express": "^4.17.1",
     "google-auth-library": "^7.2.0",
-    "husky": "4.3.0",
+    "husky": "^4.3.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
