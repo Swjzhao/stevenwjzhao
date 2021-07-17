@@ -4,9 +4,11 @@ import {
   Button,
   Container,
   IconButton,
-  ListItem, ListItemIcon,
+  ListItem,
+  ListItemIcon,
   ListItemText,
-  Menu, Toolbar,
+  Menu,
+  Toolbar,
   Typography,
   useScrollTrigger,
 } from '@material-ui/core';
@@ -23,7 +25,7 @@ import { signOut } from '../../../store/actions';
 import AuthForm from '../auth/AuthForm';
 import useStyles from './style';
 
-const NavBar = (props:any) => {
+const NavBar = (props: any) => {
   const classes = useStyles();
   const trigger = useScrollTrigger({ disableHysteresis: true });
   const user: IUser = useSelector((state: RootStore) => state?.user);
@@ -40,9 +42,7 @@ const NavBar = (props:any) => {
   }, []);
   */
   const openPopupbox = () => {
-    const content = (
-      <AuthForm />
-    );
+    const content = <AuthForm />;
     PopupboxManager.open({ content });
   };
 
@@ -81,10 +81,7 @@ const NavBar = (props:any) => {
         }}
       >
         <ListItemIcon>
-          <Avatar
-            src={user && user.avatar}
-            alt=""
-          />
+          <Avatar src={user && user.avatar} alt="" />
         </ListItemIcon>
         <ListItemText primary="My Profile" />
       </ListItem>
@@ -105,7 +102,11 @@ const NavBar = (props:any) => {
     </Menu>
   );
   return (
-    <AppBar position="fixed" className={classes.appBar} color={trigger || needToolBar ? 'default' : 'transparent'}>
+    <AppBar
+      position="fixed"
+      className={classes.appBar}
+      color={trigger || needToolBar ? 'default' : 'transparent'}
+    >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Typography variant="h6">
@@ -115,22 +116,20 @@ const NavBar = (props:any) => {
                 color={trigger || needToolBar ? 'inherit' : undefined}
                 className={trigger || needToolBar ? '' : classes.activeButton}
                 data-role="header-menu-icon-mobile"
-
               >
-                  <MenuIcon />
+                <MenuIcon />
               </IconButton>
             </MediaQuery>
-              <IconButton
-                aria-label="Logo"
+            <IconButton
+              aria-label="Logo"
               color="primary"
               style={{ backgroundColor: 'transparent' }}
-                disableRipple
+              disableRipple
             >
               <Link href="/">
                 <img src="/HeaderLogoicon.png" alt="Title" height={40} />
-                </Link>
-              </IconButton>
-
+              </Link>
+            </IconButton>
           </Typography>
           <div className={classes.grow} />
 

@@ -31,12 +31,15 @@ const Active = () => {
   };
 
   return (
-      <Container style={{
-        display: 'flex', flexGrow: 1, justifyContent: 'center',
-      }}>
-
-        {error}
-        {success && <div>{'Account Activated'} </div>}
+    <Container
+      style={{
+        display: 'flex',
+        flexGrow: 1,
+        justifyContent: 'center',
+      }}
+    >
+      {error}
+      {success && <div>{'Account Activated'} </div>}
     </Container>
   );
 };

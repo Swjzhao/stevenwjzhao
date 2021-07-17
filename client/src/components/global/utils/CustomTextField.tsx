@@ -2,11 +2,9 @@ import { Grid, TextField } from '@material-ui/core';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const CustomTextField = (props:any) => {
+const CustomTextField = (props: any) => {
   const { control } = useFormContext();
-  const {
-    name, label, required, col, autoFocus, type, autoComplete,
-  } = props;
+  const { name, label, required, col, autoFocus, type, autoComplete } = props;
   return (
     <Grid item xs={12} sm={col ?? 12}>
       <Controller

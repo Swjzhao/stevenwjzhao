@@ -7,23 +7,26 @@ import { PopupboxContainer } from 'react-popupbox';
 import Footer from './footer/Footer';
 import Navbar from './navbar/NavBar';
 
-interface IProps { needToolBar: boolean }
+interface IProps {
+  needToolBar: boolean;
+}
 
 const Layout = ({ needToolBar, children }: PropsWithChildren<IProps>) => (
-    <div style={{
+  <div
+    style={{
       display: 'flex',
       flexDirection: 'column',
       overflowX: 'hidden',
       overflowY: 'hidden',
       minHeight: '100vh',
-    }}>
+    }}
+  >
+    <PopupboxContainer />
 
-      <PopupboxContainer />
-
-      <Navbar needToolBar={needToolBar} />
-      { children }
-      <Footer />
-    </div>
+    <Navbar needToolBar={needToolBar} />
+    {children}
+    <Footer />
+  </div>
 );
 
 export default Layout;

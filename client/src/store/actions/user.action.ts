@@ -4,9 +4,7 @@ import * as api from '../../api';
 import { IUser } from '../../models';
 import { clearStatus, setStatus } from './status.action';
 
-export const resetPassword = (
-  newPassword: string,
-) => async (dispatch: Dispatch) => {
+export const resetPassword = (newPassword: string) => async (dispatch: Dispatch) => {
   try {
     setStatus({ status: 'loading' });
     const res = await api.resetPassword(newPassword);

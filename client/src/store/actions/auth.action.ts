@@ -87,11 +87,12 @@ export const googleSignIn = (token: string) => async (dispatch: Dispatch<any | A
   }
 };
 
-export const facebookSignIn = (token: string, userID: string) => async (dispatch: Dispatch<any | Action>) => {
-  try {
-    dispatch(setStatus({ status: 'loading' }));
-    dispatch(clearStatus());
-  } catch (err: any) {
-    dispatch(setStatus({ status: 'error', errors: err.response.data.message }));
-  }
-};
+export const facebookSignIn =
+  (token: string, userID: string) => async (dispatch: Dispatch<any | Action>) => {
+    try {
+      dispatch(setStatus({ status: 'loading' }));
+      dispatch(clearStatus());
+    } catch (err: any) {
+      dispatch(setStatus({ status: 'error', errors: err.response.data.message }));
+    }
+  };

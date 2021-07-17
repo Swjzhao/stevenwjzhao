@@ -4,7 +4,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb-base"],
+  "extends": ["plugin:react/recommended", "airbnb-base", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "settings": {
     "import/resolver": {
@@ -20,14 +20,9 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "unused-imports",
-    "simple-import-sort",
-    "react-hooks"
-  ],
+  "plugins": ["react", "@typescript-eslint", "unused-imports", "simple-import-sort", "react-hooks"],
   "rules": {
+    "prettier/prettier": "error",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "import/extensions": 0,

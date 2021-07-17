@@ -1,0 +1,16 @@
+node_modules
+public
+
+src/views/live/Meeting.js
+src/views/util
+src/views/auth/PastSessions.js
+src/assets/*
+
+
+build/*
+.next/*
+out/*
+
+package.json
+package-lock.json
+jsconfig.json

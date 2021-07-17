@@ -102,13 +102,10 @@ const PostCard = (props: any) => {
             }
           />
           <CardContent>
-            <Typography component='h2'>
-              Title Title Title Title Title
-            </Typography>
-            <Typography variant='subtitle2' color='textSecondary' component='p'>
-              This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
+            <Typography component="h2">Title Title Title Title Title</Typography>
+            <Typography variant="subtitle2" color="textSecondary" component="p">
+              This impressive paella is a perfect party dish and a fun meal to cook together with
+              your guests. Add 1 cup of frozen peas along with the mussels, if you like.
             </Typography>
           </CardContent>
         </div>
@@ -118,17 +115,13 @@ const PostCard = (props: any) => {
         <List className={classes.actionList}>
           <ListItem>
             <ListItemAvatar>
-              <Avatar
-                alt='User'
-                src=''
-                style={{ width: '30px', height: '30px' }}
-              />
+              <Avatar alt="User" src="" style={{ width: '30px', height: '30px' }} />
             </ListItemAvatar>
-            <ListItemText primary='John Smith' />
+            <ListItemText primary="John Smith" />
           </ListItem>
         </List>
         <IconButton
-          aria-label='comment'
+          aria-label="comment"
           style={{ marginLeft: 'auto' }}
           className={classes.actionButton}
         >

@@ -4,15 +4,13 @@ import React from 'react';
 import PostCard from './PostCard';
 import useStyles from './styles/PostCardListingStyles';
 
-const PostCardListing = (props:any) => {
+const PostCardListing = (props: any) => {
   const { title } = props;
   const classes = useStyles();
   const posts = ['post1', 'post2'];
   return (
     <div key={title} className={classes.sectionWrapper}>
-      <Typography variant="h6">
-        {title}
-      </Typography>
+      <Typography variant="h6">{title}</Typography>
       <Divider className={classes.divider} />
       <Grid container spacing={2}>
         {posts.map((post) => (
@@ -22,7 +20,6 @@ const PostCardListing = (props:any) => {
         ))}
       </Grid>
     </div>
-
   );
 };
 

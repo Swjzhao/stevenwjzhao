@@ -72,9 +72,7 @@ const useStyles = makeStyles((theme) => ({
   activeButton: {
     color: '#FFF',
   },
-  defaultButton: {
-
-  },
+  defaultButton: {},
 }));
 
 export default useStyles;

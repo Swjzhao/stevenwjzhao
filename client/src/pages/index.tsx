@@ -11,13 +11,13 @@ const Home = () => {
     setKey(1);
   }, []);
   return (
-        <>
-            <Head>
-                <title>SZ</title>
-                <meta property='og:image' content={'/logo.png'} />
-            </Head>
-            <HomePage key={key}/>
-        </>
+    <>
+      <Head>
+        <title>SZ</title>
+        <meta property="og:image" content={'/logo.png'} />
+      </Head>
+      <HomePage key={key} />
+    </>
   );
 };
 

@@ -5,11 +5,12 @@ import PostCardListing from './PostCardListing';
 const PostSection = (props: any) => {
   const { sections } = props;
 
-  return (<>
-        {sections.map((section:string) => (
-              <PostCardListing key={section} title={section} />
-        ))}
-        </>
+  return (
+    <>
+      {sections.map((section: string) => (
+        <PostCardListing key={section} title={section} />
+      ))}
+    </>
   );
 };
 

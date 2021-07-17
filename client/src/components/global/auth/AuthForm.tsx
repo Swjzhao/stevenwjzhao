@@ -16,8 +16,8 @@ const AuthForm = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const methods = useForm();
   const dispatch = useDispatch();
-  const status = useSelector((state:RootStore) => state?.status);
-  const user = useSelector((state:RootStore) => state?.user);
+  const status = useSelector((state: RootStore) => state?.status);
+  const user = useSelector((state: RootStore) => state?.user);
   useEffect(() => {
     if (user) {
       if (isSignIn) {
@@ -29,7 +29,7 @@ const AuthForm = () => {
     dispatch(clearStatus());
   }, []);
 
-  const handleSubmit = (data:IUserCredientials) => {
+  const handleSubmit = (data: IUserCredientials) => {
     if (isSignIn) {
       dispatch(signIn(data));
     } else {
@@ -42,9 +42,23 @@ const AuthForm = () => {
   };
   return (
     <Container component="main" maxWidth="xs">
-      {isSignIn ?
-        <SignIn handleSubmit={handleSubmit} handleChange={handleChange} setIsSignIn={setIsSignIn} classes={classes} error={status.error} /> :
-        <SignUp handleSubmit={handleSubmit} handleChange={handleChange} setIsSignIn={setIsSignIn} classes={classes} error={status.error} /> }
+      {isSignIn ? (
+        <SignIn
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+          setIsSignIn={setIsSignIn}
+          classes={classes}
+          error={status.error}
+        />
+      ) : (
+        <SignUp
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+          setIsSignIn={setIsSignIn}
+          classes={classes}
+          error={status.error}
+        />
+      )}
     </Container>
   );
 };

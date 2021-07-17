@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'flex-end',
       alignItems: 'center',
-
     },
   },
   mainPanelGrid: {
@@ -86,21 +85,20 @@ const HomePage = () => {
           <Grid item sm={6}>
             {' '}
           </Grid>
-
         </Grid>
       </div>
-        <br/>
+      <br />
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item sm={8} xs={12} className={classes.mainPanelGrid}>
             <PostSection sections={sections} />
           </Grid>
           <Grid item sm={4} xs={12} className={classes.sidePanelGrid}>
-            <SidePanelContainer key={0}/>
+            <SidePanelContainer key={0} />
           </Grid>
         </Grid>
       </Container>
-      </>
+    </>
   );
 };
 

@@ -1,6 +1,4 @@
-import {
-  Grid, IconButton, Popover, Tooltip, Typography, Zoom,
-} from '@material-ui/core';
+import { Grid, IconButton, Popover, Tooltip, Typography, Zoom } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ShareIcon from '@material-ui/icons/Share';
@@ -38,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ShareSocialIcon = (props:any) => {
+const ShareSocialIcon = (props: any) => {
   const [shareAnchorEl, setShareAnchorEl] = React.useState(null);
   const [copied, setCopied] = React.useState(false);
   const classes = useStyles();
@@ -47,7 +45,7 @@ const ShareSocialIcon = (props:any) => {
 
   const { id, title, description } = post;
 
-  const handleSharePopoverOpen = (event:any) => {
+  const handleSharePopoverOpen = (event: any) => {
     setShareAnchorEl(event.currentTarget);
   };
 
@@ -68,7 +66,7 @@ width=550,height=450,left=1000,top=500`;
 
       if (w) {
         w.location.href = `https://www.linkedin.com/shareArticle?mini=true&title=${title}&summary=${description}&url=${encodeURIComponent(
-          url,
+          url
         )}`;
       }
     }
@@ -123,11 +121,7 @@ width=550,height=450,left=1000,top=500`;
                     setCopied(true);
                   }}
                 >
-                  <Tooltip
-                    arrow
-                    title="Copy to Clipboard"
-                    TransitionComponent={Zoom}
-                  >
+                  <Tooltip arrow title="Copy to Clipboard" TransitionComponent={Zoom}>
                     <IconButton
                       color="primary"
                       style={{ backgroundColor: 'transparent' }}
@@ -141,11 +135,7 @@ width=550,height=450,left=1000,top=500`;
             </Grid>
             <Grid container item>
               <Grid container item xs={3} justify="center">
-                <Tooltip
-                  arrow
-                  title="Linkedin"
-                  TransitionComponent={Zoom}
-                >
+                <Tooltip arrow title="Linkedin" TransitionComponent={Zoom}>
                   <IconButton
                     onClick={shareLinkedin}
                     style={{ backgroundColor: 'transparent' }}
@@ -156,11 +146,7 @@ width=550,height=450,left=1000,top=500`;
                 </Tooltip>
               </Grid>
               <Grid container item xs={3} justify="center">
-                <Tooltip
-                  arrow
-                  title="Twitter"
-                  TransitionComponent={Zoom}
-                >
+                <Tooltip arrow title="Twitter" TransitionComponent={Zoom}>
                   <TwitterShareButton title={title} via="WeAreStillDreamers" url={url}>
                     <TwitterIcon size={32} round={true} />
                   </TwitterShareButton>
@@ -168,11 +154,7 @@ width=550,height=450,left=1000,top=500`;
               </Grid>
 
               <Grid container item xs={3} justify="center">
-                <Tooltip
-                  arrow
-                  title="Workplace"
-                  TransitionComponent={Zoom}
-                >
+                <Tooltip arrow title="Workplace" TransitionComponent={Zoom}>
                   <FacebookShareButton quote={title} url={url}>
                     <FacebookIcon size={32} round={true} />
                   </FacebookShareButton>

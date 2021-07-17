@@ -1,7 +1,5 @@
 import React from 'react';
 
-const emailSubscriptionForm = () => (
-  <div />
-);
+const emailSubscriptionForm = () => <div />;
 
 export default emailSubscriptionForm;

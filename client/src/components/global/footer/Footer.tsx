@@ -1,10 +1,6 @@
-import {
-  Container, Grid, IconButton, Typography,
-} from '@material-ui/core';
+import { Container, Grid, IconButton, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Facebook, GitHub, Instagram, LinkedIn,
-} from '@material-ui/icons';
+import { Facebook, GitHub, Instagram, LinkedIn } from '@material-ui/icons';
 import React from 'react';
 // @ts-ignore
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
@@ -80,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.7,
   },
   caption: {
-
     fontSize: 12,
     fontFamily: 'Josefin Sans',
     textAlign: 'center',
@@ -94,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 18,
   },
 }));
-const Footer = (props:any) => {
+const Footer = (props: any) => {
   /* const redirectSocial = (url) => {
     // this.window.open(url);
   }; */
@@ -123,30 +118,19 @@ const Footer = (props:any) => {
                 <IconButton>
                   <GitHub />
                 </IconButton>
-
               </Grid>
             </Grid>
           </Grid>
-
         </Container>
       </div>
       <Grid container spacing={1} className={classes.captionContainer}>
         <Grid item xs={12}>
-          <Typography
-            align="right"
-            variant="caption"
-            display="block"
-            className={classes.caption}
-          >
-            We Are Still Dreamers
-            {' '}
-            © szcreativestudios
+          <Typography align="right" variant="caption" display="block" className={classes.caption}>
+            We Are Still Dreamers © szcreativestudios
           </Typography>
         </Grid>
-
       </Grid>
     </>
-
   );
 };
 

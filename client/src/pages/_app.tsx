@@ -16,7 +16,6 @@ import Layout from '../components/global/Layout';
 import store from '../store';
 
 const theme = createTheme({
-
   typography: {
     fontFamily: 'Open Sans',
     h6: {
@@ -38,7 +37,6 @@ const theme = createTheme({
         backgroundColor: 'transparent',
       },
       text: {
-
         backgroundColor: 'transparent',
       },
     },
@@ -61,7 +59,7 @@ const MyApp = ({ Component, pageProps }) => {
   const [key, setKey] = React.useState(0);
   const router = useRouter();
   const [needToolBar, setNeedToolBar] = useState(true);
-  const handleRouteChange = (url:string) => {
+  const handleRouteChange = (url: string) => {
     if (url === '/') {
       setNeedToolBar(false);
     } else {
@@ -75,18 +73,17 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   return (
-
-     <StylesProvider key={key} generateClassName={generateClassName}>
+    <StylesProvider key={key} generateClassName={generateClassName}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Layout needToolBar={needToolBar}>
-            {needToolBar && <Toolbar/>}
+            {needToolBar && <Toolbar />}
             <Component key={key} {...pageProps} />
           </Layout>
         </ThemeProvider>
       </Provider>
-      </StylesProvider>
+    </StylesProvider>
   );
 };
 
@@ -98,4 +95,4 @@ const MyApp = ({ Component, pageProps }) => {
 const makeStore = () => store;
 const wrapper = createWrapper(makeStore);
 
-export default wrapper.withRedux((MyApp));
+export default wrapper.withRedux(MyApp);
