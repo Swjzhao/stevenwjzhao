@@ -71,6 +71,11 @@
     "mrm": "^3.0.2",
     "prettier": "^2.3.2"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && cd client && lint-staged"
+    }
+  },
   "lint-staged": {
     "*.+(ts|tsx)": [
       "eslint --fix",
