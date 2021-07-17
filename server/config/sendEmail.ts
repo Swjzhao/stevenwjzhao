@@ -3,21 +3,13 @@ import { OAuth2Client } from 'google-auth-library';
 const nodemailer = require('nodemailer');
 
 const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground';
-const {
-  MAIL_CLIENT_ID,
-  MAIL_CLIENT_SECRET,
-  MAIL_REFRESH_TOKEN,
-  SENDER_EMAIL_ADDRESS,
-} = process.env;
+const { MAIL_CLIENT_ID, MAIL_CLIENT_SECRET, MAIL_REFRESH_TOKEN, SENDER_EMAIL_ADDRESS } =
+  process.env;
 
 // "Welcome! Please verify your email address."
 
 const sendEmail = async (to: string, url: string, subject: string) => {
-  const oAuth2Client = new OAuth2Client(
-    MAIL_CLIENT_ID,
-    MAIL_CLIENT_SECRET,
-    OAUTH_PLAYGROUND,
-  );
+  const oAuth2Client = new OAuth2Client(MAIL_CLIENT_ID, MAIL_CLIENT_SECRET, OAUTH_PLAYGROUND);
   oAuth2Client.setCredentials({ refresh_token: MAIL_REFRESH_TOKEN });
 
   try {

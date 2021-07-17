@@ -42,16 +42,14 @@ export default (req: Request, res: Response, next: NextFunction) => {
       if (!data) {
         return next();
       }
-      const windowStartTimestamp = moment()
-        .subtract(WINDOW_SIZE_IN_HOURS, 'hours')
-        .unix();
+      const windowStartTimestamp = moment().subtract(WINDOW_SIZE_IN_HOURS, 'hours').unix();
       const requestsWithinWindow = data.filter(
-        (entry: { requestTimeStamp: number; }) => entry.requestTimeStamp > windowStartTimestamp,
+        (entry: { requestTimeStamp: number }) => entry.requestTimeStamp > windowStartTimestamp
       );
       // console.log('requestsWithinWindow', requestsWithinWindow);
       const totalWindowRequestsCount = requestsWithinWindow.reduce(
         (accumulator: number, entry: { requestCount: number }) => accumulator + entry.requestCount,
-        0,
+        0
       );
       // if number of requests made is greater than or
       // equal to the desired maximum, return error
@@ -68,10 +66,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
         .unix();
       //  if interval has not passed since last request log,
       //   increment counter
-      if (
-        lastRequestLog.requestTimeStamp >
-        potentialCurrentWindowIntervalStartTimeStamp
-      ) {
+      if (lastRequestLog.requestTimeStamp > potentialCurrentWindowIntervalStartTimeStamp) {
         lastRequestLog.requestCount++;
         data[data.length - 1] = lastRequestLog;
       } else {

@@ -10,7 +10,14 @@
     "lint": "eslint .",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build && cd .. && npm run build",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "prettier": "prettier --write \"./**/*.{md,jsx,json,html,css,js,yml}\"",
+    "prettier:check": "prettier --check \"./**/*.{md,jsx,json,html,css,js,yml}\"",
     "deployToHeroku": "git push heroku master"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "engines": {
     "node": "14.x"
@@ -60,6 +67,11 @@
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.4"
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
+    "prettier": "^2.3.2"
   }
 }

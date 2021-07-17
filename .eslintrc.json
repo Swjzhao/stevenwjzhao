@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -16,8 +16,9 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "simple-import-sort"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "no-plusplus": "off",
     "import/extensions": 0,
     "no-console": "off",

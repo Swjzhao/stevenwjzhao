@@ -3,14 +3,16 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 
-import { generateAccessToken, generateActivateToken, generateRefreshToken } from '../config/generateToken';
+import {
+  generateAccessToken,
+  generateActivateToken,
+  generateRefreshToken,
+} from '../config/generateToken';
 import sendEmail from '../config/sendEmail';
 import { IDecodedToken } from '../interface';
 import Users from '../models/user.model';
 
-const {
-  ACTIVE_TOKEN_SECRET, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET, BASE_URL,
-} = process.env;
+const { ACTIVE_TOKEN_SECRET, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET, BASE_URL } = process.env;
 
 export const signUp = async (req: Request, res: Response) => {
   try {
@@ -25,7 +27,9 @@ export const signUp = async (req: Request, res: Response) => {
       const subject = 'Welcome! Please verify your email address.';
       await sendEmail(email, url, subject);
 
-      return res.status(400).json({ message: 'Email already exists. An verification email has been sent to your email' });
+      return res.status(400).json({
+        message: 'Email already exists. An verification email has been sent to your email',
+      });
     }
 
     const hashPassword = await bcrypt.hash(password, 12);
@@ -147,7 +151,7 @@ export const activateAccount = async (req: Request, res: Response) => {
 
 export const verifyToken = async (req: Request, res: Response) => {
   try {
-    const token:string = req?.headers?.authorization?.split(' ')[1]!;
+    const token: string = req?.headers?.authorization?.split(' ')[1]!;
     const decoded = jwt.verify(token, `${ACCESS_TOKEN_SECRET}`);
     console.log(decoded);
     return res.status(200).json({ decoded });
