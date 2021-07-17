@@ -12,12 +12,8 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "prettier": "prettier --write \"./**/*.{md,jsx,json,html,css,js,yml}\"",
     "prettier:check": "prettier --check \"./**/*.{md,jsx,json,html,css,js,yml}\"",
-    "deployToHeroku": "git push heroku master"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "deployToHeroku": "git push heroku master",
+    "prepare": "husky install"
   },
   "engines": {
     "node": "14.x"
@@ -72,6 +68,16 @@
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
+    "mrm": "^3.0.2",
     "prettier": "^2.3.2"
+  },
+  "lint-staged": {
+    "*.+(ts|tsx)": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write"
+    ]
   }
 }
