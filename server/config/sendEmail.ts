@@ -62,7 +62,7 @@ const sendEmail = async (to: string, url: string, subject: string) => {
     return res;
   } catch (err) {
     console.error(err);
-    return err;
+    throw new Error('OAuth expired');
   }
 };
 

@@ -11,6 +11,7 @@ import {
   useScrollTrigger,
 } from '@material-ui/core';
 import { ExitToApp, Menu as MenuIcon, Search } from '@material-ui/icons';
+import Link from 'next/link';
 import React, { useState } from 'react';
 // @ts-ignore
 import { PopupboxManager } from 'react-popupbox';
@@ -25,7 +26,8 @@ import useStyles from './style';
 const NavBar = (props:any) => {
   const classes = useStyles();
   const trigger = useScrollTrigger({ disableHysteresis: true });
-  const user:IUser = useSelector((state: RootStore) => state?.user);
+  const user: IUser = useSelector((state: RootStore) => state?.user);
+  const { needToolBar } = props;
 
   const dispatch = useDispatch();
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
@@ -103,26 +105,30 @@ const NavBar = (props:any) => {
     </Menu>
   );
   return (
-    <AppBar position="fixed" className={classes.appBar} color={trigger ? 'default' : 'transparent'}>
+    <AppBar position="fixed" className={classes.appBar} color={trigger || needToolBar ? 'default' : 'transparent'}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Typography variant="h6">
             <MediaQuery maxDeviceWidth={600}>
               <IconButton
-                color={trigger ? 'inherit' : undefined}
-                className={trigger ? '' : classes.activeButton}
+                style={{ backgroundColor: 'transparent' }}
+                color={trigger || needToolBar ? 'inherit' : undefined}
+                className={trigger || needToolBar ? '' : classes.activeButton}
                 data-role="header-menu-icon-mobile"
 
               >
-                <MenuIcon />
+                  <MenuIcon />
               </IconButton>
             </MediaQuery>
               <IconButton
                 aria-label="Logo"
-                color="primary"
+              color="primary"
+              style={{ backgroundColor: 'transparent' }}
                 disableRipple
-              >
+            >
+              <Link href="/">
                 <img src="/HeaderLogoicon.png" alt="Title" height={40} />
+                </Link>
               </IconButton>
 
           </Typography>
@@ -131,8 +137,8 @@ const NavBar = (props:any) => {
           <MediaQuery minDeviceWidth={601}>
             <div>
               <Button
-                color={trigger ? 'inherit' : undefined}
-                className={trigger ? '' : classes.activeButton}
+                color={trigger || needToolBar ? 'inherit' : undefined}
+                className={trigger || needToolBar ? '' : classes.activeButton}
                 disableRipple
               >
                 About
@@ -141,8 +147,8 @@ const NavBar = (props:any) => {
             <div>
               {user ? (
                 <Button
-                  color={trigger ? 'inherit' : undefined}
-                  className={trigger ? '' : classes.activeButton}
+                  color={trigger || needToolBar ? 'inherit' : undefined}
+                  className={trigger || needToolBar ? '' : classes.activeButton}
                   disableRipple
                   onClick={handleProfileMenuOpen}
                 >
@@ -150,8 +156,8 @@ const NavBar = (props:any) => {
                 </Button>
               ) : (
                 <Button
-                  color={trigger ? 'inherit' : undefined}
-                  className={trigger ? '' : classes.activeButton}
+                  color={trigger || needToolBar ? 'inherit' : undefined}
+                  className={trigger || needToolBar ? '' : classes.activeButton}
                   onClick={openPopupbox}
                   disableRipple
                 >
@@ -164,8 +170,8 @@ const NavBar = (props:any) => {
           <div>
             <IconButton
               aria-label="SearchIcon"
-              color={trigger ? 'inherit' : undefined}
-              className={trigger ? '' : classes.activeButton}
+              color={trigger || needToolBar ? 'inherit' : undefined}
+              className={trigger || needToolBar ? '' : classes.activeButton}
               disableRipple
             >
               <Search />

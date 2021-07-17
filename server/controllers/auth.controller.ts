@@ -20,6 +20,11 @@ export const signUp = async (req: Request, res: Response) => {
       if (user.verified) {
         return res.status(400).json({ message: 'Email already exists. Please sign in' });
       }
+      const activateToken = generateActivateToken({ newUser: user });
+      const url = `${BASE_URL}/activate/${activateToken}`;
+      const subject = 'Welcome! Please verify your email address.';
+      await sendEmail(email, url, subject);
+
       return res.status(400).json({ message: 'Email already exists. An verification email has been sent to your email' });
     }
 
@@ -33,9 +38,9 @@ export const signUp = async (req: Request, res: Response) => {
     const newUser = { name, email, password: hashPassword };
 
     const activateToken = generateActivateToken({ newUser });
-    const url = `${BASE_URL}/auth/activate/${activateToken}`;
+    const url = `${BASE_URL}/activate/${activateToken}`;
     const subject = 'Welcome! Please verify your email address.';
-    sendEmail(email, url, subject);
+    await sendEmail(email, url, subject);
 
     const createUser = await Users.create({
       ...newUser,
@@ -104,7 +109,7 @@ export const refreshToken = async (req: Request, res: Response) => {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
     });
 
-    return res.json({ accessToken, user });
+    return res.json({ token: accessToken, user });
   } catch (err: any) {
     return res.status(500).json({ msg: err.message });
   }
@@ -112,24 +117,29 @@ export const refreshToken = async (req: Request, res: Response) => {
 
 export const activateAccount = async (req: Request, res: Response) => {
   try {
-    const { activeToken } = req.body;
+    const { activateToken } = req.body;
 
-    const decoded = <IDecodedToken>jwt.verify(activeToken, `${ACTIVE_TOKEN_SECRET}`);
-
+    const decoded = <IDecodedToken>jwt.verify(activateToken, `${ACTIVE_TOKEN_SECRET}`);
     const { newUser } = decoded;
 
     if (!newUser) return res.status(400).json({ msg: 'Invalid authentication.' });
 
     const user = await Users.findOne({ account: newUser.account });
-    if (user) return res.status(400).json({ msg: 'Account already exists.' });
+    if (user) {
+      const accessToken = generateAccessToken({ sub: user._id });
 
+      const resUser = _.omit(user.toObject(), ['password']);
+      return res.status(200).json({ token: accessToken, user: resUser });
+    }
     const createdUser = new Users(newUser);
 
     await createdUser.save();
 
     const resUser = _.omit(createdUser.toObject(), ['password']);
 
-    return res.status(200).json({ user: resUser });
+    const accessToken = generateAccessToken({ sub: user._id });
+
+    return res.status(200).json({ token: accessToken, user: resUser });
   } catch (err: any) {
     return res.status(500).json({ msg: err.message });
   }

@@ -5,7 +5,7 @@ import PostCard from './PostCard';
 import useStyles from './styles/PostCardListingStyles';
 
 const PostCardListing = (props:any) => {
-  const { title, key } = props;
+  const { title } = props;
   const classes = useStyles();
   const posts = ['post1', 'post2'];
   return (

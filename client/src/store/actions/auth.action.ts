@@ -5,6 +5,19 @@ import { IUserCredientials } from '../../models';
 import * as types from '../constants';
 import { clearStatus, setStatus } from './status.action';
 
+export const activate = (token: string) => async (dispatch: Dispatch<any | Action>) => {
+  dispatch(setStatus({ status: 'loading' }));
+
+  const res = await api.activateAccount(token);
+
+  dispatch({ type: types.SET_USER, payload: res.data.user });
+
+  dispatch(clearStatus());
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('token', `Bearer ${res.data.token}`);
+  }
+};
+
 export const signIn = (data: IUserCredientials) => async (dispatch: Dispatch<any | Action>) => {
   try {
     dispatch(setStatus({ status: 'loading' }));

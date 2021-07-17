@@ -1,14 +1,15 @@
 import '../index.css';
 
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, Toolbar } from '@material-ui/core';
 import {
   createGenerateClassName,
   createTheme,
   StylesProvider,
   ThemeProvider,
 } from '@material-ui/core/styles';
+import { useRouter } from 'next/router';
 import { createWrapper } from 'next-redux-wrapper';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 
 import Layout from '../components/global/Layout';
@@ -58,8 +59,18 @@ const generateClassName = createGenerateClassName({
 // @ts-ignore
 const MyApp = ({ Component, pageProps }) => {
   const [key, setKey] = React.useState(0);
+  const router = useRouter();
+  const [needToolBar, setNeedToolBar] = useState(true);
+  const handleRouteChange = (url:string) => {
+    if (url === '/') {
+      setNeedToolBar(false);
+    } else {
+      setNeedToolBar(true);
+    }
+  };
 
-  React.useEffect(() => {
+  useEffect(() => {
+    router.events.on('routeChangeComplete', handleRouteChange);
     setKey(1);
   }, []);
 
@@ -69,7 +80,8 @@ const MyApp = ({ Component, pageProps }) => {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout>
+          <Layout needToolBar={needToolBar}>
+            {needToolBar && <Toolbar/>}
             <Component key={key} {...pageProps} />
           </Layout>
         </ThemeProvider>
