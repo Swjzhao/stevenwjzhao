@@ -60,7 +60,7 @@ const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const [needToolBar, setNeedToolBar] = useState(true);
   const handleRouteChange = (url: string) => {
-    if (url === '/') {
+    if (url === '/' || url === '') {
       setNeedToolBar(false);
     } else {
       setNeedToolBar(true);
@@ -68,6 +68,11 @@ const MyApp = ({ Component, pageProps }) => {
   };
 
   useEffect(() => {
+    if (router.route === '/' || router.route === '') {
+      setNeedToolBar(false);
+    } else {
+      setNeedToolBar(true);
+    }
     router.events.on('routeChangeComplete', handleRouteChange);
     setKey(1);
   }, []);
