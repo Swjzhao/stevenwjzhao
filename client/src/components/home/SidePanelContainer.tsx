@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sectionTitle: {
     borderLeft: '2px solid #2ec605',
+
     paddingLeft: '15px',
   },
 }));

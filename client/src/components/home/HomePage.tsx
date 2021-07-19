@@ -62,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
   },
   sidePanelGrid: {
     borderLeft: '1px solid rgba(0, 0, 0, 0.05)',
+    [theme.breakpoints.down('xs')]: {
+      borderLeft: 'none',
+    },
   },
 }));
 const HomePage = () => {
