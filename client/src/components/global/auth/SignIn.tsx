@@ -1,9 +1,10 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Divider, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { IUserCredientials } from '../../../models';
 import CustomTextField from '../utils/CustomTextField';
+import SocialMediaLogin from './SocialMediaLogin';
 
 const SignIn = (props: any) => {
   const { classes, error, handleChange, handleSubmit, setIsSignIn } = props;
@@ -64,6 +65,11 @@ const SignIn = (props: any) => {
           </Grid>
         </form>
       </FormProvider>
+      <Divider />
+
+      <Grid container spacing={2}>
+        <SocialMediaLogin />
+      </Grid>
     </div>
   );
 };

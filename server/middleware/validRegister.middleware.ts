@@ -31,7 +31,7 @@ export const validRegister = async (req: Request, res: Response, next: NextFunct
     errors.push('Password must contain minimum eight characters');
   }
 
-  if (errors.length > 0) return res.status(400).json({ msg: errors });
+  if (errors.length > 0) return res.status(400).json({ msg: errors.join(' ') });
 
   return next();
 };

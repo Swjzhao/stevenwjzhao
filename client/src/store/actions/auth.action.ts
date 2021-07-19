@@ -71,28 +71,34 @@ export const signOut = () => async (dispatch: Dispatch<any | Action>) => {
     // await getAPI('logout');
     const res = await api.signOut();
     dispatch({ type: types.SIGN_OUT });
+    dispatch({ type: types.SET_USER, payload: res.data.user });
+
     // window.location.href = '/';
   } catch (err: any) {
     console.log(err);
-    dispatch(setStatus({ status: 'error', errors: err.response.data.message }));
+    dispatch(setStatus({ status: 'error', error: err.response.data.message }));
   }
 };
 
 export const googleSignIn = (token: string) => async (dispatch: Dispatch<any | Action>) => {
   try {
     dispatch(setStatus({ status: 'loading' }));
+    const res = await api.signInWithThirdParty({ token, source: 'google' });
+    dispatch({ type: types.SET_USER, payload: res.data.user });
+
     dispatch(clearStatus());
   } catch (err: any) {
-    dispatch(setStatus({ status: 'error', errors: err.response.data.message }));
+    dispatch(setStatus({ status: 'error', error: err.response.data.message }));
   }
 };
 
-export const facebookSignIn =
-  (token: string, userID: string) => async (dispatch: Dispatch<any | Action>) => {
+export const facebookSignIn =  (token: string, userID: string) => async (dispatch: Dispatch<any | Action>) => {
     try {
       dispatch(setStatus({ status: 'loading' }));
+      const res = await api.signInWithThirdParty({ token, userID, source: 'facebook' });
+      dispatch({ type: types.SET_USER, payload: res.data.user });
       dispatch(clearStatus());
     } catch (err: any) {
-      dispatch(setStatus({ status: 'error', errors: err.response.data.message }));
+      dispatch(setStatus({ status: 'error', error: err.response.data.message }));
     }
   };

@@ -10,7 +10,7 @@ export const resetPassword = (newPassword: string) => async (dispatch: Dispatch)
     const res = await api.resetPassword(newPassword);
     clearStatus();
   } catch (err: any) {
-    setStatus({ status: 'error', errors: err.response.data.message });
+    setStatus({ status: 'error', error: err.response.data.message });
   }
 };
 
@@ -20,6 +20,6 @@ export const updateUser = (data: IUser) => async (dispatch: Dispatch) => {
     const res = await api.updateUser(data._id, data);
     clearStatus();
   } catch (err: any) {
-    setStatus({ status: 'error', errors: err.response.data.message });
+    setStatus({ status: 'error', error: err.response.data.message });
   }
 };

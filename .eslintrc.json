@@ -26,6 +26,8 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "operator-linebreak": ["error", "after"],
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "no-use-before-define": "off",
+    "camelcase": "warn"
   }
 }

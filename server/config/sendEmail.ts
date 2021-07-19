@@ -3,14 +3,14 @@ import { OAuth2Client } from 'google-auth-library';
 const nodemailer = require('nodemailer');
 
 const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground';
-const { MAIL_CLIENT_ID, MAIL_CLIENT_SECRET, MAIL_REFRESH_TOKEN, SENDER_EMAIL_ADDRESS } =
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_MAIL_REFRESH_TOKEN, SENDER_EMAIL_ADDRESS } =
   process.env;
 
 // "Welcome! Please verify your email address."
 
 const sendEmail = async (to: string, url: string, subject: string) => {
-  const oAuth2Client = new OAuth2Client(MAIL_CLIENT_ID, MAIL_CLIENT_SECRET, OAUTH_PLAYGROUND);
-  oAuth2Client.setCredentials({ refresh_token: MAIL_REFRESH_TOKEN });
+  const oAuth2Client = new OAuth2Client(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, OAUTH_PLAYGROUND);
+  oAuth2Client.setCredentials({ refresh_token: GOOGLE_MAIL_REFRESH_TOKEN });
 
   try {
     const accessToken = await oAuth2Client.getAccessToken();
@@ -19,9 +19,9 @@ const sendEmail = async (to: string, url: string, subject: string) => {
       auth: {
         type: 'OAuth2',
         user: SENDER_EMAIL_ADDRESS,
-        clientId: MAIL_CLIENT_ID,
-        clientSecret: MAIL_CLIENT_SECRET,
-        refreshToken: MAIL_REFRESH_TOKEN,
+        clientId: GOOGLE_CLIENT_ID,
+        clientSecret: GOOGLE_CLIENT_SECRET,
+        refreshToken: GOOGLE_MAIL_REFRESH_TOKEN,
         accessToken,
       },
     });

@@ -46,7 +46,15 @@ const CustomTextField = (props: any) => {
                           }}
                           disableRipple
                         >
-                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                          {showPassword ? (
+                            <Visibility />
+                          ) : (
+                            <VisibilityOff
+                              style={{
+                                backgroundColor: 'transparent',
+                              }}
+                            />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),

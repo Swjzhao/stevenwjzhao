@@ -29,10 +29,15 @@ export interface IPatchUser {
 export interface IStatus {
   status?: 'loading' | 'error' | 'success';
   error?: string;
-  errors?: string[];
 }
 
 export interface IParams {
   page: string;
   slug: string;
+}
+
+export interface IThirdPartyLogin {
+  token: string;
+  source: 'google' | 'facebook';
+  userID?: string;
 }

@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
+import { OAuth2Client } from 'google-auth-library';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 
@@ -12,7 +13,15 @@ import sendEmail from '../config/sendEmail';
 import { IDecodedToken } from '../interface';
 import Users from '../models/user.model';
 
-const { ACTIVE_TOKEN_SECRET, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET, BASE_URL } = process.env;
+const {
+  GOOGLE_CLIENT_ID,
+  ACTIVE_TOKEN_SECRET,
+  ACCESS_TOKEN_SECRET,
+  REFRESH_TOKEN_SECRET,
+  BASE_URL,
+} = process.env;
+
+const client = new OAuth2Client(`${process.env.GOOGLE_CLIENT_ID}`);
 
 export const signUp = async (req: Request, res: Response) => {
   try {
@@ -40,18 +49,7 @@ export const signUp = async (req: Request, res: Response) => {
     }); */
     // newly signed up users will not persist login state until they verify their email
     const newUser = { name, email, password: hashPassword };
-
-    const activateToken = generateActivateToken({ newUser });
-    const url = `${BASE_URL}/activate/${activateToken}`;
-    const subject = 'Welcome! Please verify your email address.';
-    await sendEmail(email, url, subject);
-
-    const createUser = await Users.create({
-      ...newUser,
-    });
-    const accessToken = generateAccessToken({ sub: createUser._id });
-    const resUser = _.omit(createUser.toObject(), ['password']);
-    return res.status(200).json({ user: resUser, token: accessToken });
+    return signUpMethod(newUser, res);
     /*
     return res.status(200).json({ msg: 'Please verify your email. Check the spam' });
     */
@@ -70,29 +68,13 @@ export const signIn = async (req: Request, res: Response) => {
     if (!correct) {
       return res.status(400).json({ message: 'Password not correct' });
     }
-    const resUser = _.omit(user.toObject(), ['password']);
-    const accessToken = generateAccessToken({ sub: user._id });
-    const refreshToken = generateRefreshToken({ sub: user._id });
-    // const decoded = jwt.verify(accessToken, `${ACCESS_TOKEN_SECRET}`);
-    // console.log(refreshToken);
-    res.set('Authorization', `Bearer ${accessToken}`);
-    // Only verified users get a refresh token
-    if (user.verified) {
-      res.cookie('refreshtoken', refreshToken, {
-        httpOnly: true,
-        path: '/auth/refresh_token',
-        maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
-      });
-    }
-    //  console.log(decoded);
-    // const refresh_token = generateRefreshToken({id: user._id})
-    return res.status(200).json({ user: resUser, token: accessToken });
+    return signInMethod(user, res);
   } catch (err: any) {
     return res.status(500).json({ message: err.message });
   }
 };
 
-export const refreshToken = async (req: Request, res: Response) => {
+export const refreshAuth = async (req: Request, res: Response) => {
   try {
     const rfToken = req.cookies.refreshtoken;
     if (!rfToken) return res.status(400).json({ msg: 'Not token found' });
@@ -128,7 +110,7 @@ export const activateAccount = async (req: Request, res: Response) => {
 
     if (!newUser) return res.status(400).json({ msg: 'Invalid authentication.' });
 
-    const user = await Users.findOne({ account: newUser.account });
+    const user = await Users.findOne({ email: newUser.email });
     if (user) {
       const accessToken = generateAccessToken({ sub: user._id });
 
@@ -156,7 +138,7 @@ export const verifyToken = async (req: Request, res: Response) => {
     console.log(decoded);
     return res.status(200).json({ decoded });
   } catch (err: any) {
-    return refreshToken(req, res);
+    return refreshAuth(req, res);
   }
 };
 
@@ -167,4 +149,125 @@ export const signOut = async (req: Request, res: Response) => {
   } catch (err: any) {
     return res.status(500).json({ msg: err.message });
   }
+};
+
+export const signInWithThirdParty = async (req: Request, res: Response) => {
+  try {
+    const { source } = req.body;
+
+    switch (source) {
+      case 'google':
+        return signInWithGoogle(req, res);
+      case 'facebook':
+        return signInWithFacebook(req, res);
+      default:
+        return res.status(400).json({ msg: 'Not supported' });
+    }
+  } catch (err: any) {
+    return res.status(500).json({ msg: err.message });
+  }
+};
+
+const signInWithGoogle = async (req: Request, res: Response) => {
+  try {
+    const { token } = req.body;
+    const verify = await client.verifyIdToken({
+      idToken: token,
+      audience: `${GOOGLE_CLIENT_ID}`,
+    });
+
+    const { email, email_verified, name, picture } = <any>verify.getPayload();
+
+    if (!email_verified) return res.status(500).json({ msg: 'Email verification failed.' });
+
+    const password = `${email}your google secrect password`;
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    const user = await Users.findOne({ email });
+
+    if (user) {
+      return signInMethod(user, res);
+    }
+    const newUser = {
+      name,
+      email,
+      password: passwordHash,
+      avatar: picture,
+      signInMethod: 'google',
+    };
+    return signUpMethod(newUser, res);
+  } catch (err: any) {
+    console.log('Hi');
+    return res.status(500).json({ msg: err.message });
+  }
+};
+const signInWithFacebook = async (req: Request, res: Response) => {
+  try {
+    const { token, userID } = req.body;
+
+    const URL = `
+        https://graph.facebook.com/v3.0/${userID}/?fields=id,name,email,picture&access_token=${token}
+      `;
+
+    const data = await fetch(URL)
+      .then((response) => response.json())
+      .then((response) => {
+        return response;
+      });
+
+    const { email, name, picture } = data;
+
+    const password = `${email}your facebook secrect password`;
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    const user = await Users.findOne({ email });
+
+    if (user) {
+      return signInMethod(user, res);
+    }
+    const newUser = {
+      name,
+      email,
+      password: passwordHash,
+      avatar: picture.data.url,
+      signInMethod: 'facebook',
+    };
+    return signUpMethod({ ...newUser }, res);
+  } catch (err: any) {
+    return res.status(500).json({ msg: err.message });
+  }
+};
+
+const signInMethod = async (user: any, res: Response) => {
+  const resUser = _.omit(user.toObject(), ['password']);
+  const accessToken = generateAccessToken({ sub: user._id });
+  const refreshToken = generateRefreshToken({ sub: user._id });
+  // const decoded = jwt.verify(accessToken, `${ACCESS_TOKEN_SECRET}`);
+  // console.log(refreshToken);
+  res.set('Authorization', `Bearer ${accessToken}`);
+  // Only verified users get a refresh token
+  if (user.verified) {
+    res.cookie('refreshtoken', refreshToken, {
+      httpOnly: true,
+      path: '/auth/refresh_token',
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
+    });
+  }
+  //  console.log(decoded);
+  // const refresh_token = generateRefreshToken({id: user._id})
+  return res.status(200).json({ user: resUser, token: accessToken });
+};
+
+const signUpMethod = async (user: any, res: Response) => {
+  const activateToken = generateActivateToken({ user });
+  const url = `${BASE_URL}/activate/${activateToken}`;
+  const subject = 'Welcome! Please verify your email address.';
+  await sendEmail(user.email, url, subject);
+
+  const createUser = await Users.create({
+    ...user,
+  });
+  const accessToken = generateAccessToken({ sub: createUser._id });
+  const resUser = _.omit(createUser.toObject(), ['password']);
+  return res.status(200).json({ user: resUser, token: accessToken });
 };
