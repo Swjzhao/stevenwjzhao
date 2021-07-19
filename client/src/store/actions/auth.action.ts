@@ -55,9 +55,11 @@ export const refreshToken = () => async (dispatch: Dispatch<any | Action>) => {
   try {
     dispatch(setStatus({ status: 'loading' }));
 
-    // const res = await getAPI('refresh_token');
+    const res = await api.getRefreshToken();
 
-    // dispatch({ type: AUTH, payload: res.data });
+    localStorage.setItem('token', `Bearer ${res.data.token}`);
+
+    dispatch({ type: types.SET_USER, payload: res.data.user });
 
     dispatch(clearStatus());
   } catch (err: any) {

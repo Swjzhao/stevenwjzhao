@@ -15,6 +15,8 @@ import Users from '../models/user.model';
 
 const {
   GOOGLE_CLIENT_ID,
+  GOOGLE_PASS_KEY,
+  FB_PASS_KEY,
   ACTIVE_TOKEN_SECRET,
   ACCESS_TOKEN_SECRET,
   REFRESH_TOKEN_SECRET,
@@ -180,7 +182,7 @@ const signInWithGoogle = async (req: Request, res: Response) => {
 
     if (!email_verified) return res.status(500).json({ msg: 'Email verification failed.' });
 
-    const password = `${email}your google secrect password`;
+    const password = `${email}${GOOGLE_PASS_KEY}`;
     const passwordHash = await bcrypt.hash(password, 12);
 
     const user = await Users.findOne({ email });
@@ -217,7 +219,7 @@ const signInWithFacebook = async (req: Request, res: Response) => {
 
     const { email, name, picture } = data;
 
-    const password = `${email}your facebook secrect password`;
+    const password = `${email}${FB_PASS_KEY}`;
     const passwordHash = await bcrypt.hash(password, 12);
 
     const user = await Users.findOne({ email });
@@ -252,6 +254,16 @@ const signInMethod = async (user: any, res: Response) => {
       path: '/auth/refresh_token',
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
     });
+  } else {
+    const activateToken = generateActivateToken({ newUser: user });
+    const url = `${BASE_URL}/activate/${activateToken}`;
+    const subject = 'Welcome! Please verify your email address.';
+    res.cookie('refreshtoken', refreshToken, {
+      httpOnly: true,
+      path: '/auth/refresh_token',
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
+    });
+    // await sendEmail(user.email, url, subject);
   }
   //  console.log(decoded);
   // const refresh_token = generateRefreshToken({id: user._id})
@@ -259,7 +271,7 @@ const signInMethod = async (user: any, res: Response) => {
 };
 
 const signUpMethod = async (user: any, res: Response) => {
-  const activateToken = generateActivateToken({ user });
+  const activateToken = generateActivateToken({ newUser: user });
   const url = `${BASE_URL}/activate/${activateToken}`;
   const subject = 'Welcome! Please verify your email address.';
   await sendEmail(user.email, url, subject);
