@@ -94,7 +94,8 @@ export const googleSignIn = (token: string) => async (dispatch: Dispatch<any | A
   }
 };
 
-export const facebookSignIn =  (token: string, userID: string) => async (dispatch: Dispatch<any | Action>) => {
+export const facebookSignIn =
+  (token: string, userID: string) => async (dispatch: Dispatch<any | Action>) => {
     try {
       dispatch(setStatus({ status: 'loading' }));
       const res = await api.signInWithThirdParty({ token, userID, source: 'facebook' });

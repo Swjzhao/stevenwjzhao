@@ -35,13 +35,13 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "react/prop-types": 0,
-    "operator-linebreak": ["error"],
     "no-unused-vars": 1,
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-underscore-dangle": "off",
     "react/jsx-props-no-spreading": ["off"],
     "class-methods-use-this": "off",
     "no-plusplus": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "operator-linebreak": "off"
   }
 }
