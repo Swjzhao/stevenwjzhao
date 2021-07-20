@@ -16,6 +16,7 @@ const CustomTextField = (props: any) => {
         render={({ field }) => (
           <TextField
             fullWidth
+            color={undefined}
             label={label}
             required={required}
             autoFocus={autoFocus}

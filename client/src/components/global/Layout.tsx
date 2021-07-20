@@ -16,7 +16,6 @@ interface IProps {
 const Layout = ({ needToolBar, children }: PropsWithChildren<IProps>) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('called');
     dispatch(refreshToken());
   });
 

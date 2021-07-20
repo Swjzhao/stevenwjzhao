@@ -106,6 +106,7 @@ const NavBar = (props: any) => {
       position="fixed"
       className={classes.appBar}
       color={trigger || needToolBar ? 'default' : 'transparent'}
+      elevation={0}
     >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
@@ -127,54 +128,58 @@ const NavBar = (props: any) => {
               disableRipple
             >
               <Link href="/">
-                <img src="/HeaderLogoicon.png" alt="Title" height={40} />
+                <img src={trigger ? '/logo.png' : '/Logo-white.png'} alt="Title" height={40} />
               </Link>
             </IconButton>
           </Typography>
-          <div className={classes.grow} />
 
           <MediaQuery minDeviceWidth={601}>
-            <div>
+            <div className={classes.grow}>
               <Button
                 color={trigger || needToolBar ? 'inherit' : undefined}
                 className={trigger || needToolBar ? '' : classes.activeButton}
                 disableRipple
               >
-                About
+                <Typography variant="body1">Home</Typography>
               </Button>
-            </div>
-            <div>
-              {user ? (
-                <Button
-                  color={trigger || needToolBar ? 'inherit' : undefined}
-                  className={trigger || needToolBar ? '' : classes.activeButton}
-                  disableRipple
-                  onClick={handleProfileMenuOpen}
-                >
-                  {user.name}
-                </Button>
-              ) : (
-                <Button
-                  color={trigger || needToolBar ? 'inherit' : undefined}
-                  className={trigger || needToolBar ? '' : classes.activeButton}
-                  onClick={openPopupbox}
-                  disableRipple
-                >
-                  SignUp / Login
-                </Button>
-              )}
+              <Button
+                color={trigger || needToolBar ? 'inherit' : undefined}
+                className={trigger || needToolBar ? '' : classes.activeButton}
+                disableRipple
+              >
+                <Typography variant="body1">About</Typography>
+              </Button>
             </div>
             {renderProfileMenu}
           </MediaQuery>
           <div>
             <IconButton
               aria-label="SearchIcon"
-              color={trigger || needToolBar ? 'inherit' : undefined}
-              className={trigger || needToolBar ? '' : classes.activeButton}
+              color={trigger || needToolBar ? 'inherit' : 'primary'}
               disableRipple
             >
               <Search />
             </IconButton>
+          </div>
+          <div>
+            {user ? (
+              <Button
+                color={trigger || needToolBar ? 'inherit' : 'primary'}
+                disableRipple
+                onClick={handleProfileMenuOpen}
+              >
+                {user.name}
+              </Button>
+            ) : (
+              <Button
+                color={trigger || needToolBar ? 'inherit' : 'primary'}
+                variant="outlined"
+                onClick={openPopupbox}
+                disableRipple
+              >
+                SignUp / Login
+              </Button>
+            )}
           </div>
         </Toolbar>
       </Container>

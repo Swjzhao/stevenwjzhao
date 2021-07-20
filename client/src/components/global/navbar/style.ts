@@ -5,7 +5,7 @@ const drawerWidth = 0;
 const useStyles = makeStyles((theme) => ({
   appBar: {
     boxShadow: 'none',
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    // borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     // background: theme.palette.nav.light,
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -32,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
   grow: {
     flexGrow: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   search: {
     position: 'relative',
