@@ -12,6 +12,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     position: 'relative',
     flexDirection: 'column',
+    [theme.breakpoints.up('xl')]: {
+      padding: '0 120px',
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: '0 120px',
+    },
   },
   landingWrapper: {
     backgroundColor: '#171717',
@@ -66,6 +72,10 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiInputBase-input': {
       color: theme.palette.primary.main,
     },
+  },
+
+  category1Container: {
+    background: '#1E1E1E',
   },
 }));
 

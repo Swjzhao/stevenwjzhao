@@ -21,7 +21,7 @@ const LandingSection = (props: any) => {
   return (
     <div className={cx(classes.sectionWrapper, classes.landingWrapper)}>
       <Container maxWidth={'xl'} className={cx(classes.sectionContainer, classes.landingContainer)}>
-        <Container maxWidth={'lg'} className={classes.sectionContainer}>
+        <Container maxWidth={'xl'} className={classes.sectionContainer}>
           <Grid container style={{ flexGrow: 1 }}>
             <Grid sm={5} item className={classes.gridItemContainer}>
               <Typography variant="overline">OFFICIAL SITE</Typography>

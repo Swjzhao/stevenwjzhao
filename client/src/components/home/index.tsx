@@ -72,9 +72,9 @@ const HomePage = () => {
   return (
     <>
       <LandingSection />
-      <CategorySection1 />
-      <CategorySection2 />
-      <CategorySection3 />
+      <CategorySection1 category={sections[0]} />
+      <CategorySection2 category={sections[1]} />
+      <CategorySection3 category={sections[2]} />
     </>
   );
 };

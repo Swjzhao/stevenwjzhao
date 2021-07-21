@@ -13,6 +13,15 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: drawerWidth,
     },
   },
+  navContainer: {
+    [theme.breakpoints.up('xl')]: {
+      padding: '0 100px',
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: '0 100px',
+    },
+  },
+
   logoImg: {
     height: '25px',
   },

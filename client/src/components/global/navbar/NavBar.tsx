@@ -119,7 +119,7 @@ const NavBar = (props: any) => {
       color={trigger || needToolBar ? undefined : 'transparent'}
       elevation={0}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" className={classes.navContainer}>
         <Toolbar disableGutters>
           <Typography variant="h6">
             <MediaQuery maxDeviceWidth={600}>
@@ -145,22 +145,26 @@ const NavBar = (props: any) => {
 
           <MediaQuery minDeviceWidth={601}>
             <div className={classes.grow}>
-              <Button color={'primary'} disableRipple>
-                <Typography
-                  variant="body1"
-                  className={cx(classes.tab, active === 0 ? classes.activeTab : '')}
-                >
-                  Home
-                </Typography>
-              </Button>
-              <Button color={'primary'} disableRipple>
-                <Typography
-                  variant="body1"
-                  className={cx(classes.tab, active === 1 ? classes.activeTab : '')}
-                >
-                  About
-                </Typography>
-              </Button>
+              <Link href="/">
+                <Button color={'primary'} disableRipple>
+                  <Typography
+                    variant="body1"
+                    className={cx(classes.tab, active === 0 ? classes.activeTab : '')}
+                  >
+                    Home
+                  </Typography>
+                </Button>
+              </Link>
+              <Link href="/about">
+                <Button color={'primary'} disableRipple>
+                  <Typography
+                    variant="body1"
+                    className={cx(classes.tab, active === 1 ? classes.activeTab : '')}
+                  >
+                    About
+                  </Typography>
+                </Button>
+              </Link>
             </div>
             {renderProfileMenu}
           </MediaQuery>
