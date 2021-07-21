@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       padding: '0 120px',
     },
+    [theme.breakpoints.up('md')]: {
+      padding: '0 50px',
+    },
   },
   landingWrapper: {
     backgroundColor: '#171717',

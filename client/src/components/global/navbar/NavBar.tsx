@@ -13,11 +13,11 @@ import {
   useScrollTrigger,
 } from '@material-ui/core';
 import { ExitToApp, Menu as MenuIcon, Search } from '@material-ui/icons';
+// @ts-ignore
 import cx from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-// @ts-ignore
 import { PopupboxManager } from 'react-popupbox';
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
@@ -167,6 +167,9 @@ const NavBar = (props: any) => {
               </Link>
             </div>
             {renderProfileMenu}
+          </MediaQuery>
+          <MediaQuery maxDeviceWidth={600}>
+            <div className={classes.grow}></div>
           </MediaQuery>
           <div>
             <IconButton aria-label="SearchIcon" color={'primary'} disableRipple>
