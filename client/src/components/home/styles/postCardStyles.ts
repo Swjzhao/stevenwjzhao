@@ -2,26 +2,25 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   cardWrapper: {
-    position: 'relative',
-    borderRadius: '20px',
-    display: 'block',
-    gridTemplateRows: '3rem auto 1fr',
-    padding: 40,
-    width: '100%',
-    height: 'fit-content',
-    pointerEvents: 'all',
-    [theme.breakpoints.down('xs')]: {
-      padding: 10,
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    '& .postCardImage': {
+      width: '100%',
+      borderRadius: '10px',
     },
+    zIndex: 100,
   },
   mainMediaWrapper: {
     height: 'fit-content',
     position: 'relative',
+    marginTop: '-100px',
     // @ts-ignore
     backgroundColor: theme.palette.backgroundColors.card,
     borderRadius: '10px',
+    padding: '10px',
     [theme.breakpoints.up('sm')]: {
-      width: '70%',
+      width: '90%',
     },
   },
   media: {

@@ -23,42 +23,48 @@ const PostCard = (props: any) => {
   const { photoUrl, title } = props;
   const post = { id: 0, title, description: '' };
   return (
-    <Card key={title} className={classes.mainMediaWrapper} elevation={0}>
-      <CardActionArea>
-        <div className={classes.thumbnailWrapper}>
+    <div className={classes.cardWrapper}>
+      <img src={photoUrl || '/card-background.svg'} className="postCardImage" />
+      <Card key={title} className={classes.mainMediaWrapper} elevation={0}>
+        <CardActionArea>
           <CardContent>
-            <Typography color="primary" component="h2">
+            <Typography color="primary" variant="h6">
               Title Title Title Title Title
             </Typography>
+            <br />
             <Typography color="primary" variant="subtitle2" component="p">
               This impressive paella is a perfect party dish and a fun meal to cook together with
-              your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+              your guests.
             </Typography>
           </CardContent>
-        </div>
-        <CardActions />
-      </CardActionArea>
-      <CardActions className={classes.actionButtons} disableSpacing>
-        <List className={classes.actionList}>
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar alt="User" src="" style={{ width: '30px', height: '30px' }} />
-            </ListItemAvatar>
-            <ListItemText primary="John Smith" />
-          </ListItem>
-        </List>
-        <IconButton
-          aria-label="comment"
-          style={{ marginLeft: 'auto' }}
-          color="primary"
-          className={classes.actionButton}
-        >
-          <QuestionAnswerIcon />
-        </IconButton>
+          <CardActions />
+        </CardActionArea>
+        <CardActions className={classes.actionButtons} disableSpacing>
+          <List className={classes.actionList}>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar
+                  alt="User"
+                  src=""
+                  style={{ width: '30px', height: '30px', borderRadius: '5px' }}
+                />
+              </ListItemAvatar>
+              <ListItemText primary="John Smith" />
+            </ListItem>
+          </List>
+          <IconButton
+            aria-label="comment"
+            style={{ marginLeft: 'auto' }}
+            color="primary"
+            className={classes.actionButton}
+          >
+            <QuestionAnswerIcon />
+          </IconButton>
 
-        <ShareOptionsPopover post={post} />
-      </CardActions>
-    </Card>
+          <ShareOptionsPopover post={post} />
+        </CardActions>
+      </Card>
+    </div>
   );
 };
 

@@ -150,6 +150,13 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
     },
   },
+
+  hiddenGrid: {
+    [theme.breakpoints.down('lg')]: {
+      padding: 0,
+      display: 'none',
+    },
+  },
 }));
 
 export default useStyles;
