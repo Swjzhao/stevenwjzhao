@@ -17,6 +17,7 @@ import Layout from '../components/global/Layout';
 import SnackBar from '../components/global/SnackBar';
 import store from '../store';
 
+const defaultTheme = createTheme();
 let theme = createTheme({
   typography: {
     // fontFamily: 'Open Sans',
@@ -84,6 +85,16 @@ let theme = createTheme({
     MuiIconButton: {
       root: {
         backgroundColor: 'transparent',
+      },
+    },
+    MuiToolbar: {
+      root: {
+        transition: defaultTheme.transitions.create(['height', 'min-height'], {
+          duration: defaultTheme.transitions.duration.standard,
+        }),
+        [defaultTheme.breakpoints.up('sm')]: {
+          minHeight: '80px !important',
+        },
       },
     },
   },

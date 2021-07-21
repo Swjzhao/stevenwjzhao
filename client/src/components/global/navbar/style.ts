@@ -24,7 +24,9 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 30px',
     },
   },
-
+  scrollToolbar: {
+    minHeight: '64px !important',
+  },
   logoImg: {
     height: '25px',
   },

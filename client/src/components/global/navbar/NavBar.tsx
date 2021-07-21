@@ -121,7 +121,7 @@ const NavBar = (props: any) => {
       elevation={0}
     >
       <Container maxWidth="xl" className={classes.navContainer}>
-        <Toolbar disableGutters>
+        <Toolbar className={trigger ? classes.scrollToolbar : ''} disableGutters>
           <Typography variant="h6">
             <MediaQuery maxDeviceWidth={600}>
               <IconButton

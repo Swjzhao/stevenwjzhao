@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     // @ts-ignore
     backgroundColor: theme.palette.backgroundColors.card,
     borderRadius: '10px',
+    [theme.breakpoints.up('sm')]: {
+      width: '70%',
+    },
   },
   media: {
     position: 'relative',
