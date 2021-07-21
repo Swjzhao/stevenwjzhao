@@ -5,11 +5,21 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
+
+    zIndex: 100,
+  },
+  photoWrapper: {
+    width: '100%',
+    borderRadius: '10px',
+    paddingTop: '100%',
+    position: 'relative',
     '& .postCardImage': {
+      position: 'absolute',
+      top: 0,
       width: '100%',
+      height: '100%',
       borderRadius: '10px',
     },
-    zIndex: 100,
   },
   mainMediaWrapper: {
     height: 'fit-content',

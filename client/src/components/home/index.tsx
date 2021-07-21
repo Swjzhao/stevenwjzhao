@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HomePage = () => {
   const classes = useStyles();
-  const sections = ['Books', 'Health and Fitness', 'Other'];
+  const sections = ['Books', 'Health & Fitness', 'Other'];
   return (
     <>
       <LandingSection />
