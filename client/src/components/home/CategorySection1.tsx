@@ -32,7 +32,7 @@ const CategorySection1 = (props: any) => {
           <CategoryHeader category={category} />
           <Grid item sm={1} />
           <Grid item sm={7} style={{ display: 'flex', flexGrow: 1 }}>
-            <Grid container style={{ flexGrow: 1 }} spacing={2}>
+            <Grid container style={{ flexGrow: 1 }} spacing={4}>
               {posts.map((post) => {
                 return (
                   <Grid sm={6} key={post.title} item className={classes.gridItemContainer}>

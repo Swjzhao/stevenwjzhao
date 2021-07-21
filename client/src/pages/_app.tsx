@@ -27,6 +27,7 @@ let theme = createTheme({
     },
     h2: {
       fontFamily: 'Poppins',
+      fontWeight: 'bold',
     },
     body1: {
       fontFamily: 'Poppins',
@@ -62,6 +63,13 @@ let theme = createTheme({
     textColor: {
       subtext: '#818181',
       main: '#FFF',
+    },
+    // @ts-ignore
+    backgroundColors: {
+      card: '#292929',
+      main: '#171717',
+      light: '#1E1E1E',
+      button: 'linear-gradient(#FAFB69, #949501)',
     },
   },
   overrides: {

@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   landingWrapper: {
-    backgroundColor: '#171717',
+    // @ts-ignore
+    backgroundColor: theme.palette.backgroundColors.main,
   },
   landingContainer: {
     '&::before': {
@@ -52,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    '& .MuiTypography-root': {
+      paddingBottom: '20px',
+    },
   },
   scrollContainer: {
     display: 'flex',
@@ -84,7 +88,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
   category1Container: {
-    background: '#1E1E1E',
+    // @ts-ignore
+    background: theme.palette.backgroundColors.light,
+  },
+  catHeaderButtonContainer: {
+    padding: '15px 0',
+    display: 'flex',
+    alignItems: 'center',
+    '& .MuiButtonBase-root': {
+      width: '56px',
+      height: '50px',
+      // @ts-ignore
+      background: theme.palette.backgroundColors.button,
+      marginRight: '10px',
+    },
   },
 }));
 

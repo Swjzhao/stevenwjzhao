@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 240,
   },
   shareTypography: {
-    color: theme.palette.primary.main,
     paddingTop: 13,
     paddingLeft: 9,
   },
@@ -81,6 +80,7 @@ width=550,height=450,left=1000,top=500`;
           onClick={handleSharePopoverOpen}
           style={{ backgroundColor: 'transparent' }}
           disableRipple
+          color="primary"
         >
           <ShareIcon fontSize="small" style={{ color }} />
         </IconButton>
