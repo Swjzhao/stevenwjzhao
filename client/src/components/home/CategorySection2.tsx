@@ -29,7 +29,7 @@ const CategorySection1 = (props: any) => {
     <div className={cx(classes.sectionWrapper, classes.darkWrapper)}>
       <Container maxWidth={'xl'} className={cx(classes.sectionContainer)}>
         <Grid container style={{ flexGrow: 1 }} spacing={2}>
-          <Grid item xl={7} lg={8} style={{ display: 'flex', flexGrow: 1 }}>
+          <Grid item sm={7} style={{ display: 'flex', flexGrow: 1 }}>
             <Grid container style={{ flexGrow: 1 }} spacing={10}>
               {posts.map((post) => {
                 return (
@@ -41,7 +41,7 @@ const CategorySection1 = (props: any) => {
             </Grid>
           </Grid>
 
-          <Grid item xl={1} className={classes.hiddenGrid} />
+          <Grid item sm={1} />
           <CategoryHeader category={category} />
         </Grid>
       </Container>

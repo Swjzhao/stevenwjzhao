@@ -134,6 +134,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '15px 0',
     display: 'flex',
     alignItems: 'center',
+    zIndex: 101,
     '& .MuiButtonBase-root': {
       width: '56px',
       height: '50px',

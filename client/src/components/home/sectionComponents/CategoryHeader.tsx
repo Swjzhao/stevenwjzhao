@@ -8,9 +8,9 @@ import useStyles from '../styles/sectionStyles';
 
 const CategoryHeader = (props: any) => {
   const classes = useStyles();
-  const { category } = props;
+  const { category, size } = props;
   return (
-    <Grid sm={4} item className={cx(classes.gridItemContainer, classes.catHeaderContainer)}>
+    <Grid sm={size ?? 4} item className={cx(classes.gridItemContainer, classes.catHeaderContainer)}>
       <Typography color="primary" variant="h2">
         {category}
       </Typography>
