@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
       bottom: 0,
       left: 0,
       opacity: '0.05',
+      pointerEvents: 'none',
     },
   },
   category1Container: {
@@ -67,6 +68,8 @@ const useStyles = makeStyles((theme) => ({
       bottom: 0,
       left: 0,
       opacity: '0.1',
+
+      pointerEvents: 'none',
       // @ts-ignore
       boxShadow: `0 0 50px 50px ${theme.palette.backgroundColors.main} inset`,
     },
@@ -81,6 +84,8 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       top: 0,
       right: 0,
+
+      pointerEvents: 'none',
       bottom: 0,
       left: 0,
       opacity: '0.1',
@@ -155,6 +160,27 @@ const useStyles = makeStyles((theme) => ({
   hiddenGrid: {
     [theme.breakpoints.down('lg')]: {
       padding: 0,
+      display: 'none',
+    },
+  },
+  circle: {
+    '& .circle': {
+      position: 'absolute',
+      top: 0,
+      borderRadius: '50%',
+      border: `1px solid ${theme.palette.secondary.main}`,
+      height: '100%',
+      content: '""',
+      width: '100%',
+      marginLeft: '-100px',
+      opacity: '0.5',
+    },
+    paddingRight: '100vh',
+    position: 'absolute',
+    top: 0,
+    height: '100%',
+    pointerEvents: 'none',
+    [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
   },

@@ -24,7 +24,9 @@ const PostCard = (props: any) => {
   const post = { id: 0, title, description: '' };
   return (
     <div className={classes.cardWrapper}>
-      <img src={photoUrl || '/card-background.svg'} className="postCardImage" />
+      <div className={classes.photoWrapper}>
+        <img src={photoUrl || '/card-background.svg'} className="postCardImage" />
+      </div>
       <Card key={title} className={classes.mainMediaWrapper} elevation={0}>
         <CardActionArea>
           <CardContent>
