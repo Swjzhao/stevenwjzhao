@@ -26,7 +26,7 @@ const CategorySection1 = (props: any) => {
   ];
   useEffect(() => {}, []);
   return (
-    <div className={cx(classes.sectionWrapper, classes.category1Container)}>
+    <div className={cx(classes.sectionWrapper, classes.lightWrapper)}>
       <Container maxWidth={'xl'} className={cx(classes.sectionContainer)}>
         <Grid container style={{ flexGrow: 1 }} spacing={2}>
           <CategoryHeader category={category} />

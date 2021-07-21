@@ -19,7 +19,7 @@ const LandingSection = (props: any) => {
   const classes = useStyles();
   useEffect(() => {}, []);
   return (
-    <div className={cx(classes.sectionWrapper, classes.landingWrapper)}>
+    <div className={cx(classes.sectionWrapper, classes.darkWrapper)}>
       <Container maxWidth={'xl'} className={cx(classes.sectionContainer, classes.landingContainer)}>
         <Container maxWidth={'xl'} className={classes.sectionContainer}>
           <Grid container style={{ flexGrow: 1 }}>

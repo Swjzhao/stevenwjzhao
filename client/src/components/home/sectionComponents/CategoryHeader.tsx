@@ -1,5 +1,6 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import cx from 'classnames';
 import React from 'react';
 
 import useStyles from '../styles/sectionStyles';
@@ -8,7 +9,7 @@ const CategoryHeader = (props: any) => {
   const classes = useStyles();
   const { category } = props;
   return (
-    <Grid sm={4} item className={classes.gridItemContainer}>
+    <Grid sm={4} item className={cx(classes.gridItemContainer, classes.catHeaderContainer)}>
       <Typography color="primary" variant="h2">
         {category}
       </Typography>

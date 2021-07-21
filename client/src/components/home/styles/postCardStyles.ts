@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     // @ts-ignore
     backgroundColor: theme.palette.backgroundColors.card,
+    borderRadius: '10px',
   },
   media: {
     position: 'relative',

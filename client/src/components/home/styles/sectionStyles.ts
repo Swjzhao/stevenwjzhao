@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 120px',
     },
     [theme.breakpoints.up('lg')]: {
-      padding: '0 120px',
+      padding: '0 120px !important',
     },
     [theme.breakpoints.up('md')]: {
       padding: '0 50px',
@@ -28,9 +28,13 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '60pt',
     },
   },
-  landingWrapper: {
+  darkWrapper: {
     // @ts-ignore
     backgroundColor: theme.palette.backgroundColors.main,
+  },
+  lightWrapper: {
+    // @ts-ignore
+    background: theme.palette.backgroundColors.light,
   },
   landingContainer: {
     '&::before': {
@@ -48,14 +52,26 @@ const useStyles = makeStyles((theme) => ({
       opacity: '0.05',
     },
   },
+  category3Container: {
+    '&::before': {
+      flexGrow: 1,
+      content: '""',
+      background: 'url(/section-background.svg) center no-repeat',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      opacity: '0.1',
+    },
+  },
   gridItemContainer: {
     flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    '& .MuiTypography-root': {
-      paddingBottom: '20px',
-    },
   },
   scrollContainer: {
     display: 'flex',
@@ -87,9 +103,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  category1Container: {
-    // @ts-ignore
-    background: theme.palette.backgroundColors.light,
+  catHeaderContainer: {
+    '& .MuiTypography-root': {
+      paddingBottom: '20px',
+    },
   },
   catHeaderButtonContainer: {
     padding: '15px 0',
