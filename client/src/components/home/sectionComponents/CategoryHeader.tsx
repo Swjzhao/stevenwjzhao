@@ -3,7 +3,7 @@ import React from 'react';
 
 import useStyles from '../styles/sectionStyles';
 
-const CategoryGrid = (props: any) => {
+const CategoryHeader = (props: any) => {
   const classes = useStyles();
   const { category } = props;
   return (
@@ -20,4 +20,4 @@ const CategoryGrid = (props: any) => {
   );
 };
 
-export default CategoryGrid;
+export default CategoryHeader;

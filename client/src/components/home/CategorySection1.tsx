@@ -30,13 +30,18 @@ const CategorySection1 = (props: any) => {
       <Container maxWidth={'xl'} className={cx(classes.sectionContainer)}>
         <Grid container style={{ flexGrow: 1 }} spacing={2}>
           <CategoryHeader category={category} />
-          {posts.map((post) => {
-            return (
-              <Grid sm={4} key={post.title} item className={classes.gridItemContainer}>
-                <PostCard post />
-              </Grid>
-            );
-          })}
+          <Grid item sm={1} />
+          <Grid item sm={7} style={{ display: 'flex', flexGrow: 1 }}>
+            <Grid container style={{ flexGrow: 1 }} spacing={2}>
+              {posts.map((post) => {
+                return (
+                  <Grid sm={6} key={post.title} item className={classes.gridItemContainer}>
+                    <PostCard post />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
         </Grid>
       </Container>
     </div>

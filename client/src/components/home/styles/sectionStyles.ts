@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     minHeight: '100vh',
     display: 'flex',
+    padding: '20px 0',
   },
   sectionContainer: {
     display: 'flex',
