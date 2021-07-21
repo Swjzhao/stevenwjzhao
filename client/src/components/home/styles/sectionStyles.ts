@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
       right: 0,
       bottom: 0,
       left: 0,
-      opacity: '0.05',
+      opacity: '0.1',
       // @ts-ignore
       boxShadow: `0 0 50px 50px ${theme.palette.backgroundColors.main} inset`,
     },
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
       right: 0,
       bottom: 0,
       left: 0,
-      opacity: '0.05',
+      opacity: '0.1',
 
       // @ts-ignore
       boxShadow: `0 0 50px 50px ${theme.palette.backgroundColors.main} inset`,
