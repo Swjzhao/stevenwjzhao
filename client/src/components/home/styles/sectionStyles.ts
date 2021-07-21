@@ -163,7 +163,15 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  circle: {
+  circleContainer: {
+    paddingRight: '90vh',
+    position: 'absolute',
+    top: '5%',
+    height: '90%',
+    pointerEvents: 'none',
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
     '& .circle': {
       position: 'absolute',
       top: 0,
@@ -175,13 +183,39 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '-100px',
       opacity: '0.5',
     },
-    paddingRight: '100vh',
+  },
+
+  circleContainerLeft: {
+    paddingRight: '50vh',
     position: 'absolute',
     top: 0,
-    height: '100%',
+    height: '50%',
     pointerEvents: 'none',
     [theme.breakpoints.down('xs')]: {
       display: 'none',
+    },
+    '& .circle': {
+      position: 'absolute',
+      top: 0,
+      borderRadius: '50%',
+      border: `2px solid ${theme.palette.secondary.main}`,
+      height: '100%',
+      content: '""',
+      width: '100%',
+      marginLeft: '-80%',
+      opacity: '0.5',
+    },
+    '& .circle2': {
+      position: 'absolute',
+      top: '20%',
+      borderRadius: '50%',
+      zIndex: 1,
+      border: `1px solid ${theme.palette.secondary.main}`,
+      height: '60%',
+      content: '""',
+      width: '60%',
+      marginLeft: '-60%',
+      opacity: '0.2',
     },
   },
 }));

@@ -12,8 +12,8 @@ const CategoryHeader = (props: any) => {
   return (
     <Grid sm={size ?? 4} item className={cx(classes.gridItemContainer, classes.catHeaderContainer)}>
       {category.includes('Health') && (
-        <div className={category.includes('Health') ? classes.circle : ''}>
-          <div className="circle"></div>
+        <div className={classes.circleContainer}>
+          <div className={'circle'}></div>
         </div>
       )}
       <Typography color="primary" variant="h2">
