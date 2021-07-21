@@ -102,6 +102,10 @@ const useStyles = makeStyles((theme) => ({
       background: theme.palette.backgroundColors.button,
       marginRight: '10px',
     },
+
+    '& .MuiTypography-root': {
+      padding: 0,
+    },
   },
 }));
 

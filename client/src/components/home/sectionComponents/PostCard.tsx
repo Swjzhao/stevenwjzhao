@@ -11,8 +11,9 @@ import {
   ListItemText,
   Typography,
 } from '@material-ui/core';
+// import { FaRegComment } from 'react-icons/fa';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import React from 'react';
-import { FaRegComment } from 'react-icons/fa';
 
 import ShareOptionsPopover from '../../global/utils/ShareOptionsPopover';
 import useStyles from '../styles/postCardStyles';
@@ -52,7 +53,7 @@ const PostCard = (props: any) => {
           color="primary"
           className={classes.actionButton}
         >
-          <FaRegComment />
+          <QuestionAnswerIcon />
         </IconButton>
 
         <ShareOptionsPopover post={post} />
