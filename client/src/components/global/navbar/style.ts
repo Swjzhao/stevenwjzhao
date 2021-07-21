@@ -76,6 +76,23 @@ const useStyles = makeStyles((theme) => ({
     color: '#FFF',
   },
   defaultButton: {},
+  tab: {
+    fontWeight: 'bold',
+  },
+  activeTab: {
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '4px',
+      height: '4px',
+      borderRadius: '50%',
+      left: '50%',
+      display: 'block',
+      borderBottom: `4px solid ${theme.palette.secondary.main}`,
+    },
+  },
 }));
 
 export default useStyles;

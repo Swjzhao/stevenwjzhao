@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 
 import Layout from '../components/global/Layout';
+import SnackBar from '../components/global/SnackBar';
 import store from '../store';
 
 const theme = createTheme({
@@ -113,6 +114,7 @@ const MyApp = ({ Component, pageProps }) => {
           <Layout needToolBar={needToolBar}>
             {needToolBar && <Toolbar />}
             <Component key={key} {...pageProps} />
+            <SnackBar />
           </Layout>
         </ThemeProvider>
       </Provider>

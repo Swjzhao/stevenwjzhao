@@ -11,7 +11,10 @@ export const activate = (token: string) => async (dispatch: Dispatch<any | Actio
   const res = await api.activateAccount(token);
 
   dispatch({ type: types.SET_USER, payload: res.data.user });
-
+  dispatch({
+    type: types.SHOW_SNACKBAR,
+    payload: '🔐 Activated Account',
+  });
   dispatch(clearStatus());
   if (typeof window !== 'undefined') {
     localStorage.setItem('token', `Bearer ${res.data.token}`);
@@ -25,7 +28,10 @@ export const signIn = (data: IUserCredientials) => async (dispatch: Dispatch<any
     const res = await api.signIn(data);
 
     dispatch({ type: types.SET_USER, payload: res.data.user });
-
+    dispatch({
+      type: types.SHOW_SNACKBAR,
+      payload: 'Signed In Successfully',
+    });
     dispatch(clearStatus());
     if (typeof window !== 'undefined') {
       localStorage.setItem('token', `Bearer ${res.data.token}`);
@@ -40,6 +46,10 @@ export const signUp = (data: IUserCredientials) => async (dispatch: Dispatch<any
     dispatch(setStatus({ status: 'loading' }));
     const res = await api.signUp(data);
     dispatch({ type: types.SET_USER, payload: res.data.user });
+    dispatch({
+      type: types.SHOW_SNACKBAR,
+      payload: 'Signed In Successfully',
+    });
     if (typeof window !== 'undefined') {
       localStorage.setItem('token', `Bearer ${res.data.token}`);
     }
@@ -73,11 +83,12 @@ export const signOut = () => async (dispatch: Dispatch<any | Action>) => {
     // await getAPI('logout');
     const res = await api.signOut();
     dispatch({ type: types.SIGN_OUT });
-    dispatch({ type: types.SET_USER, payload: res.data.user });
-
+    dispatch({
+      type: types.SHOW_SNACKBAR,
+      payload: 'Signed out',
+    });
     // window.location.href = '/';
   } catch (err: any) {
-    console.log(err);
     dispatch(setStatus({ status: 'error', error: err.response.data.message }));
   }
 };

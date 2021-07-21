@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: '20px',
+    paddingBottom: '30px',
     // @ts-ignore
     color: theme.palette.textColor.subtext,
   },

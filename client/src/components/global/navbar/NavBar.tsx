@@ -13,8 +13,10 @@ import {
   useScrollTrigger,
 } from '@material-ui/core';
 import { ExitToApp, Menu as MenuIcon, Search } from '@material-ui/icons';
+import cx from 'classnames';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 // @ts-ignore
 import { PopupboxManager } from 'react-popupbox';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,10 +32,11 @@ const NavBar = (props: any) => {
   const trigger = useScrollTrigger({ disableHysteresis: true });
   const user: IUser = useSelector((state: RootStore) => state?.user);
   const { needToolBar } = props;
-
+  const router = useRouter();
   const dispatch = useDispatch();
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [active, setActive] = useState(0);
   /*
   useEffect(() => {
     const handleScroll = (event:any) => {
@@ -55,6 +58,14 @@ const NavBar = (props: any) => {
     setProfileAnchorEl(null);
     setProfileMenuOpen(false);
   };
+
+  useEffect(() => {
+    if (router.route === '/') {
+      setActive(0);
+    } else {
+      setActive(1);
+    }
+  });
 
   const renderProfileMenu = (
     <Menu
@@ -128,7 +139,11 @@ const NavBar = (props: any) => {
               disableRipple
             >
               <Link href="/">
-                <img src={trigger ? '/logo.png' : '/Logo-white.png'} alt="Title" height={40} />
+                <img
+                  src={trigger ? '/logo.png' : '/Logo-white-large.png'}
+                  alt="Title"
+                  height={40}
+                />
               </Link>
             </IconButton>
           </Typography>
@@ -140,14 +155,24 @@ const NavBar = (props: any) => {
                 className={trigger || needToolBar ? '' : classes.activeButton}
                 disableRipple
               >
-                <Typography variant="body1">Home</Typography>
+                <Typography
+                  variant="body1"
+                  className={cx(classes.tab, active === 0 ? classes.activeTab : '')}
+                >
+                  Home
+                </Typography>
               </Button>
               <Button
                 color={trigger || needToolBar ? 'inherit' : undefined}
                 className={trigger || needToolBar ? '' : classes.activeButton}
                 disableRipple
               >
-                <Typography variant="body1">About</Typography>
+                <Typography
+                  variant="body1"
+                  className={cx(classes.tab, active === 1 ? classes.activeTab : '')}
+                >
+                  About
+                </Typography>
               </Button>
             </div>
             {renderProfileMenu}
