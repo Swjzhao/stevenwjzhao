@@ -116,7 +116,7 @@ const NavBar = (props: any) => {
     <AppBar
       position="fixed"
       className={classes.appBar}
-      color={trigger || needToolBar ? 'default' : 'transparent'}
+      color={trigger || needToolBar ? undefined : 'transparent'}
       elevation={0}
     >
       <Container maxWidth="lg">
@@ -125,8 +125,7 @@ const NavBar = (props: any) => {
             <MediaQuery maxDeviceWidth={600}>
               <IconButton
                 style={{ backgroundColor: 'transparent' }}
-                color={trigger || needToolBar ? 'inherit' : undefined}
-                className={trigger || needToolBar ? '' : classes.activeButton}
+                color={'primary'}
                 data-role="header-menu-icon-mobile"
               >
                 <MenuIcon />
@@ -139,22 +138,14 @@ const NavBar = (props: any) => {
               disableRipple
             >
               <Link href="/">
-                <img
-                  src={trigger ? '/logo.png' : '/Logo-white-large.png'}
-                  alt="Title"
-                  height={40}
-                />
+                <img src={'/Logo-white-large.png'} alt="Title" height={40} />
               </Link>
             </IconButton>
           </Typography>
 
           <MediaQuery minDeviceWidth={601}>
             <div className={classes.grow}>
-              <Button
-                color={trigger || needToolBar ? 'inherit' : undefined}
-                className={trigger || needToolBar ? '' : classes.activeButton}
-                disableRipple
-              >
+              <Button color={'primary'} disableRipple>
                 <Typography
                   variant="body1"
                   className={cx(classes.tab, active === 0 ? classes.activeTab : '')}
@@ -162,11 +153,7 @@ const NavBar = (props: any) => {
                   Home
                 </Typography>
               </Button>
-              <Button
-                color={trigger || needToolBar ? 'inherit' : undefined}
-                className={trigger || needToolBar ? '' : classes.activeButton}
-                disableRipple
-              >
+              <Button color={'primary'} disableRipple>
                 <Typography
                   variant="body1"
                   className={cx(classes.tab, active === 1 ? classes.activeTab : '')}
@@ -178,30 +165,17 @@ const NavBar = (props: any) => {
             {renderProfileMenu}
           </MediaQuery>
           <div>
-            <IconButton
-              aria-label="SearchIcon"
-              color={trigger || needToolBar ? 'inherit' : 'primary'}
-              disableRipple
-            >
+            <IconButton aria-label="SearchIcon" color={'primary'} disableRipple>
               <Search />
             </IconButton>
           </div>
           <div>
             {user ? (
-              <Button
-                color={trigger || needToolBar ? 'inherit' : 'primary'}
-                disableRipple
-                onClick={handleProfileMenuOpen}
-              >
+              <Button color={'primary'} disableRipple onClick={handleProfileMenuOpen}>
                 {user.name}
               </Button>
             ) : (
-              <Button
-                color={trigger || needToolBar ? 'inherit' : 'primary'}
-                variant="outlined"
-                onClick={openPopupbox}
-                disableRipple
-              >
+              <Button color={'primary'} variant="outlined" onClick={openPopupbox} disableRipple>
                 SignUp / Login
               </Button>
             )}

@@ -62,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
       // @ts-ignore
       borderColor: `${theme.palette.textColor.subtext} !important`,
     },
+
+    '& .MuiInputBase-input': {
+      color: theme.palette.primary.main,
+    },
   },
 }));
 

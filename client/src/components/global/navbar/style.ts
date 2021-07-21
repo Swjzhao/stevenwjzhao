@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none',
     // borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     // background: theme.palette.nav.light,
+    background: '#171717',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
