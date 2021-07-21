@@ -5,9 +5,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     minHeight: '100vh',
     display: 'flex',
-    padding: '20px 0',
   },
   sectionContainer: {
+    padding: '20px 16px',
     display: 'flex',
     flexGrow: 1,
     width: '100%',
@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
   lightWrapper: {
     // @ts-ignore
     background: theme.palette.backgroundColors.light,
+    // @ts-ignore
+    boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
   },
   landingContainer: {
     '&::before': {
@@ -52,6 +54,23 @@ const useStyles = makeStyles((theme) => ({
       opacity: '0.05',
     },
   },
+  category1Container: {
+    '&::before': {
+      flexGrow: 1,
+      content: '""',
+      background: 'url(/welcomeImage2.jpg) center no-repeat',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      opacity: '0.05',
+      // @ts-ignore
+      boxShadow: `0 0 50px 50px ${theme.palette.backgroundColors.main} inset`,
+    },
+  },
   category3Container: {
     '&::before': {
       flexGrow: 1,
@@ -64,7 +83,10 @@ const useStyles = makeStyles((theme) => ({
       right: 0,
       bottom: 0,
       left: 0,
-      opacity: '0.1',
+      opacity: '0.05',
+
+      // @ts-ignore
+      boxShadow: `0 0 50px 50px ${theme.palette.backgroundColors.main} inset`,
     },
   },
   gridItemContainer: {
@@ -118,6 +140,10 @@ const useStyles = makeStyles((theme) => ({
       // @ts-ignore
       background: theme.palette.backgroundColors.button,
       marginRight: '10px',
+      [theme.breakpoints.down('xs')]: {
+        width: '28px',
+        height: '40px',
+      },
     },
 
     '& .MuiTypography-root': {
