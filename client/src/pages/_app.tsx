@@ -4,6 +4,7 @@ import { CssBaseline, Toolbar } from '@material-ui/core';
 import {
   createGenerateClassName,
   createTheme,
+  responsiveFontSizes,
   StylesProvider,
   ThemeProvider,
 } from '@material-ui/core/styles';
@@ -16,7 +17,7 @@ import Layout from '../components/global/Layout';
 import SnackBar from '../components/global/SnackBar';
 import store from '../store';
 
-const theme = createTheme({
+let theme = createTheme({
   typography: {
     // fontFamily: 'Open Sans',
     h1: {
@@ -79,7 +80,7 @@ const theme = createTheme({
     },
   },
 });
-
+theme = responsiveFontSizes(theme);
 // axios.defaults.retry = 3;
 // axios.defaults.retryDelay = 1000;
 

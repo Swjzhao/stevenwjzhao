@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   sectionWrapper: {
     width: '100%',
-    height: '100vh',
+    minHeight: '100vh',
     display: 'flex',
   },
   sectionContainer: {
@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       padding: '0 50px',
+    },
+  },
+  logoText: {
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '60pt',
     },
   },
   landingWrapper: {
