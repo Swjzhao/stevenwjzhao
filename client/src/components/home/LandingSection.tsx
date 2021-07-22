@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField, Typography, withStyles } from '@material-ui/core';
+import { Button, Container, Grid, TextField, Typography } from '@material-ui/core';
 // @ts-ignore
 import cx from 'classnames';
 import React, { useEffect } from 'react';
@@ -6,14 +6,6 @@ import React, { useEffect } from 'react';
 import { BsTriangleFill } from 'react-icons/bs';
 
 import useStyles from './styles/sectionStyles';
-
-const CssTextField = withStyles({
-  root: {
-    '& .MuiInputBase-root': {
-      color: 'white',
-    },
-  },
-})(TextField);
 
 const LandingSection = (props: any) => {
   const classes = useStyles();
