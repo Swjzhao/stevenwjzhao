@@ -28,7 +28,7 @@ const LandingSection = (props: any) => {
               </Typography>
             </Grid>
             <Grid sm={4} item></Grid>
-            <Grid sm={3} item className={classes.gridItemContainer} spacing={2}>
+            <Grid sm={3} item className={classes.gridItemContainer}>
               <Typography
                 color="primary"
                 variant={'body1'}

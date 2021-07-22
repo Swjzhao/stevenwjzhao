@@ -38,7 +38,12 @@ const AboutSection = () => {
             </div>
           </Grid>
 
-          <Grid sm={4} item className={cx(classes.gridItemCenter, classes.gridItemContainer)}>
+          <Grid
+            xs={12}
+            sm={4}
+            item
+            className={cx(classes.gridItemCenter, classes.gridItemContainer)}
+          >
             <div className={classes.photoContainer}>
               <img src="/photoOfMe.jpg" />
             </div>
