@@ -82,6 +82,10 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
     },
   },
+  iconGrid: {
+    textAlign: 'center',
+    padding: 5,
+  },
 }));
 
 export default useStyles;
