@@ -101,11 +101,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   gridItemCenter: {
+    justifyContent: 'center',
+    display: 'flex',
     alignItems: 'center',
     position: 'relative',
   },
   photoContainer: {
-    marginTop: '100px',
+    // marginTop: '100px',
     position: 'relative',
     maxHeight: '80vh',
     height: '500px',
@@ -246,6 +248,20 @@ const useStyles = makeStyles((theme) => ({
       width: '60%',
       marginLeft: '-60%',
       opacity: '0.2',
+    },
+  },
+  aboutTextContainer: {
+    padding: '50px 0px',
+    position: 'relative',
+    '& div': {
+      pointerEvents: 'none',
+      position: 'absolute',
+      top: 0,
+      background: 'url(/Logo-white-large.png) center no-repeat',
+      backgroundSize: 'contain',
+      opacity: '0.1',
+      width: '100%',
+      height: '100%',
     },
   },
 }));

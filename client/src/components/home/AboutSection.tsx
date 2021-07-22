@@ -11,6 +11,16 @@ const AboutSection = () => {
   return (
     <div className={cx(classes.sectionWrapper, classes.darkWrapper)}>
       <Container maxWidth={'xl'} className={cx(classes.sectionContainer)}>
+        <div className={classes.aboutTextContainer}>
+          <div></div>
+          <Typography
+            style={{ fontWeight: 'normal', textAlign: 'center', zIndex: 1 }}
+            color="primary"
+            variant="h2"
+          >
+            About
+          </Typography>
+        </div>
         <Grid container style={{ flexGrow: 1 }} spacing={4}>
           <Grid sm={4} item className={cx(classes.gridItemContainer)}>
             <Typography color={'primary'} variant="body1">
@@ -26,9 +36,6 @@ const AboutSection = () => {
           </Grid>
 
           <Grid sm={4} item className={cx(classes.gridItemCenter, classes.gridItemContainer)}>
-            <Typography style={{ fontWeight: 'normal' }} color="primary" variant="h2">
-              About
-            </Typography>
             <div className={classes.photoContainer}>
               <img src="/photoOfMe.jpg" />
             </div>
