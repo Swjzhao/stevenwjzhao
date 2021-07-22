@@ -22,7 +22,8 @@ const AboutSection = () => {
           </Typography>
         </div>
         <Grid container style={{ flexGrow: 1 }} spacing={4}>
-          <Grid sm={4} item className={cx(classes.gridItemContainer)}>
+          <Grid item lg={1} className={classes.hiddenGrid}></Grid>
+          <Grid lg={3} md={4} item className={cx(classes.gridItemContainer)}>
             <Typography color={'primary'} variant="body1">
               A community for young innovators, enthuasists, entrepreneurs who think medicore is not
               enough.
@@ -41,11 +42,12 @@ const AboutSection = () => {
             </div>
           </Grid>
 
-          <Grid sm={4} item className={cx(classes.gridItemContainer)}>
+          <Grid lg={3} md={4} item className={cx(classes.gridItemContainer)}>
             <Typography style={{ fontWeight: 'normal' }} color="primary" variant="h4">
-              Hi I&apos;m Steven
+              Hi I&apos;m Steven!
             </Typography>
           </Grid>
+          <Grid item lg={1} className={classes.hiddenGrid}></Grid>
         </Grid>
       </Container>
     </div>

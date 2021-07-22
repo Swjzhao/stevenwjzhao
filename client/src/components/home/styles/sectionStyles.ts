@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   hiddenGrid: {
-    [theme.breakpoints.down('lg')]: {
+    [theme.breakpoints.down('md')]: {
       padding: 0,
       display: 'none',
     },
