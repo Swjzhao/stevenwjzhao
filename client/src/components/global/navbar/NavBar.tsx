@@ -184,7 +184,8 @@ const NavBar = (props: any) => {
               </Button>
             ) : (
               <Button color={'primary'} variant="outlined" onClick={openPopupbox} disableRipple>
-                SignUp / Login
+                <MediaQuery maxDeviceWidth={600}>Login</MediaQuery>
+                <MediaQuery minDeviceWidth={601}>Signup / Login</MediaQuery>
               </Button>
             )}
           </div>
