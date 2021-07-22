@@ -1,9 +1,16 @@
-import { Container, Grid, IconButton, Typography } from '@material-ui/core';
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  IconButton,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Facebook, GitHub, Instagram, LinkedIn } from '@material-ui/icons';
 import React from 'react';
 // @ts-ignore
-import MailchimpSubscribe from 'react-mailchimp-subscribe';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,11 +20,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   outerContainer: {
-    background: theme.palette.common.white,
-    padding: 40,
-    paddingBottom: 0,
-    fontFamily: 'Josefin Sans',
-    marginTop: '20px',
+    // @ts-ignore
+    background: theme.palette.backgroundColors.light,
+    padding: '50px 16px 20px 16px',
+    // boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
   },
   header: {
     color: theme.palette.primary.main,
@@ -82,11 +88,32 @@ const useStyles = makeStyles((theme) => ({
   },
   captionContainer: {
     padding: '10px 0',
-    backgroundColor: theme.palette.background.default,
   },
   contact: {
     color: theme.palette.common.white,
     fontSize: 18,
+  },
+  gridItemContainer: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  textField: {
+    position: 'relative',
+    padding: '10px 0',
+    '& .MuiInputLabel-root': {
+      // @ts-ignore
+      color: theme.palette.textColor.subtext,
+    },
+    '& .MuiInput-underline:before': {
+      // @ts-ignore
+      borderColor: `${theme.palette.textColor.subtext} !important`,
+    },
+
+    '& .MuiInputBase-input': {
+      color: theme.palette.primary.main,
+    },
   },
 }));
 const Footer = (props: any) => {
@@ -99,37 +126,67 @@ const Footer = (props: any) => {
       <div className={classes.outerContainer}>
         <Container>
           <Grid container spacing={1}>
-            <Grid item xs={12} style={{ textAlign: 'center' }}>
-              {/* @ts-ignore */}
-              <MailchimpSubscribe url={process.env.REACT_APP_MAILCHIMP_URL} />
+            <Grid item xs={6}></Grid>
+            <Grid item xs={3}></Grid>
+            <Grid sm={3} item className={classes.gridItemContainer} spacing={2}>
+              <Typography
+                color="primary"
+                variant={'body1'}
+                style={{ fontSize: '15pt', paddingBottom: '30px' }}
+              >
+                JOIN THE DREAMERS
+              </Typography>
+              <form style={{ display: 'flex', flexDirection: 'column' }}>
+                <TextField
+                  variant="standard"
+                  label={'Enter Your Email'}
+                  className={classes.textField}
+                  required
+                />
+                <Button
+                  type="submit"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth={false}
+                  style={{ marginTop: '30px', padding: '10px 0' }}
+                >
+                  Subscribe
+                </Button>
+              </form>
             </Grid>
-
             <Grid container item xs={12} justifyContent="center">
               <Grid className={classes.iconGrid}>
-                <IconButton>
+                <IconButton color="secondary">
                   <Facebook />
                 </IconButton>
-                <IconButton>
+                <IconButton color="secondary">
                   <Instagram />
                 </IconButton>
-                <IconButton>
+                <IconButton color="secondary">
                   <LinkedIn />
                 </IconButton>
-                <IconButton>
+                <IconButton color="secondary">
                   <GitHub />
                 </IconButton>
               </Grid>
             </Grid>
           </Grid>
         </Container>
-      </div>
-      <Grid container spacing={1} className={classes.captionContainer}>
-        <Grid item xs={12}>
-          <Typography align="right" variant="caption" display="block" className={classes.caption}>
-            We Are Still Dreamers © szcreativestudios
-          </Typography>
+        <Divider color="white" style={{ backgroundColor: '#818181' }} />
+        <Grid container spacing={1} className={classes.captionContainer}>
+          <Grid item xs={12}>
+            <Typography
+              align="right"
+              color="primary"
+              variant="caption"
+              display="block"
+              className={classes.caption}
+            >
+              We Are Still Dreamers © szcreativestudios
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </>
   );
 };

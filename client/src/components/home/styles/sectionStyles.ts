@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 10,
     color: theme.palette.secondary.main,
   },
-  root: {
+  textField: {
     position: 'relative',
     padding: '10px 0',
     '& .MuiInputLabel-root': {

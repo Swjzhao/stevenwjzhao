@@ -40,7 +40,7 @@ const LandingSection = (props: any) => {
                 <TextField
                   variant="standard"
                   label={'Enter Your Email'}
-                  className={classes.root}
+                  className={classes.textField}
                   required
                 />
                 <Button

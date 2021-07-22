@@ -11,17 +11,19 @@ const AboutSection = () => {
   return (
     <div className={cx(classes.sectionWrapper, classes.darkWrapper)}>
       <Container maxWidth={'xl'} className={cx(classes.sectionContainer)}>
-        <div className={classes.aboutTextContainer}>
-          <div></div>
-          <Typography
-            style={{ fontWeight: 'normal', textAlign: 'center', zIndex: 1 }}
-            color="primary"
-            variant="h2"
-          >
-            About
-          </Typography>
-        </div>
         <Grid container style={{ flexGrow: 1 }} spacing={4}>
+          <Grid item sm={12} className={cx(classes.gridItemContainer)}>
+            <div className={classes.aboutTextContainer}>
+              <div></div>
+              <Typography
+                style={{ fontWeight: 'normal', textAlign: 'center', zIndex: 1 }}
+                color="primary"
+                variant="h2"
+              >
+                About
+              </Typography>
+            </div>
+          </Grid>
           <Grid item lg={1} className={classes.hiddenGrid}></Grid>
           <Grid lg={3} md={4} item className={cx(classes.gridItemContainer)}>
             <Typography color={'primary'} variant="body1">
