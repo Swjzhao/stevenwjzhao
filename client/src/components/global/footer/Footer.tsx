@@ -24,16 +24,16 @@ const Footer = (props: any) => {
       <div className={cx(classes.outerContainer)}>
         <Container maxWidth={'lg'} className={(classes.sectionContainer, classes.landingContainer)}>
           <Grid container spacing={1}>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={3}>
               <img src={'/Logo-white-large.png'} style={{ width: '50%', marginLeft: '-15px' }} />
               <Typography color="primary" variant="subtitle2">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever
+                Ipsum has been the industry&apos;s standard dummy text ever
               </Typography>
             </Grid>
 
-            <Grid item xs={3}></Grid>
-            <Grid item xs={3}></Grid>
+            <Grid item xs={12} sm={3}></Grid>
+            <Grid item xs={12} sm={3}></Grid>
             <Grid sm={3} item className={classes.gridItemContainer} spacing={2}>
               <Typography
                 color="primary"
