@@ -121,7 +121,11 @@ const NavBar = (props: any) => {
       elevation={0}
     >
       <Container maxWidth="xl" className={classes.navContainer}>
-        <Toolbar className={trigger ? classes.scrollToolbar : ''} disableGutters>
+        <Toolbar
+          style={{ position: 'relative' }}
+          className={trigger ? classes.scrollToolbar : ''}
+          disableGutters
+        >
           <Typography variant="h6">
             <MediaQuery maxDeviceWidth={600}>
               <IconButton
@@ -145,7 +149,8 @@ const NavBar = (props: any) => {
           </Typography>
 
           <MediaQuery minDeviceWidth={601}>
-            <div className={classes.grow}>
+            <div className={classes.grow}></div>
+            <div className={classes.navButtonContainer}>
               <Link href="/">
                 <Button color={'primary'} disableRipple>
                   <Typography

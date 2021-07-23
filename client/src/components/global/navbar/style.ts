@@ -48,8 +48,17 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
+  },
+  navButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'absolute',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    left: '0',
+    right: '0',
   },
   search: {
     position: 'relative',
