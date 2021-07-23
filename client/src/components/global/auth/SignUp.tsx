@@ -33,11 +33,7 @@ const SignUp = (props: any) => {
               autoComplete="current-password"
             />
           </Grid>
-          <Typography
-            color="secondary"
-            style={{ minHeight: '19px', fontSize: '10px' }}
-            component="p"
-          >
+          <Typography color="error" style={{ minHeight: '19px', fontSize: '10px' }} component="p">
             {error}
           </Typography>
           {/* <FormControlLabel
