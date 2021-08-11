@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 
-import AboutPage from '../components/home';
+import AboutPage from '../components/about';
 // eslint-disable-next-line
 
 const About = () => {

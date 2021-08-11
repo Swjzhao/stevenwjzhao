@@ -63,8 +63,10 @@ const NavBar = (props: any) => {
   useEffect(() => {
     if (router.route === '/') {
       setActive(0);
-    } else {
+    } else if (router.route === '/about') {
       setActive(1);
+    } else {
+      setActive(2);
     }
   });
 

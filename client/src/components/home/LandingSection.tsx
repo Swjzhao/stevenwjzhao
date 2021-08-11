@@ -61,8 +61,8 @@ const LandingSection = (props: any) => {
             </Grid>
           </Grid>
         </Container>
-        <Typography variant="body1" className={classes.scrollContainer}>
-          <BsTriangleFill color="secondary" className={classes.scrollTriangle} />
+        <Typography variant="body1" className={sharedClasses.scrollContainer}>
+          <BsTriangleFill color="secondary" className={sharedClasses.scrollTriangle} />
           Scroll Down
         </Typography>
       </Container>

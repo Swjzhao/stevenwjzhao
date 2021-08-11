@@ -1,6 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const sharedSectionStyles = makeStyles((theme) => ({
+  // Landing
+  logoText: {
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '60pt',
+    },
+  },
+  scrollContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: '30px',
+    // @ts-ignore
+    color: theme.palette.textColor.subtext,
+  },
+  scrollTriangle: {
+    transform: 'rotate(180deg)',
+    marginRight: 10,
+    color: theme.palette.secondary.main,
+  },
+
   sectionWrapper: {
     width: '100%',
     minHeight: '100vh',

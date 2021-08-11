@@ -120,7 +120,7 @@ const MyApp = ({ Component, pageProps }) => {
   };
 
   useEffect(() => {
-    if (router.route === '/' || router.route === '') {
+    if (router.route === '/' || router.route === '' || router.route === '/about') {
       setNeedToolBar(false);
     } else {
       setNeedToolBar(true);

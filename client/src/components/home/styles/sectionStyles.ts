@@ -91,20 +91,6 @@ const useStyles = makeStyles((theme) => ({
       border: `1px solid ${theme.palette.secondary.main}`,
     },
   },
-  scrollContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: '30px',
-    // @ts-ignore
-    color: theme.palette.textColor.subtext,
-  },
-  scrollTriangle: {
-    transform: 'rotate(180deg)',
-    marginRight: 10,
-    color: theme.palette.secondary.main,
-  },
-
   catHeaderContainer: {
     '& .MuiTypography-root': {
       paddingBottom: '20px',
