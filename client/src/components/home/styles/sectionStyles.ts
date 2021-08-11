@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     '&::before': {
       flexGrow: 1,
       content: '""',
-      background: 'url(/Logo-white-large.png) center no-repeat',
+      background: 'url(/Logo-white-large.png) center',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       position: 'absolute',
