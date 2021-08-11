@@ -5,17 +5,22 @@ import React, { useEffect } from 'react';
 // import DetailsRoundedIcon from '@material-ui/icons/DetailsRounded';
 import { BsTriangleFill } from 'react-icons/bs';
 
+import sharedSectionStyles from '../global/sections/styles';
 import useStyles from './styles/sectionStyles';
 
 const LandingSection = (props: any) => {
   const classes = useStyles();
+  const sharedClasses = sharedSectionStyles();
   useEffect(() => {}, []);
   return (
-    <div className={cx(classes.sectionWrapper, classes.darkWrapper)}>
-      <Container maxWidth={'xl'} className={cx(classes.sectionContainer, classes.landingContainer)}>
-        <Container maxWidth={'xl'} className={classes.sectionContainer}>
+    <div className={cx(sharedClasses.sectionWrapper, sharedClasses.darkWrapper)}>
+      <Container
+        maxWidth={'xl'}
+        className={cx(sharedClasses.sectionContainer, classes.landingContainer)}
+      >
+        <Container maxWidth={'xl'} className={sharedClasses.sectionContainer}>
           <Grid container style={{ flexGrow: 1 }}>
-            <Grid sm={5} item className={classes.gridItemContainer}>
+            <Grid sm={5} item className={sharedClasses.gridItemContainer}>
               <Typography variant="overline">OFFICIAL SITE</Typography>
 
               <Typography color="primary" variant="h1" className={classes.logoText}>
@@ -28,7 +33,7 @@ const LandingSection = (props: any) => {
               </Typography>
             </Grid>
             <Grid sm={4} item></Grid>
-            <Grid sm={3} item className={classes.gridItemContainer}>
+            <Grid sm={3} item className={sharedClasses.gridItemContainer}>
               <Typography
                 color="primary"
                 variant={'body1'}
@@ -40,7 +45,7 @@ const LandingSection = (props: any) => {
                 <TextField
                   variant="standard"
                   label={'Enter Your Email'}
-                  className={classes.textField}
+                  className={sharedClasses.textField}
                   required
                 />
                 <Button

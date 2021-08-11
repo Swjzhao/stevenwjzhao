@@ -12,17 +12,22 @@ import { Facebook, GitHub, Instagram, LinkedIn } from '@material-ui/icons';
 import cx from 'classnames';
 import React from 'react';
 
-import useStyles from '../../home/styles/sectionStyles';
+import sharedSectionStyles from '../sections/styles';
+import useStyles from './styles';
 
 const Footer = (props: any) => {
   /* const redirectSocial = (url) => {
     // this.window.open(url);
   }; */
   const classes = useStyles();
+  const sharedClasses = sharedSectionStyles();
   return (
     <>
       <div className={cx(classes.outerContainer)}>
-        <Container maxWidth={'lg'} className={(classes.sectionContainer, classes.landingContainer)}>
+        <Container
+          maxWidth={'lg'}
+          className={(sharedClasses.sectionContainer, sharedClasses.landingContainer)}
+        >
           <Grid container spacing={1}>
             <Grid item xs={12} sm={3}>
               <img src={'/Logo-white-large.png'} style={{ width: '50%', marginLeft: '-15px' }} />
@@ -34,7 +39,7 @@ const Footer = (props: any) => {
 
             <Grid item xs={12} sm={3}></Grid>
             <Grid item xs={12} sm={3}></Grid>
-            <Grid sm={3} item className={classes.gridItemContainer} spacing={2}>
+            <Grid sm={3} item className={sharedClasses.gridItemContainer} spacing={2}>
               <Typography
                 color="primary"
                 variant={'body1'}
@@ -46,7 +51,7 @@ const Footer = (props: any) => {
                 <TextField
                   variant="standard"
                   label={'Enter Your Email'}
-                  className={classes.textField}
+                  className={sharedClasses.textField}
                   required
                 />
                 <Button

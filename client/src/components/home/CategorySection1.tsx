@@ -3,6 +3,7 @@ import { Container, Grid } from '@material-ui/core';
 import cx from 'classnames';
 import React, { useEffect } from 'react';
 
+import sharedSectionStyles from '../global/sections/styles';
 import CategoryHeader from './sectionComponents/CategoryHeader';
 import PostCard from './sectionComponents/PostCard';
 import useStyles from './styles/sectionStyles';
@@ -10,6 +11,7 @@ import useStyles from './styles/sectionStyles';
 const CategorySection1 = (props: any) => {
   const { category } = props;
   const classes = useStyles();
+  const sharedClasses = sharedSectionStyles();
   const posts = [
     {
       title: 'Test',
@@ -26,10 +28,10 @@ const CategorySection1 = (props: any) => {
   ];
   useEffect(() => {}, []);
   return (
-    <div className={cx(classes.sectionWrapper, classes.lightWrapper)}>
+    <div className={cx(sharedClasses.sectionWrapper, sharedClasses.lightWrapper)}>
       <Container
         maxWidth={'xl'}
-        className={cx(classes.sectionContainer, classes.category1Container)}
+        className={cx(sharedClasses.sectionContainer, classes.category1Container)}
       >
         <Grid container style={{ flexGrow: 1 }} spacing={2}>
           <CategoryHeader category={category} />
@@ -38,7 +40,7 @@ const CategorySection1 = (props: any) => {
             <Grid container style={{ flexGrow: 1 }} spacing={10}>
               {posts.map((post) => {
                 return (
-                  <Grid sm={6} key={post.title} item className={classes.gridItemContainer}>
+                  <Grid sm={6} key={post.title} item className={sharedClasses.gridItemContainer}>
                     <PostCard post />
                   </Grid>
                 );

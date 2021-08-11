@@ -1,42 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 
+import sharedSectionStyles from '../../global/sections/styles';
+
 const useStyles = makeStyles((theme) => ({
-  sectionWrapper: {
-    width: '100%',
-    minHeight: '100vh',
-    display: 'flex',
-  },
-  sectionContainer: {
-    padding: '20px 16px',
-    display: 'flex',
-    flexGrow: 1,
-    width: '100%',
-    position: 'relative',
-    flexDirection: 'column',
-    [theme.breakpoints.up('xl')]: {
-      padding: '0 120px',
-    },
-    [theme.breakpoints.up('lg')]: {
-      padding: '0 120px !important',
-    },
-    [theme.breakpoints.up('md')]: {
-      padding: '0 50px',
-    },
-  },
+  ...sharedSectionStyles,
   logoText: {
     [theme.breakpoints.up('lg')]: {
       fontSize: '60pt',
     },
-  },
-  darkWrapper: {
-    // @ts-ignore
-    backgroundColor: theme.palette.backgroundColors.main,
-  },
-  lightWrapper: {
-    // @ts-ignore
-    background: theme.palette.backgroundColors.light,
-    // @ts-ignore
-    boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
   },
   landingContainer: {
     '&::before': {
@@ -94,18 +65,6 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: `0 0 50px 50px ${theme.palette.backgroundColors.main} inset`,
     },
   },
-  gridItemContainer: {
-    flexGrow: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  gridItemCenter: {
-    justifyContent: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    position: 'relative',
-  },
   photoContainer: {
     // marginTop: '100px',
     position: 'relative',
@@ -144,22 +103,6 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
     marginRight: 10,
     color: theme.palette.secondary.main,
-  },
-  textField: {
-    position: 'relative',
-    padding: '10px 0',
-    '& .MuiInputLabel-root': {
-      // @ts-ignore
-      color: theme.palette.textColor.subtext,
-    },
-    '& .MuiInput-underline:before': {
-      // @ts-ignore
-      borderColor: `${theme.palette.textColor.subtext} !important`,
-    },
-
-    '& .MuiInputBase-input': {
-      color: theme.palette.primary.main,
-    },
   },
 
   catHeaderContainer: {
@@ -263,27 +206,6 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
       height: '100%',
     },
-  },
-
-  // Footer
-  caption: {
-    fontSize: 12,
-    fontFamily: 'Josefin Sans',
-    textAlign: 'center',
-  },
-  captionContainer: {
-    padding: '10px 0',
-  },
-  outerContainer: {
-    // @ts-ignore
-    background: theme.palette.backgroundColors.light,
-    padding: '50px 16px 20px 16px !important',
-    // boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
-  },
-
-  iconGrid: {
-    textAlign: 'center',
-    padding: 5,
   },
 }));
 

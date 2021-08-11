@@ -4,13 +4,19 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import cx from 'classnames';
 import React from 'react';
 
+import sharedSectionStyles from '../../global/sections/styles';
 import useStyles from '../styles/sectionStyles';
 
 const CategoryHeader = (props: any) => {
   const classes = useStyles();
+  const sharedClasses = sharedSectionStyles();
   const { category, size } = props;
   return (
-    <Grid sm={size ?? 4} item className={cx(classes.gridItemContainer, classes.catHeaderContainer)}>
+    <Grid
+      sm={size ?? 4}
+      item
+      className={cx(sharedClasses.gridItemContainer, classes.catHeaderContainer)}
+    >
       {category.includes('Health') && (
         <div className={classes.circleContainer}>
           <div className={'circle'}></div>

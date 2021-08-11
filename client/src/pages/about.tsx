@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import React from 'react';
 
-import HomePage from '../components/home';
+import AboutPage from '../components/home';
 // eslint-disable-next-line
 
-const Home = () => {
+const About = () => {
   const [key, setKey] = React.useState(0);
 
   React.useEffect(() => {
@@ -13,12 +13,12 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>We Are Still Dreamers</title>
+        <title>About Steven</title>
         <meta property="og:image" content={'/logo.png'} />
       </Head>
-      <HomePage key={key} />
+      <AboutPage />
     </>
   );
 };
 
-export default Home;
+export default About;
