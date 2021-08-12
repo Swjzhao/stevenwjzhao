@@ -5,7 +5,6 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineItem from '@material-ui/lab/TimelineItem';
-import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 // @ts-ignore
 import cx from 'classnames';
@@ -17,7 +16,7 @@ import { FcGoogle } from 'react-icons/fc';
 import sharedSectionStyles from '../global/sections/styles';
 import useStyles from './styles';
 
-const WorkExpSection = () => {
+const WorkExpSectionMobile = () => {
   const classes = useStyles();
   const sharedClasses = sharedSectionStyles();
   useEffect(() => {});
@@ -43,15 +42,9 @@ const WorkExpSection = () => {
               Experience
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={1}></Grid>
-          <Grid item xs={12} sm={10}>
-            <Timeline align="alternate">
+          <Grid item xs={12}>
+            <Timeline className={classes.timelineContainer}>
               <TimelineItem>
-                <TimelineOppositeContent>
-                  <Typography variant="body1" color="textSecondary">
-                    June 2021 - Present
-                  </Typography>
-                </TimelineOppositeContent>
                 <TimelineSeparator>
                   <TimelineDot color="primary">
                     <BiLineChart style={{ width: '24px', height: '24px' }} />
@@ -60,6 +53,9 @@ const WorkExpSection = () => {
                 </TimelineSeparator>
                 <TimelineContent>
                   <Paper elevation={0} className={classes.paper}>
+                    <Typography variant="body1" color="textSecondary">
+                      June 2021 - Present
+                    </Typography>
                     <Typography color="primary" variant="h4">
                       Crabel Capital Management
                     </Typography>
@@ -85,11 +81,6 @@ const WorkExpSection = () => {
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem>
-                <TimelineOppositeContent>
-                  <Typography variant="body1" color="textSecondary">
-                    Aug 2020 - May 2021
-                  </Typography>
-                </TimelineOppositeContent>
                 <TimelineSeparator>
                   <TimelineDot color="primary">
                     <BsClipboardData style={{ width: '24px', height: '24px' }} />
@@ -98,6 +89,9 @@ const WorkExpSection = () => {
                 </TimelineSeparator>
                 <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
+                    <Typography variant="body1" color="textSecondary">
+                      Aug 2020 - May 2021
+                    </Typography>
                     <Typography color="primary" variant="h4">
                       Dataraction Inc
                     </Typography>
@@ -137,11 +131,6 @@ const WorkExpSection = () => {
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem>
-                <TimelineOppositeContent>
-                  <Typography variant="body1" color="textSecondary">
-                    May 2020 - Aug 2020
-                  </Typography>
-                </TimelineOppositeContent>
                 <TimelineSeparator>
                   <TimelineDot color="primary">
                     <FcGoogle style={{ width: '24px', height: '24px' }} />
@@ -150,6 +139,9 @@ const WorkExpSection = () => {
                 </TimelineSeparator>
                 <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
+                    <Typography variant="body1" color="textSecondary">
+                      May 2020 - Aug 2020
+                    </Typography>
                     <Typography color="primary" variant="h4">
                       Google
                     </Typography>
@@ -175,11 +167,6 @@ const WorkExpSection = () => {
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem>
-                <TimelineOppositeContent>
-                  <Typography variant="body1" color="textSecondary">
-                    May 2019 - Aug 2019
-                  </Typography>
-                </TimelineOppositeContent>
                 <TimelineSeparator>
                   <TimelineDot color="primary">
                     <FcGoogle style={{ width: '24px', height: '24px' }} />
@@ -187,6 +174,9 @@ const WorkExpSection = () => {
                 </TimelineSeparator>
                 <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
+                    <Typography variant="body1" color="textSecondary">
+                      May 2019 - Aug 2019
+                    </Typography>
                     <Typography color="primary" variant="h4">
                       Google
                     </Typography>
@@ -213,7 +203,6 @@ const WorkExpSection = () => {
               </TimelineItem>
             </Timeline>
           </Grid>
-          <Grid item xs={12} sm={1}></Grid>
           <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
             <a
               href="files/Resume.pdf"
@@ -231,4 +220,4 @@ const WorkExpSection = () => {
   );
 };
 
-export default WorkExpSection;
+export default WorkExpSectionMobile;

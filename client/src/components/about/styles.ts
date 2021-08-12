@@ -19,6 +19,14 @@ const useStyles = makeStyles((theme) => ({
       pointerEvents: 'none',
     },
   },
+  timelineContainer: {
+    [theme.breakpoints.down('xs')]: {
+      '& .MuiTimelineItem-missingOppositeContent:before': {
+        padding: 0,
+        flex: 0,
+      },
+    },
+  },
   workexpContainer: {
     position: 'relative',
     '& .watermarkContainer': {
