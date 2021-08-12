@@ -41,7 +41,12 @@ const AuthForm = (props: any) => {
     dispatch(clearStatus());
   };
   return (
-    <Dialog open={open} maxWidth={'xs'} style={{ padding: 20 }} onClose={() => setOpen(false)}>
+    <Dialog
+      open={open}
+      maxWidth={'xs'}
+      className={classes.dialogContainer}
+      onClose={() => setOpen(false)}
+    >
       <DialogContent>
         <Container component="main" maxWidth="xs">
           {isSignIn ? (

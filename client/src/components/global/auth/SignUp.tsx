@@ -51,10 +51,10 @@ const SignUp = (props: any) => {
             Sign Up
           </Button>
           <Grid container justifyContent="center">
-            <Grid item xs>
+            <Grid item xs={12}>
               Forgot password?
             </Grid>
-            <Grid item>
+            <Grid item xs={12} className={classes.signInsignUpToggle}>
               Have an account? <Button onClick={() => setIsSignIn(true)}>Sign In</Button>
             </Grid>
           </Grid>

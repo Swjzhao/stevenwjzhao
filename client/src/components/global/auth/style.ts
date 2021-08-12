@@ -19,6 +19,18 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1, 0, 2),
     boxShadow: 'none',
   },
+  dialogContainer: {
+    padding: 20,
+    '& .MuiPaper-root': {
+      margin: '0 !important',
+    },
+  },
+  signInsignUpToggle: {
+    justifyContent: 'space-between',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+  },
 }));
 
 export default useStyles;
