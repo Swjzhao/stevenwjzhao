@@ -3,11 +3,14 @@ import {
   Avatar,
   Button,
   Container,
+  Divider,
   IconButton,
+  List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Menu,
+  SwipeableDrawer,
   Toolbar,
   Typography,
   useScrollTrigger,
@@ -38,6 +41,7 @@ const NavBar = (props: any) => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [active, setActive] = useState(0);
   const [openLogin, setOpenLogin] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
   /*
   useEffect(() => {
     const handleScroll = (event:any) => {
@@ -130,6 +134,7 @@ const NavBar = (props: any) => {
                 style={{ backgroundColor: 'transparent' }}
                 color={'primary'}
                 data-role="header-menu-icon-mobile"
+                onClick={() => setOpenMobileMenu(true)}
               >
                 <MenuIcon />
               </IconButton>
@@ -144,6 +149,26 @@ const NavBar = (props: any) => {
                 <img src={'/Logo-white-large.png'} alt="Title" height={40} />
               </Link>
             </IconButton>
+            <SwipeableDrawer
+              anchor={'left'}
+              open={openMobileMenu}
+              onClose={() => setOpenMobileMenu(false)}
+              onOpen={() => setOpenMobileMenu(true)}
+            >
+              <List style={{ width: '250px' }}>
+                <Link href="/">
+                  <ListItem button selected={router.route === '/'} key={'Home'}>
+                    <ListItemText primary={'Home'} />
+                  </ListItem>
+                </Link>
+                <Link href="/about">
+                  <ListItem button selected={router.route === '/about'} key={'About'}>
+                    <ListItemText primary={'About'} />
+                  </ListItem>
+                </Link>
+              </List>
+              <Divider />
+            </SwipeableDrawer>
           </Typography>
 
           <MediaQuery minDeviceWidth={601}>
