@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  paper: {
+    padding: '30px 40px',
+    borderRadius: '10px',
+  },
 }));
 
 export default useStyles;

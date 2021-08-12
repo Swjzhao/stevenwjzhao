@@ -30,6 +30,9 @@ let theme = createTheme({
       fontFamily: 'Poppins',
       fontWeight: 'bold',
     },
+    h4: {
+      fontFamily: 'Poppins',
+    },
     body1: {
       fontFamily: 'Poppins',
     },
@@ -45,11 +48,13 @@ let theme = createTheme({
       lineHeight: 1.2,
     },
     h6: {
+      fontFamily: 'Poppins',
       fontWeight: 600,
       color: '#333',
     },
   },
   palette: {
+    type: 'dark',
     // @ts-ignore
     primary: {
       main: '#FFF',

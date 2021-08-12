@@ -32,7 +32,7 @@ const CategoryHeader = (props: any) => {
       <div className={classes.catHeaderButtonContainer}>
         <Button>
           <ArrowForwardIcon />
-        </Button>{' '}
+        </Button>
         <Typography color={'primary'}> Read More</Typography>
       </div>
     </Grid>
