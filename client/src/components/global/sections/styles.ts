@@ -25,6 +25,7 @@ const sharedSectionStyles = makeStyles((theme) => ({
     width: '100%',
     minHeight: '100vh',
     display: 'flex',
+    position: 'relative',
   },
   sectionContainer: {
     padding: '20px 16px',

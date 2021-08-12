@@ -1,6 +1,6 @@
 import { Container, Grid } from '@material-ui/core';
 // @ts-ignore
-import cx from 'classnames';
+import cx from 'clsx';
 import React, { useEffect } from 'react';
 
 import sharedSectionStyles from '../global/sections/styles';

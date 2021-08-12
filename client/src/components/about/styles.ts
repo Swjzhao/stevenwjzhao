@@ -1,6 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  aboutGridContainer: {
+    flexGrow: 1,
+    paddingTop: '100px',
+    paddingBottom: '100px',
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: '50px',
+      paddingBottom: '50px',
+    },
+  },
   landingContainer: {
     '&::before': {
       flexGrow: 1,
@@ -28,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  workexpContainer: {
+  watermarkWrapper: {
     position: 'relative',
     '& .watermarkContainer': {
       position: 'absolute',
@@ -43,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
     },
-    '& .watermarkContainer > p': {
+    '& .watermarkContainer > .watermark': {
       width: '100%',
       height: 'fit-content',
 
@@ -52,6 +61,18 @@ const useStyles = makeStyles((theme) => ({
       '- moz - transform': 'rotate(-20deg)',
       color: '#fff',
       fontSize: '25em',
+      textAlign: 'center',
+      lineHeight: '1',
+    },
+    '& .watermarkContainer > .bubblewatermark': {
+      width: '100%',
+      height: 'fit-content',
+      textShadow: `${theme.palette.secondary.main} 0px 0px 5px`,
+      '-webkit-font-smoothing': 'antialiased',
+      opacity: '0.4',
+      // @ts-ignore
+      color: theme.palette.backgroundColors.main,
+      fontSize: '40em',
       textAlign: 'center',
       lineHeight: '1',
     },
@@ -91,6 +112,9 @@ const useStyles = makeStyles((theme) => ({
   skillsContainer: {
     '& .MuiPaper-root': {
       padding: '50px',
+      borderRadius: '10px',
+      zIndex: 1,
+      position: 'relative',
     },
     '& .MuiTypography-root > b': {
       color: theme.palette.secondary.main,
@@ -116,6 +140,11 @@ const useStyles = makeStyles((theme) => ({
   fill: {
     backgroundColor: theme.palette.secondary.main,
     border: 'none !important',
+  },
+  outlined: {
+    color: '#fff',
+    textShadow: `${theme.palette.secondary.main} 0px 0px 1px`,
+    '-webkit-font-smoothing': 'antialiased',
   },
 }));
 

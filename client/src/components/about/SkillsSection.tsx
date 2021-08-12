@@ -1,6 +1,5 @@
 import { Container, Grid, Paper, Typography } from '@material-ui/core';
-// @ts-ignore
-import cx from 'classnames';
+import cx from 'clsx';
 import React, { useEffect } from 'react';
 
 import sharedSectionStyles from '../global/sections/styles';
@@ -11,13 +10,12 @@ const SkillsSection = () => {
   const sharedClasses = sharedSectionStyles();
   useEffect(() => {});
   return (
-    <div className={cx(sharedClasses.darkWrapper)}>
+    <div className={cx(sharedClasses.darkWrapper, classes.watermarkWrapper)}>
+      <div className="watermarkContainer">
+        <p className="bubblewatermark">Skill</p>
+      </div>
       <Container maxWidth={'lg'}>
-        <Grid
-          container
-          spacing={4}
-          style={{ flexGrow: 1, paddingTop: '50px', paddingBottom: '50px' }}
-        >
+        <Grid container spacing={4} className={classes.aboutGridContainer}>
           <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
             <Typography color="primary" variant="h2">
               Skills

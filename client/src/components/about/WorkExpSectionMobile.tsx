@@ -7,7 +7,7 @@ import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 // @ts-ignore
-import cx from 'classnames';
+import cx from 'clsx';
 import React, { useEffect } from 'react';
 import { BiLineChart } from 'react-icons/bi';
 import { BsClipboardData } from 'react-icons/bs';
@@ -25,18 +25,14 @@ const WorkExpSectionMobile = () => {
       className={cx(
         sharedClasses.sectionWrapper,
         sharedClasses.lightWrapper,
-        classes.workexpContainer
+        classes.watermarkWrapper
       )}
     >
       <div className="watermarkContainer">
         <p className="watermark">Experience</p>
       </div>
       <Container maxWidth={'xl'} className={cx(sharedClasses.sectionContainer)}>
-        <Grid
-          container
-          style={{ flexGrow: 1, paddingTop: '50px', paddingBottom: '50px' }}
-          spacing={2}
-        >
+        <Grid container className={classes.aboutGridContainer} spacing={2}>
           <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
             <Typography color="primary" variant="h2">
               Experience
