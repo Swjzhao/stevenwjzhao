@@ -53,6 +53,21 @@ const WorkExpSection = () => {
                       Full Stack Engineer
                     </Typography>
                   </Paper>
+                  <ul className={classes.resumeDescription}>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Collaborated with a US tech based capital management company where I
+                        analyzed millions of data pointsfrom stimulated data and presented it in a
+                        user friendly dashboard
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Reduced load time for analyzing and displaying data by <b>98%</b> by using
+                        efficient algorithms and caches
+                      </Typography>
+                    </li>
+                  </ul>
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem>
@@ -67,7 +82,7 @@ const WorkExpSection = () => {
                   </TimelineDot>
                   <TimelineConnector />
                 </TimelineSeparator>
-                <TimelineContent>
+                <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
                     <Typography color="primary" variant="h4">
                       Dataraction Inc
@@ -76,6 +91,35 @@ const WorkExpSection = () => {
                       Chief Technology Officer
                     </Typography>
                   </Paper>
+                  <ul className={classes.resumeDescription}>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Brought in over <b>1500</b> sign ups and <b>100</b> live viewers per event
+                        (still growing) and succeeded in helping company get in revenue through a
+                        client contract worth <b>$5000/month</b>
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Hired, coached and led 10 developers using Agile management to build a SaaS
+                        and stand-alone livestreaming platform with React (later migrated to
+                        Next.JS) front end with JEST for testing
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Led team to build a fully functional Postgres and MongoDB database on
+                        Loopback 4 (Node.js framework withGraphQL) and real-time comments, polls,
+                        and reactions with WebSocket
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Deployed backend on Kubernetes cluster containerized with Docker, and later
+                        migrated to OpenShift tobetter log user activity for analytics
+                      </Typography>
+                    </li>
+                  </ul>
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem>
@@ -90,7 +134,7 @@ const WorkExpSection = () => {
                   </TimelineDot>
                   <TimelineConnector />
                 </TimelineSeparator>
-                <TimelineContent>
+                <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
                     <Typography color="primary" variant="h4">
                       Google
@@ -99,6 +143,21 @@ const WorkExpSection = () => {
                       Software Engineering Intern
                     </Typography>
                   </Paper>
+                  <ul className={classes.resumeDescription}>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Collaborated with a US tech based capital management company where I
+                        analyzed millions of data pointsfrom stimulated data and presented it in a
+                        user friendly dashboard
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Reduced load time for analyzing and displaying data by <b>98%</b> by using
+                        efficient algorithms and caches
+                      </Typography>
+                    </li>
+                  </ul>
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem>
@@ -112,7 +171,7 @@ const WorkExpSection = () => {
                     <FcGoogle style={{ width: '24px', height: '24px' }} />
                   </TimelineDot>
                 </TimelineSeparator>
-                <TimelineContent>
+                <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
                     <Typography color="primary" variant="h4">
                       Google
@@ -121,6 +180,21 @@ const WorkExpSection = () => {
                       Software Engineering Intern
                     </Typography>
                   </Paper>
+                  <ul className={classes.resumeDescription}>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Collaborated with a US tech based capital management company where I
+                        analyzed millions of data pointsfrom stimulated data and presented it in a
+                        user friendly dashboard
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Reduced load time for analyzing and displaying data by <b>98%</b> by using
+                        efficient algorithms and caches
+                      </Typography>
+                    </li>
+                  </ul>
                 </TimelineContent>
               </TimelineItem>
             </Timeline>

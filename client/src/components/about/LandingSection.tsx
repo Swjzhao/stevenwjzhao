@@ -35,7 +35,11 @@ const LandingSection = () => {
                 Hi! I&apos;m Steven
               </Typography>
 
-              <Typography color="primary" variant="h4" style={{ paddingTop: '30px' }}>
+              <Typography
+                color="primary"
+                variant="h4"
+                style={{ paddingTop: '30px', paddingBottom: '30px' }}
+              >
                 {count ? (
                   <Typist onTypingDone={() => setCount(0)}>
                     Student
@@ -58,6 +62,20 @@ const LandingSection = () => {
               className={sharedClasses.gridItemContainer}
               style={{ justifyContent: 'center' }}
             >
+              <Typography
+                color="primary"
+                variant={'body1'}
+                style={{ fontSize: '12pt', textAlign: 'center' }}
+              >
+                Univesity Of Toronto - Computer Engineering
+              </Typography>
+              <Typography
+                color="primary"
+                variant={'body1'}
+                style={{ fontSize: '12pt', textAlign: 'center' }}
+              >
+                Expected Grad April 2022
+              </Typography>
               <img
                 src={
                   'https://media-exp1.licdn.com/dms/image/C5603AQHBMSesjLe3Yw/profile-displayphoto-shrink_200_200/0/1553361214770?e=1634169600&v=beta&t=3PeJof7oM6qgbYEkhL8GgkMN8a_GFL7_Q8xWKN1UU_4'

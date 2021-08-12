@@ -47,6 +47,9 @@ let theme = createTheme({
       color: '#818181',
       lineHeight: 1.2,
     },
+    subtitle2: {
+      fontFamily: 'Poppins',
+    },
     h6: {
       fontFamily: 'Poppins',
       fontWeight: 600,
