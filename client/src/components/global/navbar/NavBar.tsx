@@ -93,7 +93,7 @@ const NavBar = (props: any) => {
         }}
       >
         <ListItemIcon>
-          <Avatar src={user && user.avatar} alt="" />
+          <Avatar src={user && user.avatar} alt="" style={{ width: '24px', height: '24px' }} />
         </ListItemIcon>
         <ListItemText primary="My Profile" />
       </ListItem>
@@ -155,17 +155,53 @@ const NavBar = (props: any) => {
             >
               <List style={{ width: '250px' }}>
                 <Link href="/">
-                  <ListItem button selected={router.route === '/'} key={'Home'}>
+                  <ListItem
+                    button
+                    selected={router.route === '/'}
+                    key={'Home'}
+                    onClick={() => setOpenMobileMenu(false)}
+                  >
                     <ListItemText primary={'Home'} />
                   </ListItem>
                 </Link>
                 <Link href="/about">
-                  <ListItem button selected={router.route === '/about'} key={'About'}>
+                  <ListItem
+                    button
+                    selected={router.route === '/about'}
+                    key={'About'}
+                    onClick={() => setOpenMobileMenu(false)}
+                  >
                     <ListItemText primary={'About'} />
                   </ListItem>
                 </Link>
               </List>
               <Divider />
+              <div style={{ flexGrow: 1 }}></div>
+              <ListItem button>
+                <ListItemIcon>
+                  <Avatar
+                    src={user && user.avatar}
+                    alt=""
+                    style={{ width: '24px', height: '24px' }}
+                  />
+                </ListItemIcon>
+                <ListItemText primary="My Profile" />
+              </ListItem>
+              <ListItem
+                button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMenuClose();
+                  // this.props.signOut();
+                  dispatch(signOut());
+                  setOpenMobileMenu(false);
+                }}
+              >
+                <ListItemIcon>
+                  <ExitToApp />
+                </ListItemIcon>
+                <ListItemText primary="Sign Out" />
+              </ListItem>
             </SwipeableDrawer>
           </Typography>
 
