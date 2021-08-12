@@ -15,10 +15,7 @@ const Footer = (props: any) => {
   return (
     <>
       <div className={cx(classes.outerContainer)}>
-        <Container
-          maxWidth={'lg'}
-          className={(sharedClasses.sectionContainer, sharedClasses.landingContainer)}
-        >
+        <Container maxWidth={'lg'} className={sharedClasses.sectionContainer}>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={3}>
               <img src={'/Logo-white-large.png'} style={{ width: '50%', marginLeft: '-15px' }} />
