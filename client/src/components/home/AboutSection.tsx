@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from '@material-ui/core';
+import { Button, Container, Grid, Typography, useMediaQuery } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 // @ts-ignore
 import cx from 'classnames';
@@ -10,6 +10,8 @@ import useStyles from './styles/sectionStyles';
 const AboutSection = () => {
   const classes = useStyles();
   const sharedClasses = sharedSectionStyles();
+
+  const isDesktop = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
   return (
     <div className={cx(sharedClasses.sectionWrapper, sharedClasses.darkWrapper)}>
       <Container maxWidth={'xl'} className={cx(sharedClasses.sectionContainer)}>
@@ -39,24 +41,45 @@ const AboutSection = () => {
               <Typography color={'primary'}> Read More</Typography>
             </div>
           </Grid>
+          {isDesktop ? (
+            <>
+              <Grid
+                xs={12}
+                sm={4}
+                item
+                className={cx(sharedClasses.gridItemCenter, sharedClasses.gridItemContainer)}
+              >
+                <div className={classes.photoContainer}>
+                  <img src="/photoOfMe.jpg" />
+                </div>
+              </Grid>
 
-          <Grid
-            xs={12}
-            sm={4}
-            item
-            className={cx(sharedClasses.gridItemCenter, sharedClasses.gridItemContainer)}
-          >
-            <div className={classes.photoContainer}>
-              <img src="/photoOfMe.jpg" />
-            </div>
-          </Grid>
-
-          <Grid lg={3} md={4} item className={cx(sharedClasses.gridItemContainer)}>
-            <Typography style={{ fontWeight: 'normal' }} color="primary" variant="h4">
-              Hi I&apos;m Steven!
-            </Typography>
-          </Grid>
-          <Grid item lg={1} className={classes.hiddenGrid}></Grid>
+              <Grid lg={3} md={4} item className={cx(sharedClasses.gridItemContainer)}>
+                <Typography style={{ fontWeight: 'normal' }} color="primary" variant="h4">
+                  Hi I&apos;m Steven!
+                </Typography>
+              </Grid>
+              <Grid item lg={1} className={classes.hiddenGrid}></Grid>
+            </>
+          ) : (
+            <>
+              <Grid lg={3} md={4} item className={cx(sharedClasses.gridItemContainer)}>
+                <Typography style={{ fontWeight: 'normal' }} color="primary" variant="h4">
+                  Hi I&apos;m Steven!
+                </Typography>
+              </Grid>
+              <Grid
+                xs={12}
+                sm={4}
+                item
+                className={cx(sharedClasses.gridItemCenter, sharedClasses.gridItemContainer)}
+              >
+                <div className={classes.photoContainer}>
+                  <img src="/photoOfMe.jpg" />
+                </div>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Container>
     </div>

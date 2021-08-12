@@ -1,8 +1,5 @@
-import 'react-popupbox/dist/react-popupbox.css';
-
 import React, { PropsWithChildren, useEffect } from 'react';
 // @ts-ignore
-import { PopupboxContainer } from 'react-popupbox';
 import { useDispatch } from 'react-redux';
 
 import { refreshToken } from '../../store/actions';
@@ -29,8 +26,6 @@ const Layout = ({ needToolBar, children }: PropsWithChildren<IProps>) => {
         minHeight: '100vh',
       }}
     >
-      <PopupboxContainer />
-
       <Navbar needToolBar={needToolBar} />
       {children}
       <Footer />

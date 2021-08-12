@@ -1,8 +1,7 @@
-import { Container } from '@material-ui/core';
+import { Container, Dialog, DialogContent } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 // @ts-ignore
-import { PopupboxManager } from 'react-popupbox';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { IUserCredientials, RootStore } from '../../../models';
@@ -11,8 +10,9 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import useStyles from './style';
 
-const AuthForm = () => {
+const AuthForm = (props: any) => {
   const classes = useStyles();
+  const { open, setOpen } = props;
   const [isSignIn, setIsSignIn] = useState(true);
   const methods = useForm();
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const AuthForm = () => {
   useEffect(() => {
     if (user) {
       if (isSignIn) {
-        PopupboxManager.close();
+        setOpen(false);
       }
     }
   }, [user]);
@@ -41,25 +41,29 @@ const AuthForm = () => {
     dispatch(clearStatus());
   };
   return (
-    <Container component="main" maxWidth="xs">
-      {isSignIn ? (
-        <SignIn
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          setIsSignIn={setIsSignIn}
-          classes={classes}
-          error={status.error}
-        />
-      ) : (
-        <SignUp
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          setIsSignIn={setIsSignIn}
-          classes={classes}
-          error={status.error}
-        />
-      )}
-    </Container>
+    <Dialog open={open} maxWidth={'xs'} style={{ padding: 20 }} onClose={() => setOpen(false)}>
+      <DialogContent>
+        <Container component="main" maxWidth="xs">
+          {isSignIn ? (
+            <SignIn
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              setIsSignIn={setIsSignIn}
+              classes={classes}
+              error={status.error}
+            />
+          ) : (
+            <SignUp
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              setIsSignIn={setIsSignIn}
+              classes={classes}
+              error={status.error}
+            />
+          )}
+        </Container>
+      </DialogContent>
+    </Dialog>
   );
 };
 

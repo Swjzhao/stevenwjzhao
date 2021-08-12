@@ -39,7 +39,7 @@ const Footer = (props: any) => {
 
             <Grid item xs={12} sm={3}></Grid>
             <Grid item xs={12} sm={3}></Grid>
-            <Grid sm={3} item className={sharedClasses.gridItemContainer} spacing={2}>
+            <Grid sm={3} item className={sharedClasses.gridItemContainer}>
               <Typography
                 color="primary"
                 variant={'body1'}

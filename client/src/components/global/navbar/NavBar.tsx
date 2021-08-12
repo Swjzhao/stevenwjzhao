@@ -19,7 +19,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 // @ts-ignore
-import { PopupboxManager } from 'react-popupbox';
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
@@ -38,6 +37,7 @@ const NavBar = (props: any) => {
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [active, setActive] = useState(0);
+  const [openLogin, setOpenLogin] = useState(false);
   /*
   useEffect(() => {
     const handleScroll = (event:any) => {
@@ -45,10 +45,6 @@ const NavBar = (props: any) => {
     window.addEventListener('scroll', handleScroll, true);
   }, []);
   */
-  const openPopupbox = () => {
-    const content = <AuthForm />;
-    PopupboxManager.open({ content });
-  };
 
   const handleProfileMenuOpen = (event: any) => {
     setProfileAnchorEl(event.currentTarget);
@@ -190,7 +186,12 @@ const NavBar = (props: any) => {
                 {user.name}
               </Button>
             ) : (
-              <Button color={'primary'} variant="outlined" onClick={openPopupbox} disableRipple>
+              <Button
+                color={'primary'}
+                variant="outlined"
+                onClick={() => setOpenLogin(true)}
+                disableRipple
+              >
                 <MediaQuery maxDeviceWidth={600}>Login</MediaQuery>
                 <MediaQuery minDeviceWidth={601}>Signup / Login</MediaQuery>
               </Button>
@@ -198,6 +199,7 @@ const NavBar = (props: any) => {
           </div>
         </Toolbar>
       </Container>
+      <AuthForm open={openLogin} setOpen={setOpenLogin} />
     </AppBar>
   );
 };

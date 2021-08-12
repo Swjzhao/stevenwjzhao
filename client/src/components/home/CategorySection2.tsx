@@ -1,4 +1,4 @@
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid, useMediaQuery } from '@material-ui/core';
 // @ts-ignore
 import cx from 'classnames';
 import React, { useEffect } from 'react';
@@ -11,7 +11,7 @@ import useStyles from './styles/sectionStyles';
 const CategorySection1 = (props: any) => {
   const { category } = props;
   const classes = useStyles();
-
+  const isDesktop = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
   const sharedClasses = sharedSectionStyles();
   const posts = [
     {
@@ -31,27 +31,51 @@ const CategorySection1 = (props: any) => {
   return (
     <div className={cx(sharedClasses.sectionWrapper, sharedClasses.darkWrapper)}>
       <Container maxWidth={'xl'} className={cx(sharedClasses.sectionContainer)}>
-        <div className={classes.circleContainerLeft}>
-          <div className="circle"></div>
+        {isDesktop ? (
+          <>
+            <div className={classes.circleContainerLeft}>
+              <div className="circle"></div>
 
-          <div className={'circle2'}></div>
-        </div>
-        <Grid container style={{ flexGrow: 1 }} spacing={2}>
-          <Grid item sm={7} style={{ display: 'flex', flexGrow: 1 }}>
-            <Grid container style={{ flexGrow: 1 }} spacing={10}>
-              {posts.map((post) => {
-                return (
-                  <Grid sm={6} key={post.title} item className={sharedClasses.gridItemContainer}>
-                    <PostCard post />
-                  </Grid>
-                );
-              })}
+              <div className={'circle2'}></div>
+            </div>
+            <Grid container style={{ flexGrow: 1 }} spacing={2}>
+              <Grid item sm={7} style={{ display: 'flex', flexGrow: 1 }}>
+                <Grid container style={{ flexGrow: 1 }} spacing={10}>
+                  {posts.map((post) => {
+                    return (
+                      <Grid
+                        sm={6}
+                        key={post.title}
+                        item
+                        className={sharedClasses.gridItemContainer}
+                      >
+                        <PostCard post />
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </Grid>
+
+              <Grid item sm={1} />
+              <CategoryHeader category={category} />
+            </Grid>
+          </>
+        ) : (
+          <Grid container style={{ flexGrow: 1 }} spacing={2}>
+            <CategoryHeader category={category} />
+            <Grid item sm={7} style={{ display: 'flex', flexGrow: 1 }}>
+              <Grid container style={{ flexGrow: 1 }} spacing={10}>
+                {posts.map((post) => {
+                  return (
+                    <Grid sm={6} key={post.title} item className={sharedClasses.gridItemContainer}>
+                      <PostCard post />
+                    </Grid>
+                  );
+                })}
+              </Grid>
             </Grid>
           </Grid>
-
-          <Grid item sm={1} />
-          <CategoryHeader category={category} />
-        </Grid>
+        )}
       </Container>
     </div>
   );
