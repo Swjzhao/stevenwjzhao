@@ -1,18 +1,9 @@
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  IconButton,
-  TextField,
-  Typography,
-} from '@material-ui/core';
-import { Facebook, GitHub, Instagram, LinkedIn } from '@material-ui/icons';
-// @ts-ignore
+import { Button, Container, Divider, Grid, TextField, Typography } from '@material-ui/core';
 import cx from 'classnames';
 import React from 'react';
 
 import sharedSectionStyles from '../sections/styles';
+import SocialMediaIcons from '../socialMedia/SocialMediaIcons';
 import useStyles from './styles';
 
 const Footer = (props: any) => {
@@ -65,21 +56,8 @@ const Footer = (props: any) => {
                 </Button>
               </form>
             </Grid>
-            <Grid container item xs={12} justifyContent="center">
-              <Grid className={classes.iconGrid}>
-                <IconButton color="secondary">
-                  <Facebook />
-                </IconButton>
-                <IconButton color="secondary">
-                  <Instagram />
-                </IconButton>
-                <IconButton color="secondary">
-                  <LinkedIn />
-                </IconButton>
-                <IconButton color="secondary">
-                  <GitHub />
-                </IconButton>
-              </Grid>
+            <Grid container item xs={12} justifyContent="center" className={classes.iconGrid}>
+              <SocialMediaIcons />
             </Grid>
           </Grid>
         </Container>

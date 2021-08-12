@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: drawerWidth,
     },
   },
+  transparentAppBar: {
+    background: 'none',
+  },
   navContainer: {
     [theme.breakpoints.up('xl')]: {
       padding: '0 100px',

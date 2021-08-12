@@ -23,7 +23,7 @@ const LandingSection = (props: any) => {
             <Grid sm={5} item className={sharedClasses.gridItemContainer}>
               <Typography variant="overline">OFFICIAL SITE</Typography>
 
-              <Typography color="primary" variant="h1" className={classes.logoText}>
+              <Typography color="primary" variant="h1" className={sharedClasses.logoText}>
                 We Are Dreamers
               </Typography>
 

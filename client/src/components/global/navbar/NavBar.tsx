@@ -114,7 +114,7 @@ const NavBar = (props: any) => {
   return (
     <AppBar
       position="fixed"
-      className={classes.appBar}
+      className={cx(classes.appBar, trigger || needToolBar ? '' : classes.transparentAppBar)}
       color={trigger || needToolBar ? undefined : 'transparent'}
       elevation={0}
     >

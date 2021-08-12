@@ -112,7 +112,8 @@ const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const [needToolBar, setNeedToolBar] = useState(true);
   const handleRouteChange = (url: string) => {
-    if (url === '/' || url === '') {
+    console.log(url);
+    if (url === '/' || url === '' || url === '/about') {
       setNeedToolBar(false);
     } else {
       setNeedToolBar(true);

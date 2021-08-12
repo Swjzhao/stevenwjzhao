@@ -1,14 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import sharedSectionStyles from '../../global/sections/styles';
-
 const useStyles = makeStyles((theme) => ({
-  ...sharedSectionStyles,
-  logoText: {
-    [theme.breakpoints.up('lg')]: {
-      fontSize: '60pt',
-    },
-  },
   landingContainer: {
     '&::before': {
       flexGrow: 1,
