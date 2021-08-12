@@ -63,7 +63,7 @@ let theme = createTheme({
     primary: {
       main: '#FFF',
     },
-    secondary: { main: '#FAFC6D' },
+    secondary: { main: '#FAFB69' },
     info: {
       light: '#FFF',
       main: '#FFF',
@@ -73,6 +73,7 @@ let theme = createTheme({
     textColor: {
       subtext: '#818181',
       main: '#FFF',
+      light: '#B8B8B8',
     },
     // @ts-ignore
     backgroundColors: {

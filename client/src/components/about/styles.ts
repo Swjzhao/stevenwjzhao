@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       content: '""',
       background: 'url(/about-background.svg) left',
+      // @ts-ignore
       boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
 
       backgroundSize: 'cover',
@@ -85,6 +86,36 @@ const useStyles = makeStyles((theme) => ({
     '& b': {
       color: theme.palette.secondary.main,
     },
+  },
+
+  skillsContainer: {
+    '& .MuiPaper-root': {
+      padding: '50px',
+    },
+    '& .MuiTypography-root > b': {
+      color: theme.palette.secondary.main,
+    },
+    '& .MuiTypography-subtitle1': {
+      // @ts-ignore
+      color: theme.palette.textColor.light,
+    },
+  },
+  ratingSystem: {
+    paddingTop: 50,
+  },
+  rating: {
+    display: 'inline-block',
+    margin: 0,
+    width: 20,
+    height: 20,
+    borderRadius: '50%',
+    border: '0.5px solid #fff',
+    marginRight: 20,
+  },
+
+  fill: {
+    backgroundColor: theme.palette.secondary.main,
+    border: 'none !important',
   },
 }));
 
