@@ -1,5 +1,4 @@
 import { Button, Container, Grid, TextField, Typography } from '@material-ui/core';
-// @ts-ignore
 import cx from 'clsx';
 import React, { useEffect } from 'react';
 // import DetailsRoundedIcon from '@material-ui/icons/DetailsRounded';

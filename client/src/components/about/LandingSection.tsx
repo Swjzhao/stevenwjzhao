@@ -1,5 +1,4 @@
 import { Container, Grid, Typography } from '@material-ui/core';
-// @ts-ignore
 import cx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { BsTriangleFill } from 'react-icons/bs';

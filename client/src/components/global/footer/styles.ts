@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     // @ts-ignore
     background: theme.palette.backgroundColors.light,
     padding: '50px 16px 20px 16px !important',
-    // boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
+    boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
   },
 
   iconGrid: {

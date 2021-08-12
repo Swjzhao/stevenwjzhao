@@ -7,7 +7,6 @@ import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
-// @ts-ignore
 import cx from 'clsx';
 import React, { useEffect } from 'react';
 import { BiLineChart } from 'react-icons/bi';

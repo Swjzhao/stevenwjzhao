@@ -16,12 +16,10 @@ import {
   useScrollTrigger,
 } from '@material-ui/core';
 import { ExitToApp, Menu as MenuIcon, Search } from '@material-ui/icons';
-// @ts-ignore
 import cx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-// @ts-ignore
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 

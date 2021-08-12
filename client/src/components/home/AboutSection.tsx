@@ -1,6 +1,5 @@
 import { Button, Container, Grid, Typography, useMediaQuery } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-// @ts-ignore
 import cx from 'clsx';
 import React from 'react';
 
