@@ -63,6 +63,13 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '25em',
       textAlign: 'center',
       lineHeight: '1',
+
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '20em',
+      },
+      [theme.breakpoints.down('md')]: {
+        fontSize: '15em',
+      },
     },
     '& .watermarkContainer > .bubblewatermark': {
       width: '100%',
