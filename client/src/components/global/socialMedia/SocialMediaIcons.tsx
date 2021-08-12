@@ -17,13 +17,21 @@ const SocialMediaIcons = (props: any) => {
       <IconButton color="secondary">
         <Facebook />
       </IconButton>
-      <IconButton color="secondary">
+      <IconButton
+        color="secondary"
+        target="_blank"
+        href="https://www.instagram.com/swjz_perspective/"
+      >
         <Instagram />
       </IconButton>
-      <IconButton color="secondary">
+      <IconButton
+        color="secondary"
+        target="_blank"
+        href="https://www.linkedin.com/in/wen-jie-steven-zhao-b4212514a/"
+      >
         <LinkedIn />
       </IconButton>
-      <IconButton color="secondary">
+      <IconButton color="secondary" target="_blank" href="https://github.com/Swjzhao">
         <GitHub />
       </IconButton>
     </div>

@@ -49,6 +49,7 @@ let theme = createTheme({
     },
     subtitle2: {
       fontFamily: 'Poppins',
+      fontSize: '12pt',
     },
     h6: {
       fontFamily: 'Poppins',

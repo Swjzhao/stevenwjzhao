@@ -1,4 +1,5 @@
-import { Container, Grid, Paper, Typography } from '@material-ui/core';
+import { Button, Container, Grid, Paper, Typography } from '@material-ui/core';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
@@ -21,9 +22,22 @@ const WorkExpSection = () => {
   const sharedClasses = sharedSectionStyles();
   useEffect(() => {});
   return (
-    <div className={cx(sharedClasses.sectionWrapper, sharedClasses.lightWrapper)}>
+    <div
+      className={cx(
+        sharedClasses.sectionWrapper,
+        sharedClasses.lightWrapper,
+        classes.workexpContainer
+      )}
+    >
+      <div className="watermarkContainer">
+        <p className="watermark">Experience</p>
+      </div>
       <Container maxWidth={'xl'} className={cx(sharedClasses.sectionContainer)}>
-        <Grid container style={{ flexGrow: 1, paddingTop: '50px' }} spacing={2}>
+        <Grid
+          container
+          style={{ flexGrow: 1, paddingTop: '50px', paddingBottom: '50px' }}
+          spacing={2}
+        >
           <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
             <Typography color="primary" variant="h2">
               Experience
@@ -200,6 +214,17 @@ const WorkExpSection = () => {
             </Timeline>
           </Grid>
           <Grid item xs={12} sm={1}></Grid>
+          <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
+            <a
+              href="files/Resume.pdf"
+              download="Resume-Steven (Wen Jie) Zhao"
+              style={{ textDecoration: 'none' }}
+            >
+              <Button variant="contained" color="secondary" startIcon={<GetAppIcon />}>
+                <Typography>Resume</Typography>
+              </Button>
+            </a>
+          </Grid>
         </Grid>
       </Container>
     </div>

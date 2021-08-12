@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   landingContainer: {
     '&::before': {
       flexGrow: 1,
-      content: '«',
+      content: '""',
       background: 'url(/about-background.svg) left',
       boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
 
@@ -17,6 +17,34 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
       opacity: '0.5',
       pointerEvents: 'none',
+    },
+  },
+  workexpContainer: {
+    position: 'relative',
+    '& .watermarkContainer': {
+      position: 'absolute',
+
+      pointerEvents: 'none',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      width: '100%',
+      flexGrow: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    '& .watermarkContainer > p': {
+      width: '100%',
+      height: 'fit-content',
+
+      opacity: '0.1',
+      '-webkit-transform': 'rotate(-20deg)',
+      '- moz - transform': 'rotate(-20deg)',
+      color: '#fff',
+      fontSize: '25em',
+      textAlign: 'center',
+      lineHeight: '1',
     },
   },
   profilePicImg: {
