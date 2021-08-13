@@ -199,7 +199,6 @@ const signInWithGoogle = async (req: Request, res: Response) => {
     };
     return signUpMethod(newUser, res);
   } catch (err: any) {
-    console.log('Hi');
     return res.status(500).json({ msg: err.message });
   }
 };

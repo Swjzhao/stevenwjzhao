@@ -98,7 +98,6 @@ export const googleSignIn = (token: string) => async (dispatch: Dispatch<any | A
     dispatch(setStatus({ status: 'loading' }));
     const res = await api.signInWithThirdParty({ token, source: 'google' });
     dispatch({ type: types.SET_USER, payload: res.data.user });
-
     dispatch(clearStatus());
   } catch (err: any) {
     dispatch(setStatus({ status: 'error', error: err.response.data.message }));

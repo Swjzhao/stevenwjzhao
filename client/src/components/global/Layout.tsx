@@ -1,7 +1,9 @@
+import { Backdrop, CircularProgress } from '@material-ui/core';
 import React, { PropsWithChildren, useEffect } from 'react';
 // @ts-ignore
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { IUser, RootStore } from '../../models';
 import { refreshToken } from '../../store/actions';
 import Footer from './footer/Footer';
 import Navbar from './navbar/NavBar';
@@ -12,8 +14,10 @@ interface IProps {
 
 const Layout = ({ needToolBar, children }: PropsWithChildren<IProps>) => {
   const dispatch = useDispatch();
+  const open = useSelector((state: RootStore) => state.status.status === 'loading');
+  const user: IUser = useSelector((state: RootStore) => state?.user);
   useEffect(() => {
-    dispatch(refreshToken());
+    if (!user) dispatch(refreshToken());
   });
 
   return (
@@ -26,6 +30,9 @@ const Layout = ({ needToolBar, children }: PropsWithChildren<IProps>) => {
         minHeight: '100vh',
       }}
     >
+      <Backdrop open={open} style={{ zIndex: 1500, color: '#fff' }}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Navbar needToolBar={needToolBar} />
       {children}
       <Footer />

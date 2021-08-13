@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -23,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 20,
     '& .MuiPaper-root': {
       margin: '0 !important',
+    },
+    '& .MuiDialogContent-root': {
+      padding: '24px',
     },
   },
   signInsignUpToggle: {

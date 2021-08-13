@@ -19,10 +19,10 @@ const SocialMediaLogin = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const onGoogleSuccess = (response: any) => {
+  const onGoogleSuccess = async (response: any) => {
     // eslint-disable-next-line camelcase
     const { id_token } = response.getAuthResponse();
-    dispatch(googleSignIn(id_token));
+    await dispatch(googleSignIn(id_token));
   };
 
   const onGoogleFailure = (response: any) => {

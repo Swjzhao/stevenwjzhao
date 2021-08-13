@@ -20,9 +20,7 @@ const AuthForm = (props: any) => {
   const user = useSelector((state: RootStore) => state?.user);
   useEffect(() => {
     if (user) {
-      if (isSignIn) {
-        setOpen(false);
-      }
+      setOpen(false);
     }
   }, [user]);
   useEffect(() => {
