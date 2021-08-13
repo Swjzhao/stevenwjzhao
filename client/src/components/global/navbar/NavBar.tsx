@@ -222,7 +222,7 @@ const NavBar = (props: any) => {
           <MediaQuery minDeviceWidth={601}>
             <div className={classes.grow}></div>
             <div className={classes.navButtonContainer}>
-              <Link href="/new-post">
+              <Link href="/">
                 <Button color={'primary'} disableRipple>
                   <Typography
                     variant="body1"

@@ -65,7 +65,11 @@ const AboutSection = () => {
           ) : (
             <>
               <Grid lg={3} md={4} item className={cx(sharedClasses.gridItemContainer)}>
-                <Typography style={{ fontWeight: 'normal' }} color="primary" variant="h4">
+                <Typography
+                  style={{ fontWeight: 'normal', textAlign: 'center' }}
+                  color="primary"
+                  variant="h4"
+                >
                   Hi I&apos;m Steven!
                 </Typography>
               </Grid>
