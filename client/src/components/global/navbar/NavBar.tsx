@@ -68,58 +68,6 @@ const NavBar = (props: any) => {
     }
   });
 
-  const renderProfileMenu = (
-    <Menu
-      anchorEl={profileAnchorEl}
-      getContentAnchorEl={null}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'center',
-      }}
-      elevation={1}
-      keepMounted
-      open={profileMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <List onMouseLeave={handleMenuClose}>
-        <ListItem
-          button
-          onClick={() => {
-            handleMenuClose();
-            // this.goToProfile();
-          }}
-        >
-          <ListItemIcon>
-            <Avatar
-              src={user && user.avatar}
-              alt=""
-              className={classes.avatar}
-              style={{ width: '24px', height: '24px' }}
-            />
-          </ListItemIcon>
-          <ListItemText primary="My Profile" />
-        </ListItem>
-        <ListItem
-          button
-          onClick={(e) => {
-            e.preventDefault();
-            handleMenuClose();
-            // this.props.signOut();
-            dispatch(signOut());
-          }}
-        >
-          <ListItemIcon>
-            <ExitToApp />
-          </ListItemIcon>
-          <ListItemText primary="Sign Out" />
-        </ListItem>
-      </List>
-    </Menu>
-  );
   return (
     <AppBar
       position="fixed"
@@ -199,7 +147,7 @@ const NavBar = (props: any) => {
                         style={{ width: '24px', height: '24px' }}
                       />
                     </ListItemIcon>
-                    <ListItemText primary="My Profile" />
+                    <ListItemText primary={user.name} />
                   </ListItem>
                   <ListItem
                     button
@@ -247,7 +195,6 @@ const NavBar = (props: any) => {
                 </Button>
               </Link>
             </div>
-            {renderProfileMenu}
           </MediaQuery>
           <MediaQuery maxDeviceWidth={600}>
             <div className={classes.grow}></div>
@@ -283,6 +230,56 @@ const NavBar = (props: any) => {
                     className={classes.avatar}
                   ></Avatar>
                 </IconButton>
+                <Menu
+                  anchorEl={profileAnchorEl}
+                  getContentAnchorEl={null}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                  elevation={1}
+                  keepMounted
+                  open={profileMenuOpen}
+                  onClose={handleMenuClose}
+                >
+                  <List onMouseLeave={handleMenuClose}>
+                    <ListItem
+                      button
+                      onClick={() => {
+                        handleMenuClose();
+                        // this.goToProfile();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <Avatar
+                          src={user && user.avatar}
+                          alt=""
+                          className={classes.avatar}
+                          style={{ width: '24px', height: '24px' }}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary={user.name} />
+                    </ListItem>
+                    <ListItem
+                      button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleMenuClose();
+                        // this.props.signOut();
+                        dispatch(signOut());
+                      }}
+                    >
+                      <ListItemIcon>
+                        <ExitToApp />
+                      </ListItemIcon>
+                      <ListItemText primary="Sign Out" />
+                    </ListItem>
+                  </List>
+                </Menu>
               </MediaQuery>
             </>
           ) : (
