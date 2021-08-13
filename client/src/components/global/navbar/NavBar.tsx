@@ -144,16 +144,20 @@ const NavBar = (props: any) => {
                 <MenuIcon />
               </IconButton>
             </MediaQuery>
-            <IconButton
-              aria-label="Logo"
-              color="primary"
-              style={{ backgroundColor: 'transparent' }}
-              disableRipple
-            >
-              <Link href="/">
+
+            <Link href="/">
+              <IconButton
+                aria-label="Logo"
+                color="primary"
+                style={{
+                  backgroundColor: 'transparent',
+                  zIndex: 100,
+                }}
+                disableRipple
+              >
                 <img src={'/Logo-white-large.png'} alt="Title" height={40} />
-              </Link>
-            </IconButton>
+              </IconButton>
+            </Link>
             <SwipeableDrawer
               anchor={'left'}
               open={openMobileMenu}
@@ -249,25 +253,33 @@ const NavBar = (props: any) => {
             <div className={classes.grow}></div>
           </MediaQuery>
 
-          <IconButton aria-label="SearchIcon" color={'primary'} disableRipple>
+          <IconButton
+            aria-label="SearchIcon"
+            color={'primary'}
+            style={{ backgroundColor: 'transparent' }}
+            disableRipple
+          >
             <Search />
           </IconButton>
 
           {user ? (
             <>
-              <Button color={'primary'} variant="outlined" disableRipple>
-                Write
-              </Button>
+              <Link href="/new-post">
+                <Button color={'primary'} variant="outlined" disableRipple>
+                  Write
+                </Button>
+              </Link>
               <MediaQuery minDeviceWidth={601}>
                 <IconButton
                   aria-label="SearchIcon"
                   color={'primary'}
                   disableRipple
+                  style={{ backgroundColor: 'transparent' }}
                   onClick={handleProfileMenuOpen}
-                  onMouseEnter={handleProfileMenuOpen}
                 >
                   <Avatar
                     color={'primary'}
+                    onMouseEnter={handleProfileMenuOpen}
                     style={{ width: '36px', height: '36px' }}
                     className={classes.avatar}
                   ></Avatar>
