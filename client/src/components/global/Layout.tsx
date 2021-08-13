@@ -18,7 +18,7 @@ const Layout = ({ needToolBar, children }: PropsWithChildren<IProps>) => {
   const user: IUser = useSelector((state: RootStore) => state?.user);
   useEffect(() => {
     if (!user) dispatch(refreshToken());
-  });
+  }, [user]);
 
   return (
     <div
