@@ -279,7 +279,6 @@ const NavBar = (props: any) => {
                 >
                   <Avatar
                     color={'primary'}
-                    onMouseEnter={handleProfileMenuOpen}
                     style={{ width: '36px', height: '36px' }}
                     className={classes.avatar}
                   ></Avatar>
