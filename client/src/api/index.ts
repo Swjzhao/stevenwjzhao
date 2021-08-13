@@ -5,7 +5,11 @@ import { IThirdPartyLogin } from '../models/index';
 axios.defaults.withCredentials = true;
 
 // const proxyUrl = 'https://cors-anywhere-steven.herokuapp.com/';
-axios.defaults.baseURL = 'http://localhost:5000';
+if (process.env.BASE_URL) {
+  axios.defaults.baseURL = process.env.BASE_URL;
+} else {
+  axios.defaults.baseURL = 'http://localhost:5000';
+}
 // http://localhost:5000
 
 export const getCurrentUserData = () => axios.get('/user/get');
