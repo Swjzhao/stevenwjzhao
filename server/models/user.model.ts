@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: Number,
-    default: '0', // 2:admin, 1:manager, 0:normal
+    default: '0', // 3:admin, 2: writer, 1:manager, 0:normal
   },
   verified: {
     type: Boolean,

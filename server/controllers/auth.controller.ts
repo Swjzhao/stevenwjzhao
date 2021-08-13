@@ -170,6 +170,10 @@ export const signInWithThirdParty = async (req: Request, res: Response) => {
   }
 };
 
+export const sendResetPassword = async (req: Request, res: Response) => {
+  return res;
+};
+
 const signInWithGoogle = async (req: Request, res: Response) => {
   try {
     const { token } = req.body;
