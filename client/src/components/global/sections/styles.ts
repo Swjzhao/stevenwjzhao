@@ -83,6 +83,26 @@ const sharedSectionStyles = makeStyles((theme) => ({
       color: theme.palette.primary.main,
     },
   },
+  readMoreContainer: {
+    padding: '15px 0',
+    display: 'flex',
+    alignItems: 'center',
+    zIndex: 101,
+    '& .MuiButtonBase-root': {
+      width: '56px',
+      height: '50px',
+      // @ts-ignore
+      background: theme.palette.backgroundColors.button,
+      marginRight: '10px',
+      [theme.breakpoints.down('xs')]: {
+        width: '28px',
+        height: '40px',
+      },
+    },
+    '& .MuiTypography-root': {
+      paddingBottom: '0 !important',
+    },
+  },
 }));
 
 export default sharedSectionStyles;

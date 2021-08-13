@@ -1,5 +1,7 @@
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Button, Container, Grid, Typography, useMediaQuery } from '@material-ui/core';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import cx from 'clsx';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { BsTriangleFill } from 'react-icons/bs';
 import Typist from 'react-typist';
@@ -12,6 +14,7 @@ const LandingSection = () => {
   const classes = useStyles();
   const sharedClasses = sharedSectionStyles();
   const [count, setCount] = useState(1);
+  const isDesktop = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
   useEffect(() => {
     setCount(1);
   }, [count]);
@@ -52,6 +55,18 @@ const LandingSection = () => {
                   ' '
                 )}
               </Typography>
+              {isDesktop ? (
+                <Link href="/">
+                  <div className={sharedClasses.readMoreContainer}>
+                    <Button>
+                      <ArrowForwardIcon />
+                    </Button>
+                    <Typography color={'primary'}> Read My Blogs</Typography>
+                  </div>
+                </Link>
+              ) : (
+                ''
+              )}
             </Grid>
             <Grid sm={3} item></Grid>
 
@@ -90,6 +105,18 @@ const LandingSection = () => {
                 exceptional. I aim to use this site to share my own experiences and road from 2x
                 Google intern to CTO.
               </Typography>
+              {isDesktop ? (
+                ''
+              ) : (
+                <Link href="/">
+                  <div className={sharedClasses.readMoreContainer}>
+                    <Button>
+                      <ArrowForwardIcon />
+                    </Button>
+                    <Typography color={'primary'}> Read My Blogs</Typography>
+                  </div>
+                </Link>
+              )}
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <SocialMediaIcons />
               </div>

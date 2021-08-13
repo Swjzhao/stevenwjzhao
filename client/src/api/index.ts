@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 
 // const proxyUrl = 'https://cors-anywhere-steven.herokuapp.com/';
 const env = process.env.NODE_ENV;
-console.log(env);
+
 if (env === 'development') {
   axios.defaults.baseURL = 'http://localhost:5000';
 } else if (env === 'production') {

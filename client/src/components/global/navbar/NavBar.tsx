@@ -85,32 +85,39 @@ const NavBar = (props: any) => {
       open={profileMenuOpen}
       onClose={handleMenuClose}
     >
-      <ListItem
-        button
-        onClick={() => {
-          handleMenuClose();
-          // this.goToProfile();
-        }}
-      >
-        <ListItemIcon>
-          <Avatar src={user && user.avatar} alt="" style={{ width: '24px', height: '24px' }} />
-        </ListItemIcon>
-        <ListItemText primary="My Profile" />
-      </ListItem>
-      <ListItem
-        button
-        onClick={(e) => {
-          e.preventDefault();
-          handleMenuClose();
-          // this.props.signOut();
-          dispatch(signOut());
-        }}
-      >
-        <ListItemIcon>
-          <ExitToApp />
-        </ListItemIcon>
-        <ListItemText primary="Sign Out" />
-      </ListItem>
+      <List onMouseLeave={handleMenuClose}>
+        <ListItem
+          button
+          onClick={() => {
+            handleMenuClose();
+            // this.goToProfile();
+          }}
+        >
+          <ListItemIcon>
+            <Avatar
+              src={user && user.avatar}
+              alt=""
+              className={classes.avatar}
+              style={{ width: '24px', height: '24px' }}
+            />
+          </ListItemIcon>
+          <ListItemText primary="My Profile" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={(e) => {
+            e.preventDefault();
+            handleMenuClose();
+            // this.props.signOut();
+            dispatch(signOut());
+          }}
+        >
+          <ListItemIcon>
+            <ExitToApp />
+          </ListItemIcon>
+          <ListItemText primary="Sign Out" />
+        </ListItem>
+      </List>
     </Menu>
   );
   return (
@@ -177,38 +184,45 @@ const NavBar = (props: any) => {
               </List>
               <Divider />
               <div style={{ flexGrow: 1 }}></div>
-              <ListItem button>
-                <ListItemIcon>
-                  <Avatar
-                    src={user && user.avatar}
-                    alt=""
-                    style={{ width: '24px', height: '24px' }}
-                  />
-                </ListItemIcon>
-                <ListItemText primary="My Profile" />
-              </ListItem>
-              <ListItem
-                button
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleMenuClose();
-                  // this.props.signOut();
-                  dispatch(signOut());
-                  setOpenMobileMenu(false);
-                }}
-              >
-                <ListItemIcon>
-                  <ExitToApp />
-                </ListItemIcon>
-                <ListItemText primary="Sign Out" />
-              </ListItem>
+              {user ? (
+                <>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <Avatar
+                        src={user && user.avatar}
+                        alt=""
+                        className={classes.avatar}
+                        style={{ width: '24px', height: '24px' }}
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="My Profile" />
+                  </ListItem>
+                  <ListItem
+                    button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleMenuClose();
+                      // this.props.signOut();
+                      dispatch(signOut());
+                      setOpenMobileMenu(false);
+                    }}
+                  >
+                    <ListItemIcon>
+                      <ExitToApp />
+                    </ListItemIcon>
+                    <ListItemText primary="Sign Out" />
+                  </ListItem>
+                </>
+              ) : (
+                ''
+              )}
             </SwipeableDrawer>
           </Typography>
 
           <MediaQuery minDeviceWidth={601}>
             <div className={classes.grow}></div>
             <div className={classes.navButtonContainer}>
-              <Link href="/">
+              <Link href="/new-post">
                 <Button color={'primary'} disableRipple>
                   <Typography
                     variant="body1"
@@ -234,28 +248,43 @@ const NavBar = (props: any) => {
           <MediaQuery maxDeviceWidth={600}>
             <div className={classes.grow}></div>
           </MediaQuery>
-          <div>
-            <IconButton aria-label="SearchIcon" color={'primary'} disableRipple>
-              <Search />
-            </IconButton>
-          </div>
-          <div>
-            {user ? (
-              <Button color={'primary'} disableRipple onClick={handleProfileMenuOpen}>
-                {user.name}
+
+          <IconButton aria-label="SearchIcon" color={'primary'} disableRipple>
+            <Search />
+          </IconButton>
+
+          {user ? (
+            <>
+              <Button color={'primary'} variant="outlined" disableRipple>
+                Write
               </Button>
-            ) : (
-              <Button
-                color={'primary'}
-                variant="outlined"
-                onClick={() => setOpenLogin(true)}
-                disableRipple
-              >
-                <MediaQuery maxDeviceWidth={600}>Login</MediaQuery>
-                <MediaQuery minDeviceWidth={601}>Signup / Login</MediaQuery>
-              </Button>
-            )}
-          </div>
+              <MediaQuery minDeviceWidth={601}>
+                <IconButton
+                  aria-label="SearchIcon"
+                  color={'primary'}
+                  disableRipple
+                  onClick={handleProfileMenuOpen}
+                  onMouseEnter={handleProfileMenuOpen}
+                >
+                  <Avatar
+                    color={'primary'}
+                    style={{ width: '36px', height: '36px' }}
+                    className={classes.avatar}
+                  ></Avatar>
+                </IconButton>
+              </MediaQuery>
+            </>
+          ) : (
+            <Button
+              color={'primary'}
+              variant="outlined"
+              onClick={() => setOpenLogin(true)}
+              disableRipple
+            >
+              <MediaQuery maxDeviceWidth={600}>Login</MediaQuery>
+              <MediaQuery minDeviceWidth={601}>Signup / Login</MediaQuery>
+            </Button>
+          )}
         </Toolbar>
       </Container>
       <AuthForm open={openLogin} setOpen={setOpenLogin} />

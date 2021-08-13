@@ -120,6 +120,12 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: `4px solid ${theme.palette.secondary.main}`,
     },
   },
+  avatar: {
+    color: theme.palette.primary.main,
+    // @ts-ignore
+    backgroundColor: theme.palette.backgroundColors.main,
+    border: `${theme.palette.primary.main} 1px solid`,
+  },
 }));
 
 export default useStyles;

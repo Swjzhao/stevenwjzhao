@@ -1,6 +1,7 @@
 import { Button, Container, Grid, Typography, useMediaQuery } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import cx from 'clsx';
+import Link from 'next/link';
 import React from 'react';
 
 import sharedSectionStyles from '../global/sections/styles';
@@ -9,7 +10,6 @@ import useStyles from './styles/sectionStyles';
 const AboutSection = () => {
   const classes = useStyles();
   const sharedClasses = sharedSectionStyles();
-
   const isDesktop = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
   return (
     <div className={cx(sharedClasses.sectionWrapper, sharedClasses.darkWrapper)}>
@@ -33,12 +33,14 @@ const AboutSection = () => {
               A community for young innovators, enthuasists, entrepreneurs who think medicore is not
               enough.
             </Typography>
-            <div className={classes.catHeaderButtonContainer}>
-              <Button>
-                <ArrowForwardIcon />
-              </Button>{' '}
-              <Typography color={'primary'}> Read More</Typography>
-            </div>
+            <Link href="/about">
+              <div className={sharedClasses.readMoreContainer}>
+                <Button>
+                  <ArrowForwardIcon />
+                </Button>
+                <Typography color={'primary'}> Read More</Typography>
+              </div>
+            </Link>
           </Grid>
           {isDesktop ? (
             <>

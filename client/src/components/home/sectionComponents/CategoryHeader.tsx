@@ -1,6 +1,7 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import cx from 'clsx';
+import Link from 'next/link';
 import React from 'react';
 
 import sharedSectionStyles from '../../global/sections/styles';
@@ -28,12 +29,14 @@ const CategoryHeader = (props: any) => {
         A community for young innovators, enthuasists, entrepreneurs who think medicore is not
         enough.
       </Typography>
-      <div className={classes.catHeaderButtonContainer}>
-        <Button>
-          <ArrowForwardIcon />
-        </Button>
-        <Typography color={'primary'}> Read More</Typography>
-      </div>
+      <Link href="/">
+        <div className={sharedClasses.readMoreContainer}>
+          <Button>
+            <ArrowForwardIcon />
+          </Button>
+          <Typography color={'primary'}> Read More</Typography>
+        </div>
+      </Link>
     </Grid>
   );
 };

@@ -60,8 +60,7 @@ const Footer = (props: any) => {
         </Container>
         <Divider color="white" style={{ backgroundColor: '#818181' }} />
         <Grid container spacing={1} className={classes.captionContainer}>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12}>
             <Typography
               align="right"
               color="primary"

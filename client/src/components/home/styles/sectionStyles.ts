@@ -88,27 +88,6 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: '20px',
     },
   },
-  catHeaderButtonContainer: {
-    padding: '15px 0',
-    display: 'flex',
-    alignItems: 'center',
-    zIndex: 101,
-    '& .MuiButtonBase-root': {
-      width: '56px',
-      height: '50px',
-      // @ts-ignore
-      background: theme.palette.backgroundColors.button,
-      marginRight: '10px',
-      [theme.breakpoints.down('xs')]: {
-        width: '28px',
-        height: '40px',
-      },
-    },
-
-    '& .MuiTypography-root': {
-      padding: 0,
-    },
-  },
 
   hiddenGrid: {
     [theme.breakpoints.down('md')]: {

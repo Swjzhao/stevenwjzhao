@@ -1,15 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 
-import AboutPage from '../components/about';
-// eslint-disable-next-line
-
-const About = () => {
-  const [key, setKey] = React.useState(0);
-
-  React.useEffect(() => {
-    setKey(1);
-  }, []);
+const newPost = () => {
   return (
     <>
       <Head>
@@ -17,9 +9,8 @@ const About = () => {
         <meta property="og:image" content={'/logo.png'} />
         <link rel="icon" href="logo.png" />
       </Head>
-      <AboutPage />
     </>
   );
 };
 
-export default About;
+export default newPost;
