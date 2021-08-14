@@ -19,4 +19,6 @@ router.get(
   userMiddleWare.userModChecker,
   authController.sendResetPassword
 );
+router.patch('/reset_password', userMiddleWare.authChecker, authController.resetPassword);
+
 export default router;

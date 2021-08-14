@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.get('/:id', userController.getUser);
 router.patch('', userMiddleWare.authChecker, userController.updateUser);
-router.patch('/reset_password', userMiddleWare.authChecker, userController.resetPassword);
 router.patch('/:id', userMiddleWare.userModChecker, userController.updateUser);
 
 export default router;

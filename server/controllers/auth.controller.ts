@@ -10,7 +10,7 @@ import {
   generateRefreshToken,
 } from '../config/generateToken';
 import sendEmail from '../config/sendEmail';
-import { IDecodedToken } from '../interface';
+import { IDecodedToken, IRequestUser } from '../interface';
 import Users from '../models/user.model';
 
 const {
@@ -102,7 +102,6 @@ export const refreshAuth = async (req: Request, res: Response) => {
     return res.status(500).json({ msg: err.message });
   }
 };
-
 export const activateAccount = async (req: Request, res: Response) => {
   try {
     const { activateToken } = req.body;
@@ -172,6 +171,32 @@ export const signInWithThirdParty = async (req: Request, res: Response) => {
 
 export const sendResetPassword = async (req: Request, res: Response) => {
   return res;
+};
+
+export const resetPassword = async (req: IRequestUser, res: Response) => {
+  const user = await Users.findOne({ _id: req.id });
+  if (!user) return res.status(400).json({ msg: 'Invalid Form.' });
+
+  if (user.signInMethod !== 'email')
+    return res.status(400).json({
+      msg: `This account was signed in with ${user.signInMethod}.`,
+    });
+
+  try {
+    const { password } = req.body;
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    await Users.findOneAndUpdate(
+      { _id: req.id },
+      {
+        password: passwordHash,
+      }
+    );
+
+    return res.status(200).json({ msg: 'Reset Password Successful!' });
+  } catch (err: any) {
+    return res.status(500).json({ msg: err.message });
+  }
 };
 
 const signInWithGoogle = async (req: Request, res: Response) => {

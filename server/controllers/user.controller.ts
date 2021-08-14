@@ -61,28 +61,3 @@ export const updateUser = async (req: IRequestUser, res: Response) => {
     return res.status(500).json({ msg: err.message });
   }
 };
-export const resetPassword = async (req: IRequestUser, res: Response) => {
-  const user = await Users.findOne({ _id: req.id });
-  if (!user) return res.status(400).json({ msg: 'Invalid Form.' });
-
-  if (user.signInMethod !== 'email')
-    return res.status(400).json({
-      msg: `This account was signed in with ${user.signInMethod}.`,
-    });
-
-  try {
-    const { password } = req.body;
-    const passwordHash = await bcrypt.hash(password, 12);
-
-    await Users.findOneAndUpdate(
-      { _id: req.id },
-      {
-        password: passwordHash,
-      }
-    );
-
-    return res.status(200).json({ msg: 'Reset Password Successful!' });
-  } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
-  }
-};
