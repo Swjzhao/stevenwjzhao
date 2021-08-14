@@ -29,4 +29,4 @@ export const activateAccount = (token: string) =>
 export const signInWithThirdParty = (data: IThirdPartyLogin) =>
   axios.post('/auth/sign_in_with_third_party', data);
 export const signInWithToken = (data: any) => axios.post('/auth/signInWithToken', data);
-export const resetPassword = (id: string) => axios.get('/auth/reset_password');
+export const resetPassword = (email: string) => axios.post('/auth/send_reset_password', { email });

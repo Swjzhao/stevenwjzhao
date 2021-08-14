@@ -115,3 +115,19 @@ export const facebookSignIn =
       dispatch(setStatus({ status: 'error', error: err.response.data.message }));
     }
   };
+
+export const resetPassword = (email: string) => async (dispatch: Dispatch<any | Action>) => {
+  try {
+    dispatch(setStatus({ status: 'loading' }));
+
+    const res = await api.resetPassword(email);
+    dispatch({
+      type: types.SHOW_SNACKBAR,
+      payload: `${res.data.message}`,
+    });
+    dispatch(clearStatus());
+  } catch (err: any) {
+    console.log(err);
+    dispatch(setStatus({ status: 'error', error: err.response.data.message }));
+  }
+};

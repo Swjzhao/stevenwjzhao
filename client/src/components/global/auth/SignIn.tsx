@@ -1,14 +1,18 @@
 import { Button, Divider, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
 import { IUserCredientials } from '../../../models';
+import { resetPassword } from '../../../store/actions';
 import CustomTextField from '../utils/CustomTextField';
 import SocialMediaLogin from './SocialMediaLogin';
 
 const SignIn = (props: any) => {
   const { classes, error, handleChange, handleSubmit, setIsSignIn } = props;
   const methods = useForm();
+
+  const dispatch = useDispatch();
 
   return (
     <div className={classes.paper}>
@@ -52,7 +56,13 @@ const SignIn = (props: any) => {
           </Button>
           <Grid container justifyContent="center">
             <Grid item xs={12}>
-              Forgot password?
+              <a
+                href="javascript:void(0);"
+                onClick={() => dispatch(resetPassword(methods.getValues('email')))}
+                style={{ textDecoration: 'none', color: '#FFF' }}
+              >
+                Forgot password?
+              </a>
             </Grid>
             <Grid item xs={12} className={classes.signInsignUpToggle}>
               Don&apos;t have an account?{' '}

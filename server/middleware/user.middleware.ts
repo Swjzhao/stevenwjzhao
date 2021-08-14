@@ -31,7 +31,7 @@ export const userModChecker = async (req: IRequestUser, res: Response, next: Nex
       const decoded = <IDecodedToken>jwt.verify(token, `${ACCESS_TOKEN_SECRET}`);
       req.id = decoded.sub;
       const user = await Users.findOne({ _id: decoded.sub });
-      if (!user) return res.status(400).json({ msg: 'User does not exist.' });
+      if (!user) return res.status(400).json({ message: 'User does not exist.' });
 
       if (user.role < 2) {
         throw new Error('Forbidden');
@@ -59,7 +59,7 @@ export const adminChecker = async (req: IRequestUser, res: Response, next: NextF
       const decoded = <IDecodedToken>jwt.verify(token, `${ACCESS_TOKEN_SECRET}`);
       req.id = decoded.sub;
       const user = await Users.findOne({ _id: decoded.sub });
-      if (!user) return res.status(400).json({ msg: 'User does not exist.' });
+      if (!user) return res.status(400).json({ message: 'User does not exist.' });
 
       if (user.role < 3) {
         throw new Error('Forbidden');

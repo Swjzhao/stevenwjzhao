@@ -42,6 +42,7 @@
     "class-methods-use-this": "off",
     "no-plusplus": "off",
     "import/no-extraneous-dependencies": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-script-url": 0
   }
 }

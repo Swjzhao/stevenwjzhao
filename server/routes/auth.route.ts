@@ -13,8 +13,8 @@ router.get('/verify', authController.verifyToken);
 router.post('/activate', authController.activateAccount);
 router.get('/refresh_token', authController.refreshAuth);
 router.get('/sign_out', authController.signOut);
-router.get('/send_reset_password', userMiddleWare.authChecker, authController.sendResetPassword);
-router.get(
+router.post('/send_reset_password', authController.sendResetPassword);
+router.post(
   '/send_reset_password/:id',
   userMiddleWare.userModChecker,
   authController.sendResetPassword

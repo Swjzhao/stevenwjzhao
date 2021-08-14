@@ -9,7 +9,7 @@ import {
   generateActivateToken,
   generateRefreshToken,
 } from '../config/generateToken';
-import sendEmail from '../config/sendEmail';
+import { sendEmail, sendResetEmail } from '../config/sendEmail';
 import { IDecodedToken, IRequestUser } from '../interface';
 import Users from '../models/user.model';
 
@@ -53,7 +53,7 @@ export const signUp = async (req: Request, res: Response) => {
     const newUser = { name, email, password: hashPassword };
     return signUpMethod(newUser, res);
     /*
-    return res.status(200).json({ msg: 'Please verify your email. Check the spam' });
+    return res.status(200).json({ message: 'Please verify your email. Check the spam' });
     */
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -79,13 +79,13 @@ export const signIn = async (req: Request, res: Response) => {
 export const refreshAuth = async (req: Request, res: Response) => {
   try {
     const rfToken = req.cookies.refreshtoken;
-    if (!rfToken) return res.status(400).json({ msg: 'Not token found' });
+    if (!rfToken) return res.status(400).json({ message: 'Not token found' });
     console.log(jwt.verify(rfToken, `${REFRESH_TOKEN_SECRET}`));
     const decoded = <IDecodedToken>jwt.verify(rfToken, `${REFRESH_TOKEN_SECRET}`);
-    if (!decoded.sub) return res.status(400).json({ msg: 'Please login now!' });
+    if (!decoded.sub) return res.status(400).json({ message: 'Please login now!' });
 
     const user = await Users.findById(decoded.sub).select('-password');
-    if (!user) return res.status(400).json({ msg: 'This account does not exist.' });
+    if (!user) return res.status(400).json({ message: 'This account does not exist.' });
 
     const newRefreshToken = generateRefreshToken({ sub: user._id });
 
@@ -99,7 +99,7 @@ export const refreshAuth = async (req: Request, res: Response) => {
 
     return res.json({ token: accessToken, user });
   } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 export const activateAccount = async (req: Request, res: Response) => {
@@ -109,7 +109,7 @@ export const activateAccount = async (req: Request, res: Response) => {
     const decoded = <IDecodedToken>jwt.verify(activateToken, `${ACTIVE_TOKEN_SECRET}`);
     const { newUser } = decoded;
 
-    if (!newUser) return res.status(400).json({ msg: 'Invalid authentication.' });
+    if (!newUser) return res.status(400).json({ message: 'Invalid authentication.' });
 
     const user = await Users.findOne({ email: newUser.email });
     if (user) {
@@ -128,7 +128,7 @@ export const activateAccount = async (req: Request, res: Response) => {
 
     return res.status(200).json({ token: accessToken, user: resUser });
   } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -146,9 +146,9 @@ export const verifyToken = async (req: Request, res: Response) => {
 export const signOut = async (req: Request, res: Response) => {
   try {
     res.clearCookie('refreshtoken', { path: '/auth/refresh_token' });
-    return res.json({ msg: 'Logged out!' });
+    return res.json({ message: 'Logged out!' });
   } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -162,24 +162,36 @@ export const signInWithThirdParty = async (req: Request, res: Response) => {
       case 'facebook':
         return signInWithFacebook(req, res);
       default:
-        return res.status(400).json({ msg: 'Not supported' });
+        return res.status(400).json({ message: 'Not supported' });
     }
   } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
 export const sendResetPassword = async (req: Request, res: Response) => {
-  return res;
+  try {
+    const user = await Users.findOne({ email: req.body.email });
+    if (!user) {
+      return res.status(404).json({ message: 'Email does not existt.' });
+    }
+    const activateToken = generateActivateToken({ newUser: user });
+    const url = `${BASE_URL}/reset-password/${activateToken}`;
+    const subject = 'Reset password for WeAreStillDreamers';
+    await sendResetEmail(user.email, url, subject);
+    return res.status(200).json({ message: 'A reset email has been sent to your email.' });
+  } catch (err: any) {
+    return res.status(500).json({ message: err.message });
+  }
 };
 
 export const resetPassword = async (req: IRequestUser, res: Response) => {
   const user = await Users.findOne({ _id: req.id });
-  if (!user) return res.status(400).json({ msg: 'Invalid Form.' });
+  if (!user) return res.status(400).json({ message: 'Invalid Form.' });
 
   if (user.signInMethod !== 'email')
     return res.status(400).json({
-      msg: `This account was signed in with ${user.signInMethod}.`,
+      message: `This account was signed in with ${user.signInMethod}.`,
     });
 
   try {
@@ -193,9 +205,9 @@ export const resetPassword = async (req: IRequestUser, res: Response) => {
       }
     );
 
-    return res.status(200).json({ msg: 'Reset Password Successful!' });
+    return res.status(200).json({ message: 'Reset Password Successful!' });
   } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -209,7 +221,7 @@ const signInWithGoogle = async (req: Request, res: Response) => {
 
     const { email, email_verified, name, picture } = <any>verify.getPayload();
 
-    if (!email_verified) return res.status(500).json({ msg: 'Email verification failed.' });
+    if (!email_verified) return res.status(500).json({ message: 'Email verification failed.' });
 
     const password = `${email}${GOOGLE_PASS_KEY}`;
     const passwordHash = await bcrypt.hash(password, 12);
@@ -228,7 +240,7 @@ const signInWithGoogle = async (req: Request, res: Response) => {
     };
     return signUpMethod(newUser, res);
   } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 const signInWithFacebook = async (req: Request, res: Response) => {
@@ -264,7 +276,7 @@ const signInWithFacebook = async (req: Request, res: Response) => {
     };
     return signUpMethod({ ...newUser }, res);
   } catch (err: any) {
-    return res.status(500).json({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
