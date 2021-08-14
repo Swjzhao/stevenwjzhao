@@ -20,7 +20,10 @@ const sharedSectionStyles = makeStyles((theme) => ({
     marginRight: 10,
     color: theme.palette.secondary.main,
   },
-
+  flexGrowWrapper: {
+    flexGrow: 1,
+    position: 'relative',
+  },
   sectionWrapper: {
     width: '100%',
     minHeight: '100vh',

@@ -15,23 +15,22 @@ const Footer = (props: any) => {
   return (
     <>
       <div className={cx(classes.outerContainer)}>
-        <Container maxWidth={'lg'} className={sharedClasses.sectionContainer}>
+        <Container maxWidth={'xl'} className={sharedClasses.sectionContainer}>
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={3}>
-              <img src={'/Logo-white-large.png'} style={{ width: '50%', marginLeft: '-15px' }} />
+            <Grid item xs={12} sm={4} xl={3}>
+              <img src={'/Logo-white-large.png'} style={{ width: '180px', marginLeft: '-10px' }} />
               <Typography color="primary" variant="subtitle2">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry&apos;s standard dummy text ever
+                This site is for contenders in software who aspire to become exceptional. I aim to
+                use this site to share my own experiences and road from 2x Google intern to CTO.{' '}
               </Typography>
             </Grid>
 
-            <Grid item xs={12} sm={3}></Grid>
-            <Grid item xs={12} sm={3}></Grid>
+            <Grid item xs={12} sm={5} xl={6}></Grid>
             <Grid sm={3} item className={sharedClasses.gridItemContainer}>
               <Typography
                 color="primary"
                 variant={'body1'}
-                style={{ fontSize: '15pt', paddingBottom: '30px' }}
+                style={{ fontSize: '15pt', paddingBottom: '20px' }}
               >
                 JOIN THE DREAMERS
               </Typography>
@@ -47,7 +46,7 @@ const Footer = (props: any) => {
                   variant="outlined"
                   color="secondary"
                   fullWidth={false}
-                  style={{ marginTop: '30px', padding: '10px 0' }}
+                  style={{ marginTop: '20px', padding: '10px 0' }}
                 >
                   Subscribe
                 </Button>
