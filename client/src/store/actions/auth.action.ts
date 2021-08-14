@@ -1,7 +1,7 @@
 import { Action, Dispatch } from 'redux';
 
 import * as api from '../../api';
-import { IUserCredientials } from '../../models';
+import { IUserCredientials } from '../../interface';
 import * as types from '../constants';
 import { clearStatus, setStatus } from './status.action';
 

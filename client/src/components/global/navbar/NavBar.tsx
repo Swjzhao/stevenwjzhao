@@ -23,7 +23,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
-import { IUser, RootStore } from '../../../models';
+import { IUser, RootStore } from '../../../interface';
 import { signOut } from '../../../store/actions';
 import AuthForm from '../auth/AuthForm';
 import useStyles from './style';

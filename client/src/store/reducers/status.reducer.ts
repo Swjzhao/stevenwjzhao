@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 
-import { IStatus } from '../../models';
+import { IStatus } from '../../interface';
 import * as types from '../constants';
 
 const statusReducer = (state: IStatus, action: AnyAction) => {

@@ -3,7 +3,7 @@ import React, { PropsWithChildren, useEffect } from 'react';
 // @ts-ignore
 import { useDispatch, useSelector } from 'react-redux';
 
-import { IUser, RootStore } from '../../models';
+import { IUser, RootStore } from '../../interface';
 import { refreshToken } from '../../store/actions';
 import Footer from './footer/Footer';
 import Navbar from './navbar/NavBar';

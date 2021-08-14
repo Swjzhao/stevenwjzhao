@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { IUserCredientials } from '../../../models';
+import { IUserCredientials } from '../../../interface';
 import CustomTextField from '../utils/CustomTextField';
 
 const SignUp = (props: any) => {

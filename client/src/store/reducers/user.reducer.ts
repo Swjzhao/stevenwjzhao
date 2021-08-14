@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 
-import { IUser } from '../../models';
+import { IUser } from '../../interface';
 import * as types from '../constants';
 
 const userReducer = (state: IUser | null, action: AnyAction): IUser | null => {

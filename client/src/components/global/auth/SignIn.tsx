@@ -3,7 +3,7 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import { IUserCredientials } from '../../../models';
+import { IUserCredientials } from '../../../interface';
 import { resetPassword } from '../../../store/actions';
 import CustomTextField from '../utils/CustomTextField';
 import SocialMediaLogin from './SocialMediaLogin';

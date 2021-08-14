@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 
 import * as api from '../../api';
-import { IUser } from '../../models';
+import { IUser } from '../../interface';
 import { clearStatus, setStatus } from './status.action';
 
 export const resetPassword = (newPassword: string) => async (dispatch: Dispatch) => {

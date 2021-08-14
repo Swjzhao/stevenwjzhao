@@ -1,6 +1,6 @@
 import { Action, Dispatch } from 'redux';
 
-import { IStatus } from '../../models';
+import { IStatus } from '../../interface';
 import * as types from '../constants';
 
 export const setStatus = (data: IStatus) => (dispatch: Dispatch<Action>) => {

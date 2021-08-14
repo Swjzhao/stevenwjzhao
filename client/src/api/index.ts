@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { IThirdPartyLogin } from '../models/index';
+import { IThirdPartyLogin } from '../interface';
 
 axios.defaults.withCredentials = true;
 

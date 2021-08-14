@@ -2,7 +2,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootStore } from '../../models';
+import { RootStore } from '../../interface';
 import { hideSnackBar } from '../../store/actions';
 
 const SnackBar = () => {

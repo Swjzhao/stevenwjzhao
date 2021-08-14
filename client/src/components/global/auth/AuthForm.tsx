@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 // @ts-ignore
 import { useDispatch, useSelector } from 'react-redux';
 
-import { IUserCredientials, RootStore } from '../../../models';
+import { IUserCredientials, RootStore } from '../../../interface';
 import { clearStatus, signIn, signUp } from '../../../store/actions';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
