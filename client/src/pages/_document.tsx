@@ -11,7 +11,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>{/* <link rel="icon" href="/favicon.ico" /> */}</Head>
+        <Head>
+          {/* <link rel="icon" href="/favicon.ico" /> */}
+          <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+        </Head>
         <body>
           <Main />
           <NextScript />
