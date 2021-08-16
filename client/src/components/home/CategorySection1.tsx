@@ -2,7 +2,7 @@ import { Container, Grid } from '@material-ui/core';
 import cx from 'clsx';
 import React, { useEffect } from 'react';
 
-import sharedSectionStyles from '../global/sections/styles';
+import sharedSectionStyles from '../../styles/pageSectionStyles';
 import CategoryHeader from './sectionComponents/CategoryHeader';
 import PostCard from './sectionComponents/PostCard';
 import useStyles from './styles/sectionStyles';

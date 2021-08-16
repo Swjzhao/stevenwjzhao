@@ -4,7 +4,7 @@ import cx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 
-import sharedSectionStyles from '../../global/sections/styles';
+import sharedSectionStyles from '../../../styles/pageSectionStyles';
 import useStyles from '../styles/sectionStyles';
 
 const CategoryHeader = (props: any) => {

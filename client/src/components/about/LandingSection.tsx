@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { BsTriangleFill } from 'react-icons/bs';
 import Typist from 'react-typist';
 
-import sharedSectionStyles from '../global/sections/styles';
+import sharedSectionStyles from '../../styles/pageSectionStyles';
 import SocialMediaIcons from '../global/socialMedia/SocialMediaIcons';
 import useStyles from './styles';
 

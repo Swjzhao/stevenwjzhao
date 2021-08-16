@@ -6,11 +6,11 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import * as api from '../../api';
-import sharedSectionStyles from '../../components/global/sections/styles';
 import CustomTextField from '../../components/global/utils/CustomTextField';
 import { IUpdateUser, IUser } from '../../interface';
 import { updateUser } from '../../store/actions';
-import useStyles from './style';
+import sharedSectionStyles from '../../styles/pageSectionStyles';
+import useStyles from '../../styles/profilePageStyles';
 
 const Profile = (props: any) => {
   const router = useRouter();

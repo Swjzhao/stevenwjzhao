@@ -13,7 +13,7 @@ import { BiLineChart } from 'react-icons/bi';
 import { BsClipboardData } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 
-import sharedSectionStyles from '../global/sections/styles';
+import sharedSectionStyles from '../../styles/pageSectionStyles';
 import useStyles from './styles';
 
 const WorkExpSection = () => {

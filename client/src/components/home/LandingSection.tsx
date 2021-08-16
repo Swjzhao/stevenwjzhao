@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 // import DetailsRoundedIcon from '@material-ui/icons/DetailsRounded';
 import { BsTriangleFill } from 'react-icons/bs';
 
-import sharedSectionStyles from '../global/sections/styles';
+import sharedSectionStyles from '../../styles/pageSectionStyles';
 import useStyles from './styles/sectionStyles';
 
 const LandingSection = (props: any) => {

@@ -2,7 +2,7 @@ import { Button, Container, Divider, Grid, TextField, Typography } from '@materi
 import cx from 'clsx';
 import React from 'react';
 
-import sharedSectionStyles from '../sections/styles';
+import sharedSectionStyles from '../../../styles/pageSectionStyles';
 import SocialMediaIcons from '../socialMedia/SocialMediaIcons';
 import useStyles from './styles';
 
