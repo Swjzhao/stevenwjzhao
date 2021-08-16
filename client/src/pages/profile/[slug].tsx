@@ -26,6 +26,7 @@ import { updateUser } from '../../store/actions';
 import sharedSectionStyles from '../../styles/pageSectionStyles';
 import useStyles from '../../styles/profilePageStyles';
 import { roleArr } from '../../utils/constants';
+import preCheckImage from '../../utils/PreCheckImage';
 
 const Profile = (props: any) => {
   const router = useRouter();
@@ -38,6 +39,7 @@ const Profile = (props: any) => {
   const error = useSelector((state: RootStore) => state?.status?.error);
   const [nativeError, setNativeError] = useState('');
   const [user, setUser] = useState<IUser | null>(null);
+
   const [loading, setLoading] = useState(false);
   const [canEdit, setCanEdit] = useState(false);
   const [avatar, setAvatar] = useState<File | null>();
@@ -68,7 +70,7 @@ const Profile = (props: any) => {
   };
 
   const handleSubmit = (data: IUpdateUser) => {
-    dispatch(updateUser(data));
+    if (nativeError === '') dispatch(updateUser(avatar, data));
   };
 
   const handleChangeFile = (e: any) => {
@@ -77,7 +79,14 @@ const Profile = (props: any) => {
 
     if (files) {
       const file = files[0];
-      setAvatar(file);
+      try {
+        preCheckImage(file);
+        setAvatar(file);
+
+        setNativeError('');
+      } catch (err) {
+        setNativeError(err.message);
+      }
     }
   };
 
@@ -94,7 +103,6 @@ const Profile = (props: any) => {
                 <FormProvider {...methods}>
                   <form
                     onSubmit={methods.handleSubmit((data: IUpdateUser) => {
-                      console.log(data);
                       handleSubmit(data);
                     })}
                   >
@@ -160,6 +168,7 @@ const Profile = (props: any) => {
                         component="p"
                       >
                         {error}
+                        {nativeError}
                       </Typography>
 
                       <Grid
@@ -174,7 +183,10 @@ const Profile = (props: any) => {
                         <Button
                           variant="contained"
                           color={'secondary'}
-                          onClick={() => methods.reset()}
+                          onClick={() => {
+                            setAvatar(null);
+                            methods.reset();
+                          }}
                         >
                           Reset
                         </Button>
