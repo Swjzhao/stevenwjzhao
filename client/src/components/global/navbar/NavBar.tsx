@@ -139,7 +139,7 @@ const NavBar = (props: any) => {
               {user ? (
                 <>
                   <Link href={`/profile/${user._id}`}>
-                    <ListItem button>
+                    <ListItem button onClick={() => setOpenMobileMenu(false)}>
                       <ListItemIcon>
                         <Avatar
                           src={user && user.avatar}
