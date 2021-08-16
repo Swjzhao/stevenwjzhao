@@ -138,17 +138,19 @@ const NavBar = (props: any) => {
               <div style={{ flexGrow: 1 }}></div>
               {user ? (
                 <>
-                  <ListItem button>
-                    <ListItemIcon>
-                      <Avatar
-                        src={user && user.avatar}
-                        alt=""
-                        className={classes.avatar}
-                        style={{ width: '24px', height: '24px' }}
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary={user.name} />
-                  </ListItem>
+                  <Link href={`/profile/${user._id}`}>
+                    <ListItem button>
+                      <ListItemIcon>
+                        <Avatar
+                          src={user && user.avatar}
+                          alt=""
+                          className={classes.avatar}
+                          style={{ width: '24px', height: '24px' }}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary={user.name} />
+                    </ListItem>
+                  </Link>
                   <ListItem
                     button
                     onClick={(e) => {
@@ -226,6 +228,7 @@ const NavBar = (props: any) => {
                 >
                   <Avatar
                     color={'primary'}
+                    src={user && user.avatar}
                     style={{ width: '36px', height: '36px' }}
                     className={classes.avatar}
                   ></Avatar>
@@ -255,12 +258,14 @@ const NavBar = (props: any) => {
                       }}
                     >
                       <ListItemIcon>
-                        <Avatar
-                          src={user && user.avatar}
-                          alt=""
-                          className={classes.avatar}
-                          style={{ width: '24px', height: '24px' }}
-                        />
+                        <Link href={`/profile/${user._id}`}>
+                          <Avatar
+                            src={user && user.avatar}
+                            alt=""
+                            className={classes.avatar}
+                            style={{ width: '24px', height: '24px' }}
+                          />
+                        </Link>
                       </ListItemIcon>
                       <ListItemText primary={user.name} />
                     </ListItem>

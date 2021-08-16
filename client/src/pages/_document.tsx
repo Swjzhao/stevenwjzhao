@@ -14,6 +14,7 @@ class MyDocument extends Document {
         <Head>
           {/* <link rel="icon" href="/favicon.ico" /> */}
           <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+          <link rel="icon" href="/logo.png" />
         </Head>
         <body>
           <Main />

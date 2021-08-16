@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 
 import * as api from '../../api';
-import { IUser } from '../../interface';
+import { IUpdateUser } from '../../interface';
 import { clearStatus, setStatus } from './status.action';
 
 export const resetPassword = (newPassword: string) => async (dispatch: Dispatch) => {
@@ -14,7 +14,7 @@ export const resetPassword = (newPassword: string) => async (dispatch: Dispatch)
   }
 };
 
-export const updateUser = (data: IUser) => async (dispatch: Dispatch) => {
+export const updateUser = (data: IUpdateUser) => async (dispatch: Dispatch) => {
   try {
     setStatus({ status: 'loading' });
     const res = await api.updateUser(data._id, data);

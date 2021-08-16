@@ -27,7 +27,7 @@ const AboutSection = () => {
               </Typography>
             </div>
           </Grid>
-          <Grid item lg={1} className={classes.hiddenGrid}></Grid>
+          <Grid item lg={1}></Grid>
           <Grid lg={3} md={4} item className={cx(sharedClasses.gridItemContainer)}>
             <Typography color={'primary'} variant="body1">
               A community for young innovators, enthuasists, entrepreneurs who think medicore is not

@@ -5,7 +5,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 const CustomTextField = (props: any) => {
   const { control } = useFormContext();
-  const { name, label, required, col, autoFocus, type, autoComplete } = props;
+  const { name, label, defaultValue, required, col, autoFocus, type, autoComplete } = props;
 
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -17,10 +17,11 @@ const CustomTextField = (props: any) => {
           <TextField
             fullWidth
             color={undefined}
+            defaultValue={defaultValue}
             label={label}
             required={required}
             autoFocus={autoFocus}
-            autoCapitalize={autoComplete ?? name}
+            autoComplete={autoComplete ?? name}
             type={type && !showPassword ? type : 'text'}
             // eslint-disable-next-line
             {...field}

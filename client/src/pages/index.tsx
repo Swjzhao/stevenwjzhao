@@ -15,7 +15,6 @@ const Home = () => {
       <Head>
         <title>We Are Still Dreamers</title>
         <meta property="og:image" content={'/logo.png'} />
-        <link rel="icon" href="/logo.png" />
       </Head>
       <HomePage key={key} />
     </>

@@ -23,6 +23,7 @@ const sharedSectionStyles = makeStyles((theme) => ({
   flexGrowWrapper: {
     flexGrow: 1,
     position: 'relative',
+    display: 'flex',
   },
   sectionWrapper: {
     width: '100%',

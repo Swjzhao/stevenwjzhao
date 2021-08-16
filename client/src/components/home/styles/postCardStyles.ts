@@ -1,6 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  cardActionArea: {
+    '&:hover $focusHighlight': {
+      opacity: 0,
+    },
+  },
   cardWrapper: {
     display: 'flex',
     alignItems: 'center',
@@ -11,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   photoWrapper: {
     width: '100%',
     borderRadius: '10px',
-    paddingTop: '100%',
+    paddingTop: '56.25%',
     position: 'relative',
     '& .postCardImage': {
       position: 'absolute',
@@ -29,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.backgroundColors.card,
     borderRadius: '10px',
     padding: '10px',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('lg')]: {
       width: '90%',
     },
   },

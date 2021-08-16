@@ -14,6 +14,8 @@ import {
 // import { FaRegComment } from 'react-icons/fa';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import React from 'react';
+// @ts-ignore
+import LinesEllipsis from 'react-lines-ellipsis';
 
 import ShareOptionsPopover from '../../global/utils/ShareOptionsPopover';
 import useStyles from '../styles/postCardStyles';
@@ -24,19 +26,37 @@ const PostCard = (props: any) => {
   const post = { id: 0, title, description: '' };
   return (
     <div className={classes.cardWrapper}>
-      <div className={classes.photoWrapper}>
-        <img src={photoUrl || '/card-background.svg'} className="postCardImage" />
-      </div>
+      <div
+        className={classes.photoWrapper}
+        style={{ background: `url(${photoUrl || '/card-background.svg'})` }}
+      ></div>
       <Card key={title} className={classes.mainMediaWrapper} elevation={0}>
-        <CardActionArea>
+        <CardActionArea
+          classes={{
+            root: classes.cardActionArea,
+          }}
+        >
           <CardContent>
             <Typography color="primary" variant="h6">
-              Title Title Title Title Title
+              <LinesEllipsis
+                text={`Title Title Title Title Title`}
+                maxLine="1"
+                ellipsis="..."
+                trimRight
+                basedOn="words"
+              />
             </Typography>
             <br />
             <Typography color="primary" variant="subtitle2" component="p">
+              <LinesEllipsis
+                text={`
               This impressive paella is a perfect party dish and a fun meal to cook together with
-              your guests.
+              your guests.`}
+                maxLine="3"
+                ellipsis="..."
+                trimRight
+                basedOn="words"
+              />
             </Typography>
           </CardContent>
           <CardActions />

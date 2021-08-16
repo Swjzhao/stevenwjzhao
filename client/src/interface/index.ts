@@ -8,7 +8,14 @@ export interface IUserCredientials {
   password: string;
 }
 
-export interface IUser {
+export interface IUpdateUser {
+  _id: string;
+  role?: number;
+  name?: string;
+  avatar?: string;
+}
+
+export interface IUser extends IUpdateUser {
   name: string;
   email: string;
   signInMethod: string;
