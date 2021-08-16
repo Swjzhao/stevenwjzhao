@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import * as api from '../../api';
 import sharedSectionStyles from '../../components/global/sections/styles';
 import CustomTextField from '../../components/global/utils/CustomTextField';
-import { IUpdateUser } from '../../interface';
+import { IUpdateUser, IUser } from '../../interface';
 import { updateUser } from '../../store/actions';
 import useStyles from './style';
 
@@ -17,7 +17,7 @@ const Profile = (props: any) => {
   const methods = useForm();
 
   const dispatch = useDispatch();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(false);
   const { slug } = router.query;
 
@@ -61,7 +61,7 @@ const Profile = (props: any) => {
                   <Grid item xs={12} sm={12}>
                     <TextField
                       fullWidth
-                      defaultValue={user && user.email}
+                      defaultValue={user && user?.email}
                       label="Email Address"
                       name="email"
                       variant="outlined"
@@ -70,7 +70,7 @@ const Profile = (props: any) => {
                   </Grid>
                   <CustomTextField
                     required
-                    defaultValue={user && user.name}
+                    defaultValue={user && user?.name}
                     label="Name"
                     name="name"
                     autoFocus
