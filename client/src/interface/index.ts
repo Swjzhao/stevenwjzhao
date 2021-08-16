@@ -23,6 +23,7 @@ export interface IUser extends IUpdateUser {
   verified: boolean;
   avatar: string;
   _id: string;
+  createdAt: Date;
 }
 
 export interface IPatchUser {

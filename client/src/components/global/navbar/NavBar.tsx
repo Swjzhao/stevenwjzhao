@@ -250,25 +250,25 @@ const NavBar = (props: any) => {
                   onClose={handleMenuClose}
                 >
                   <List onMouseLeave={handleMenuClose}>
-                    <ListItem
-                      button
-                      onClick={() => {
-                        handleMenuClose();
-                        // this.goToProfile();
-                      }}
-                    >
-                      <ListItemIcon>
-                        <Link href={`/profile/${user._id}`}>
+                    <Link href={`/profile/${user._id}`}>
+                      <ListItem
+                        button
+                        onClick={() => {
+                          handleMenuClose();
+                          // this.goToProfile();
+                        }}
+                      >
+                        <ListItemIcon>
                           <Avatar
                             src={user && user.avatar}
                             alt=""
                             className={classes.avatar}
                             style={{ width: '24px', height: '24px' }}
                           />
-                        </Link>
-                      </ListItemIcon>
-                      <ListItemText primary={user.name} />
-                    </ListItem>
+                        </ListItemIcon>
+                        <ListItemText primary={user.name} />
+                      </ListItem>
+                    </Link>
                     <ListItem
                       button
                       onClick={(e) => {
