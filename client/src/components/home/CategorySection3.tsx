@@ -36,7 +36,7 @@ const CategorySection1 = (props: any) => {
           <CategoryHeader category={category} />
           <Grid item sm={1} className={classes.hiddenGrid}></Grid>
           <Grid item sm={8} md={8} lg={7} style={{ display: 'flex', flexGrow: 1 }}>
-            <Grid container style={{ flexGrow: 1 }} spacing={10}>
+            <Grid container style={{ flexGrow: 1 }} spacing={5}>
               {posts.map((post) => {
                 return (
                   <Grid sm={6} key={post.title} item className={sharedClasses.gridItemContainer}>

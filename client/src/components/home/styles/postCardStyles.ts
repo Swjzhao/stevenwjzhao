@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
       opacity: 0,
     },
   },
+  cardContent: { paddingBottom: '0px !important' },
   cardWrapper: {
     display: 'flex',
     alignItems: 'center',
@@ -18,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '10px',
     paddingTop: '56.25%',
     position: 'relative',
+    backgroundSize: 'cover',
+    backgroundPosition: 'top',
     '& .postCardImage': {
       position: 'absolute',
       top: 0,
@@ -29,14 +32,10 @@ const useStyles = makeStyles((theme) => ({
   mainMediaWrapper: {
     height: 'fit-content',
     position: 'relative',
-    marginTop: '-100px',
     // @ts-ignore
     backgroundColor: theme.palette.backgroundColors.card,
     borderRadius: '10px',
-    padding: '10px',
-    [theme.breakpoints.up('lg')]: {
-      width: '90%',
-    },
+    // padding: '10px',
   },
   media: {
     position: 'relative',

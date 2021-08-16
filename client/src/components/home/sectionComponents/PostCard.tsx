@@ -4,6 +4,7 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
+  CardMedia,
   IconButton,
   List,
   ListItem,
@@ -26,17 +27,22 @@ const PostCard = (props: any) => {
   const post = { id: 0, title, description: '' };
   return (
     <div className={classes.cardWrapper}>
-      <div
-        className={classes.photoWrapper}
-        style={{ background: `url(${photoUrl || '/card-background.svg'})` }}
-      ></div>
       <Card key={title} className={classes.mainMediaWrapper} elevation={0}>
         <CardActionArea
           classes={{
             root: classes.cardActionArea,
           }}
         >
-          <CardContent>
+          <CardMedia
+            className={classes.photoWrapper}
+            image={`${photoUrl || '/card-background.svg'}`}
+            title="Test"
+          />
+          <CardContent
+            classes={{
+              root: classes.cardContent,
+            }}
+          >
             <Typography color="primary" variant="h6">
               <LinesEllipsis
                 text={`Title Title Title Title Title`}
