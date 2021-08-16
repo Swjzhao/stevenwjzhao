@@ -131,3 +131,11 @@ export const resetPassword = (email: string) => async (dispatch: Dispatch<any | 
     dispatch(setStatus({ status: 'error', error: err.response.data.message }));
   }
 };
+
+export const changePassword = (password: string) => async (dispatch: Dispatch<any | Action>) => {
+  await api.changePassword(password);
+  dispatch({
+    type: types.SHOW_SNACKBAR,
+    payload: 'Password Changed',
+  });
+};

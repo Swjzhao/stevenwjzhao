@@ -12,6 +12,12 @@ if (env === 'development') {
 } else if (env === 'production') {
   // do something
 }
+const localtoken = localStorage.getItem('token');
+if (localtoken) {
+  axios.defaults.headers.common.Authorization = localtoken;
+}
+
+console.log(localtoken);
 
 // http://localhost:5000
 
@@ -29,4 +35,7 @@ export const activateAccount = (token: string) =>
 export const signInWithThirdParty = (data: IThirdPartyLogin) =>
   axios.post('/auth/sign_in_with_third_party', data);
 export const signInWithToken = (data: any) => axios.post('/auth/signInWithToken', data);
+
+export const changePassword = (password: string) =>
+  axios.patch('/auth/change_password', { password });
 export const resetPassword = (email: string) => axios.post('/auth/send_reset_password', { email });

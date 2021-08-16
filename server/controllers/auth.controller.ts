@@ -185,7 +185,7 @@ export const sendResetPassword = async (req: Request, res: Response) => {
   }
 };
 
-export const resetPassword = async (req: IRequestUser, res: Response) => {
+export const changePassword = async (req: IRequestUser, res: Response) => {
   const user = await Users.findOne({ _id: req.id });
   if (!user) return res.status(400).json({ message: 'Invalid Form.' });
 
@@ -196,6 +196,9 @@ export const resetPassword = async (req: IRequestUser, res: Response) => {
 
   try {
     const { password } = req.body;
+    if (!password.match('.{8,}')) {
+      return res.status(404).json({ message: 'Password must contain minimum eight characters' });
+    }
     const passwordHash = await bcrypt.hash(password, 12);
 
     await Users.findOneAndUpdate(

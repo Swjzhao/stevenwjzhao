@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as api from '../../api';
 import CustomTextField from '../../components/global/utils/CustomTextField';
 import { IUpdateUser, IUser, RootStore } from '../../interface';
-import { updateUser } from '../../store/actions';
+import { changePassword, updateUser } from '../../store/actions';
 import sharedSectionStyles from '../../styles/pageSectionStyles';
 import useStyles from '../../styles/profilePageStyles';
 import { roleArr } from '../../utils/constants';
@@ -36,6 +36,7 @@ const Profile = (props: any) => {
   const currentUser: IUser = useSelector((state: RootStore) => state?.user);
 
   const error = useSelector((state: RootStore) => state?.status?.error);
+  const [nativeError, setNativeError] = useState('');
   const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(false);
   const [canEdit, setCanEdit] = useState(false);
@@ -50,16 +51,15 @@ const Profile = (props: any) => {
   }, [slug]);
 
   useEffect(() => {
+    if (!currentUser) setCanEdit(false);
     if (user && currentUser) setCanEdit(user._id === currentUser._id);
   }, [currentUser, user]);
 
   const fetchUser = async () => {
-    console.log(slug);
     try {
       const res = await api.getUser(slug as string);
-      console.log(res.data);
+
       setUser(res.data as IUser);
-      console.log('Hi');
       setCanEdit(user !== null && res.data._id === currentUser._id);
     } catch (e) {
       // @ts-ignore
@@ -69,6 +69,14 @@ const Profile = (props: any) => {
 
   const handleSubmit = (data: IUpdateUser) => {
     dispatch(updateUser(data));
+  };
+
+  const handleChangePassword = async (password: string) => {
+    try {
+      dispatch(changePassword(password));
+    } catch (err) {
+      setNativeError(err.response.data.message);
+    }
   };
 
   const handleChangeFile = (e: any) => {
@@ -153,6 +161,13 @@ const Profile = (props: any) => {
                         name="name"
                         autoFocus
                       />
+                      <Typography
+                        color="error"
+                        style={{ minHeight: '19px', fontSize: '10px' }}
+                        component="p"
+                      >
+                        {error}
+                      </Typography>
 
                       <Grid
                         item
@@ -173,49 +188,65 @@ const Profile = (props: any) => {
                     </Grid>
                   </form>
                 </FormProvider>
-                <Divider color="primary" style={{ width: '100%', marginTop: '15px' }} />
-                <FormProvider {...methodsPassword}>
-                  <form
-                    onSubmit={methodsPassword.handleSubmit((data: any) => {
-                      console.log(data);
-                    })}
-                  >
-                    <Grid container spacing={3} style={{ marginTop: '10px' }}>
-                      <CustomTextField
-                        required
-                        name="new-password"
-                        label="New Password"
-                        type="password"
-                      />
-                      <CustomTextField
-                        required
-                        name="confirm-new-password"
-                        label="Confirm New Password"
-                        type="password"
-                      />
-                      <Typography
-                        color="error"
-                        style={{ minHeight: '19px', fontSize: '10px' }}
-                        component="p"
+                {user.signInMethod === 'email' ? (
+                  <>
+                    <Divider color="primary" style={{ width: '100%', marginTop: '15px' }} />
+                    <FormProvider {...methodsPassword}>
+                      <form
+                        onSubmit={methodsPassword.handleSubmit((data: any) => {
+                          if (
+                            data['new-password'] &&
+                            data['new-password'] !== data['confirm-new-password']
+                          ) {
+                            setNativeError('Passwords dont match');
+                          } else {
+                            setNativeError('');
+                            handleChangePassword(data['new-password']);
+                          }
+                        })}
                       >
-                        {error}
-                      </Typography>
-                      <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'flex-end',
-                        }}
-                      >
-                        <Button variant="contained" color={'primary'} type="submit">
-                          Confirm Change Password
-                        </Button>
-                      </Grid>
-                    </Grid>
-                  </form>
-                </FormProvider>
+                        <Grid container spacing={3} style={{ marginTop: '10px' }}>
+                          <CustomTextField
+                            required
+                            name="new-password"
+                            label="New Password"
+                            type="password"
+                            error={nativeError}
+                          />
+                          <CustomTextField
+                            required
+                            name="confirm-new-password"
+                            label="Confirm New Password"
+                            type="password"
+                            error={nativeError}
+                          />
+                          <Typography
+                            color="error"
+                            style={{ minHeight: '19px', fontSize: '10px' }}
+                            component="p"
+                          >
+                            {nativeError}
+                          </Typography>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'flex-end',
+                            }}
+                          >
+                            <Button variant="contained" color={'primary'} type="submit">
+                              Confirm Change Password
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </form>
+                    </FormProvider>
+                  </>
+                ) : (
+                  ''
+                )}
               </>
             ) : (
               <Grid container spacing={3}>

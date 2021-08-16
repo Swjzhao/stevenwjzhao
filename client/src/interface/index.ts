@@ -34,6 +34,10 @@ export interface IPatchUser {
   avatar?: string;
 }
 
+export interface IResetPassword {
+  password?: string;
+}
+
 export interface IStatus {
   status?: 'loading' | 'error' | 'success';
   error?: string;

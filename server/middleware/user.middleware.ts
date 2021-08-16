@@ -9,9 +9,7 @@ const { ACCESS_TOKEN_SECRET } = process.env;
 export const authChecker = async (req: IRequestUser, res: Response, next: NextFunction) => {
   try {
     const token = `${req.headers?.authorization?.split(' ')[1]}`;
-    const tokenType = token.length < 500;
-
-    if (token && tokenType) {
+    if (token) {
       const decoded = <IDecodedToken>jwt.verify(token, `${ACCESS_TOKEN_SECRET}`);
       req.id = decoded.sub;
     }
@@ -25,9 +23,8 @@ export const authChecker = async (req: IRequestUser, res: Response, next: NextFu
 export const userModChecker = async (req: IRequestUser, res: Response, next: NextFunction) => {
   try {
     const token = `${req.headers?.authorization?.split(' ')[1]}`;
-    const tokenType = token.length < 500;
 
-    if (token && tokenType) {
+    if (token) {
       const decoded = <IDecodedToken>jwt.verify(token, `${ACCESS_TOKEN_SECRET}`);
       req.id = decoded.sub;
       const user = await Users.findOne({ _id: decoded.sub });
@@ -53,9 +50,8 @@ export const userModChecker = async (req: IRequestUser, res: Response, next: Nex
 export const adminChecker = async (req: IRequestUser, res: Response, next: NextFunction) => {
   try {
     const token = `${req.headers?.authorization?.split(' ')[1]}`;
-    const tokenType = token.length < 500;
 
-    if (token && tokenType) {
+    if (token) {
       const decoded = <IDecodedToken>jwt.verify(token, `${ACCESS_TOKEN_SECRET}`);
       req.id = decoded.sub;
       const user = await Users.findOne({ _id: decoded.sub });

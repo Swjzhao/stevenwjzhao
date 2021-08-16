@@ -5,7 +5,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 const CustomTextField = (props: any) => {
   const { control } = useFormContext();
-  const { name, label, defaultValue, required, col, autoFocus, type, autoComplete } = props;
+  const { name, label, defaultValue, required, col, error, autoFocus, type, autoComplete } = props;
 
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -23,11 +23,12 @@ const CustomTextField = (props: any) => {
             autoFocus={autoFocus}
             autoComplete={autoComplete ?? name}
             type={type && !showPassword ? type : 'text'}
+            error={!error || error === '' ? false : error}
             // eslint-disable-next-line
             {...field}
             variant="outlined"
             InputProps={
-              name === 'password'
+              type === 'password'
                 ? {
                     endAdornment: (
                       <InputAdornment position="end">
