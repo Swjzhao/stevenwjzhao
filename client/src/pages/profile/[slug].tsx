@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import * as api from '../../api';
 import CustomTextField from '../../components/global/utils/CustomTextField';
+import ChangePassword from '../../components/profile/ChangePassword';
 import { IUpdateUser, IUser, RootStore } from '../../interface';
 import { changePassword, updateUser } from '../../store/actions';
 import sharedSectionStyles from '../../styles/pageSectionStyles';
@@ -191,58 +192,7 @@ const Profile = (props: any) => {
                 {user.signInMethod === 'email' ? (
                   <>
                     <Divider color="primary" style={{ width: '100%', marginTop: '15px' }} />
-                    <FormProvider {...methodsPassword}>
-                      <form
-                        onSubmit={methodsPassword.handleSubmit((data: any) => {
-                          if (
-                            data['new-password'] &&
-                            data['new-password'] !== data['confirm-new-password']
-                          ) {
-                            setNativeError('Passwords dont match');
-                          } else {
-                            setNativeError('');
-                            handleChangePassword(data['new-password']);
-                          }
-                        })}
-                      >
-                        <Grid container spacing={3} style={{ marginTop: '10px' }}>
-                          <CustomTextField
-                            required
-                            name="new-password"
-                            label="New Password"
-                            type="password"
-                            error={nativeError}
-                          />
-                          <CustomTextField
-                            required
-                            name="confirm-new-password"
-                            label="Confirm New Password"
-                            type="password"
-                            error={nativeError}
-                          />
-                          <Typography
-                            color="error"
-                            style={{ minHeight: '19px', fontSize: '10px' }}
-                            component="p"
-                          >
-                            {nativeError}
-                          </Typography>
-                          <Grid
-                            item
-                            xs={12}
-                            sm={12}
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'flex-end',
-                            }}
-                          >
-                            <Button variant="contained" color={'primary'} type="submit">
-                              Confirm Change Password
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </form>
-                    </FormProvider>
+                    <ChangePassword />
                   </>
                 ) : (
                   ''
