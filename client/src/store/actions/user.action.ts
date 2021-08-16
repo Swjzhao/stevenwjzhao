@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import { Dispatch } from 'redux';
 
 import * as api from '../../api';
@@ -46,3 +47,19 @@ export const updateUser =
       setStatus({ status: 'error', error: err.response.data.message });
     }
   };
+
+// Admin controls
+export const deleteUser = (id: string) => async (dispatch: Dispatch) => {
+  try {
+    setStatus({ status: 'loading' });
+    const res = await api.deleteUser(id);
+    dispatch({
+      type: types.SHOW_SNACKBAR,
+      payload: `${res.data.message}`,
+    });
+    Router.push({ pathname: '/' });
+    clearStatus();
+  } catch (err: any) {
+    setStatus({ status: 'error', error: err.response.data.message });
+  }
+};

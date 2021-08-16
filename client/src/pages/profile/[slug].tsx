@@ -22,7 +22,7 @@ import * as api from '../../api';
 import CustomTextField from '../../components/global/utils/CustomTextField';
 import ChangePassword from '../../components/profile/ChangePassword';
 import { IUpdateUser, IUser, RootStore } from '../../interface';
-import { updateUser } from '../../store/actions';
+import { deleteUser, updateUser } from '../../store/actions';
 import sharedSectionStyles from '../../styles/pageSectionStyles';
 import useStyles from '../../styles/profilePageStyles';
 import { roleArr } from '../../utils/constants';
@@ -269,6 +269,18 @@ const Profile = (props: any) => {
                         }
                       />
                     </ListItem>
+                    {currentUser && currentUser.role > 2 ? (
+                      <Button
+                        variant="outlined"
+                        color="secondary"
+                        style={{ marginLeft: 'auto' }}
+                        onClick={() => dispatch(deleteUser(user._id))}
+                      >
+                        DELETE
+                      </Button>
+                    ) : (
+                      ''
+                    )}
                   </List>
                 </Grid>
               </Grid>

@@ -66,3 +66,34 @@ export const updateUser = async (req: IRequestUser, res: Response) => {
     return res.status(500).json({ message: err.message });
   }
 };
+
+export const deleteUser = async (req: IRequestUser, res: Response) => {
+  if (!req.id) return res.status(400).json({ message: 'Invalid Form.' });
+
+  const { avatar, role, name } = req.body;
+  try {
+    if (req.params.id) {
+      const user = await Users.findOne({ _id: req.params.id });
+
+      // Even User Mod and Admin shouldnt modified everything
+      if (req.role === 3) {
+        if (user.role === 3)
+          return res
+            .status(403)
+            .json({ message: 'Cannot modify other admins, please contact site owner' });
+      } else {
+        if (user.role === 3)
+          return res
+            .status(403)
+            .json({ message: 'Cannot modify admins, please contact site owner' });
+
+        await Users.findByIdAndRemove(req.params.id);
+      }
+    } else {
+      await Users.findByIdAndRemove(req.id);
+    }
+    return res.status(200).json({ message: 'Delete user success!' });
+  } catch (err: any) {
+    return res.status(500).json({ message: err.message });
+  }
+};

@@ -24,7 +24,7 @@ export const getCurrentUserData = () => axios.get('/user/get');
 export const getUser = (id: string) => axios.get(`/user/${id}`);
 export const updateMyself = (data: any) => axios.patch(`/user`, data);
 export const updateUser = (id: string, data: any) => axios.patch(`/user/${id}`, data);
-export const deleteUser = (id: string, data: any) => axios.delete(`/user/${id}`);
+export const deleteUser = (id: string) => axios.delete(`/user/${id}`);
 
 export const signIn = (data: any) => axios.post('/auth/sign_in', data);
 export const signUp = (data: any) => axios.post('/auth/sign_up', data);
