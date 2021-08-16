@@ -22,7 +22,7 @@ import * as api from '../../api';
 import CustomTextField from '../../components/global/utils/CustomTextField';
 import ChangePassword from '../../components/profile/ChangePassword';
 import { IUpdateUser, IUser, RootStore } from '../../interface';
-import { changePassword, updateUser } from '../../store/actions';
+import { updateUser } from '../../store/actions';
 import sharedSectionStyles from '../../styles/pageSectionStyles';
 import useStyles from '../../styles/profilePageStyles';
 import { roleArr } from '../../utils/constants';
@@ -30,7 +30,6 @@ import { roleArr } from '../../utils/constants';
 const Profile = (props: any) => {
   const router = useRouter();
   const methods = useForm();
-  const methodsPassword = useForm();
 
   const dispatch = useDispatch();
 
@@ -72,14 +71,6 @@ const Profile = (props: any) => {
     dispatch(updateUser(data));
   };
 
-  const handleChangePassword = async (password: string) => {
-    try {
-      dispatch(changePassword(password));
-    } catch (err) {
-      setNativeError(err.response.data.message);
-    }
-  };
-
   const handleChangeFile = (e: any) => {
     const target = e.target as HTMLInputElement;
     const { files } = target;
@@ -103,6 +94,7 @@ const Profile = (props: any) => {
                 <FormProvider {...methods}>
                   <form
                     onSubmit={methods.handleSubmit((data: IUpdateUser) => {
+                      console.log(data);
                       handleSubmit(data);
                     })}
                   >
@@ -179,10 +171,14 @@ const Profile = (props: any) => {
                           justifyContent: 'space-between',
                         }}
                       >
-                        <Button variant="contained" color={'secondary'}>
+                        <Button
+                          variant="contained"
+                          color={'secondary'}
+                          onClick={() => methods.reset()}
+                        >
                           Reset
                         </Button>
-                        <Button variant="contained" color={'primary'}>
+                        <Button variant="contained" color={'primary'} type="submit">
                           Save
                         </Button>
                       </Grid>
