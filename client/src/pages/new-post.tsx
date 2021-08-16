@@ -2,7 +2,7 @@ import cx from 'clsx';
 import Head from 'next/head';
 import React from 'react';
 
-import sharedSectionStyles from '../components/global/sections/styles';
+import sharedSectionStyles from '../styles/pageSectionStyles';
 
 const newPost = () => {
   const sharedClasses = sharedSectionStyles();

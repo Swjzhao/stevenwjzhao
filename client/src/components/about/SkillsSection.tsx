@@ -2,7 +2,7 @@ import { Container, Grid, Paper, Typography } from '@material-ui/core';
 import cx from 'clsx';
 import React, { useEffect } from 'react';
 
-import sharedSectionStyles from '../global/sections/styles';
+import sharedSectionStyles from '../../styles/pageSectionStyles';
 import useStyles from './styles';
 
 const SkillsSection = () => {
