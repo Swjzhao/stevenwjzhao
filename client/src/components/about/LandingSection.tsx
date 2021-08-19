@@ -151,6 +151,9 @@ const LandingSection = () => {
                         }
                       />
                     </ListItem>
+                    <ListItem>
+                      <ListItemText secondary={'5 min read'} />
+                    </ListItem>
                   </List>
                 </div>
               </Link>
