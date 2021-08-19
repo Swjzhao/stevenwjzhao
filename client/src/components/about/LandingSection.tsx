@@ -1,9 +1,20 @@
-import { Button, Container, Grid, Typography, useMediaQuery } from '@material-ui/core';
+import {
+  Button,
+  Container,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  useMediaQuery,
+} from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import cx from 'clsx';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { BsTriangleFill } from 'react-icons/bs';
+// @ts-ignore
+import LinesEllipsis from 'react-lines-ellipsis';
 import Typist from 'react-typist';
 
 import sharedSectionStyles from '../../styles/pageSectionStyles';
@@ -76,35 +87,73 @@ const LandingSection = () => {
               className={sharedClasses.gridItemContainer}
               style={{ justifyContent: 'center' }}
             >
-              <Typography
-                color="primary"
-                variant={'body1'}
-                style={{ fontSize: '12pt', textAlign: 'center' }}
-              >
-                Univesity Of Toronto - Computer Engineering
-              </Typography>
-              <Typography
-                color="primary"
-                variant={'body1'}
-                style={{ fontSize: '12pt', textAlign: 'center' }}
-              >
-                Expected Grad April 2022
-              </Typography>
+              {isDesktop ? (
+                <>
+                  <Typography
+                    color="primary"
+                    variant={'body1'}
+                    style={{ fontSize: '12pt', textAlign: 'center' }}
+                  >
+                    Univesity Of Toronto - Computer Engineering
+                  </Typography>
+                  <Typography
+                    color="primary"
+                    variant={'body1'}
+                    style={{ fontSize: '12pt', textAlign: 'center' }}
+                  >
+                    Expected Grad April 2022
+                  </Typography>
+                </>
+              ) : (
+                <Typography
+                  color="primary"
+                  variant={'body1'}
+                  style={{ fontSize: '12pt', textAlign: 'center' }}
+                >
+                  Univesity Of Toronto - Computer Engineering : Grad April 2022
+                </Typography>
+              )}
               <img
                 src={
                   'https://media-exp1.licdn.com/dms/image/C5603AQHBMSesjLe3Yw/profile-displayphoto-shrink_200_200/0/1553361214770?e=1634169600&v=beta&t=3PeJof7oM6qgbYEkhL8GgkMN8a_GFL7_Q8xWKN1UU_4'
                 }
                 className={classes.profilePicImg}
               />
-              <Typography
-                color="primary"
-                variant={'body1'}
-                style={{ fontSize: '12pt', paddingBottom: '30px', textAlign: 'justify' }}
-              >
-                &nbsp;&nbsp;&nbsp;&nbsp;This site is for contenders in software who aspire to become
-                exceptional. I aim to use this site to share my own experiences and road from 2x
-                Google intern to CTO.
-              </Typography>
+              <Link href="https://dotslive.medium.com/from-food-delivery-drones-to-research-platforms-the-journey-of-21-year-old-entrepreneur-steven-983e2059d86e">
+                <div className={classes.featured}>
+                  <List>
+                    <ListItem>
+                      <ListItemText primary={<b>Medium article:</b>} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText
+                        primary={
+                          <LinesEllipsis
+                            text={
+                              'From Food Delivery Drones to Research Platforms — The Journey of 21 Year-Old Entrepreneur Steven Zhao'
+                            }
+                            maxLine="3"
+                            ellipsis="..."
+                            trimRight
+                            basedOn="words"
+                          />
+                        }
+                        secondary={
+                          <LinesEllipsis
+                            text={
+                              'I was in the mindset of,hey I want to build something for myselt. I want to wake up and be like "Yeah I want to work on this today!"'
+                            }
+                            maxLine="2"
+                            ellipsis="..."
+                            trimRight
+                            basedOn="words"
+                          />
+                        }
+                      />
+                    </ListItem>
+                  </List>
+                </div>
+              </Link>
               {isDesktop ? (
                 ''
               ) : (

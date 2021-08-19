@@ -10,12 +10,21 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: '50px',
     },
   },
+  featured: {
+    '& .MuiListItem-root': {
+      paddingTop: '0px',
+      paddingBottom: '0px',
+    },
+    '& .MuiList-root ': { borderRadius: '10px', cursor: 'pointer' },
+
+    '& .MuiList-root:hover': { background: 'rgba(0, 0, 0, 0.3)' },
+  },
   landingContainer: {
     '&::before': {
       flexGrow: 1,
       content: '""',
       background:
-        'url(https://res.cloudinary.com/we-are-still-dreamers/image/upload/v1629356775/wearestilldreamers/static/about-background_ceh4ew.png) left',
+        'url(https://res.cloudinary.com/we-are-still-dreamers/image/upload/v1629356610/wearestilldreamers/static/about-background_njwxnn.svg) left',
       // @ts-ignore
       boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
 
