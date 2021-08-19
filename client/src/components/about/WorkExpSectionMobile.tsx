@@ -62,15 +62,21 @@ const WorkExpSectionMobile = () => {
                   <ul className={classes.resumeDescription}>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Collaborated with a US tech based capital management company where I
-                        analyzed millions of data pointsfrom stimulated data and presented it in a
-                        user friendly dashboard
+                        Analyzed csv and roi with millions of data points from simulated data and
+                        presented the data in a user-friendly dashboard for US tech-based capital
+                        management company
                       </Typography>
                     </li>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Reduced load time for analyzing and displaying data by <b>98%</b> by using
-                        efficient algorithms and caches
+                        Reduced DOM refresh frequency when interacting with chart by <b>90%</b>{' '}
+                        using React methods and lazy loading
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Reduced load time for analyzing and displaying data by <b>96%</b> from 20
+                        secs to 0.8 secs by using efficientalgorithms and caches
                       </Typography>
                     </li>
                   </ul>
@@ -99,14 +105,14 @@ const WorkExpSectionMobile = () => {
                     <li>
                       <Typography color="primary" variant="subtitle2">
                         Brought in over <b>1500</b> sign ups and <b>100</b> live viewers per event
-                        (still growing) and succeeded in helping company get in revenue through a
-                        client contract worth <b>$5000/month</b>
+                        (still growing) and succeeded in helping the company get in revenue through
+                        a client contract worth <b>$5000/month</b>
                       </Typography>
                     </li>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Hired, coached and led 10 developers using Agile management to build a SaaS
-                        and stand-alone livestreaming platform with React (later migrated to
+                        Hired, coached, and led 10 developers using Agile management to build a SaaS
+                        and stand-alone live streamingplatform with React (later migrated to
                         Next.JS) front end with JEST for testing
                       </Typography>
                     </li>
@@ -119,8 +125,9 @@ const WorkExpSectionMobile = () => {
                     </li>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Deployed backend on Kubernetes cluster containerized with Docker, and later
-                        migrated to OpenShift tobetter log user activity for analytics
+                        Initialized and maintained backend on Kubernetes cluster containerized with
+                        Docker, and later migrated toOpenShift to better log user activity for
+                        analytics
                       </Typography>
                     </li>
                   </ul>
@@ -148,15 +155,22 @@ const WorkExpSectionMobile = () => {
                   <ul className={classes.resumeDescription}>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Collaborated with a US tech based capital management company where I
-                        analyzed millions of data pointsfrom stimulated data and presented it in a
-                        user friendly dashboard
+                        Developed a feature on Google Travel involving complex modeling in
+                        considering user behavior, impact onrevenue, and creative logging to
+                        maximize feature
                       </Typography>
                     </li>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Reduced load time for analyzing and displaying data by <b>98%</b> by using
-                        efficient algorithms and caches
+                        Utilized complex web frameworks, RPCs (remote procedural call), and services
+                        using Java and JavaScript
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Completed the entire software engineering development process; wrote a
+                        comprehensive design doc, wrote unittests, went through design reviews /
+                        discussions
                       </Typography>
                     </li>
                   </ul>
@@ -183,15 +197,20 @@ const WorkExpSectionMobile = () => {
                   <ul className={classes.resumeDescription}>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Collaborated with a US tech based capital management company where I
-                        analyzed millions of data pointsfrom stimulated data and presented it in a
-                        user friendly dashboard
+                        Developed and rolled out a button for Gmail iOS which is visible in iOS App
                       </Typography>
                     </li>
                     <li>
                       <Typography color="primary" variant="subtitle2">
-                        Reduced load time for analyzing and displaying data by <b>98%</b> by using
-                        efficient algorithms and caches
+                        Implemented an entirely new interaction handler for iPad Gmail iOS using
+                        native Objective C with JavaScriptwith unit tests and integration tests and
+                        set the foundation for future development
+                      </Typography>
+                    </li>
+                    <li>
+                      <Typography color="primary" variant="subtitle2">
+                        Wrote a comprehensive design doc and went through design reviews/discussions
+                        and QA review
                       </Typography>
                     </li>
                   </ul>
@@ -201,7 +220,7 @@ const WorkExpSectionMobile = () => {
           </Grid>
           <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
             <a
-              href="files/Resume.pdf"
+              href="/Wen-Jie-Steven-Zhao_Resume.pdf"
               download="Resume-Steven (Wen Jie) Zhao"
               style={{ textDecoration: 'none' }}
             >
