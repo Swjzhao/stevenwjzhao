@@ -35,7 +35,10 @@ const PostCard = (props: any) => {
         >
           <CardMedia
             className={classes.photoWrapper}
-            image={`${photoUrl || '/card-background.svg'}`}
+            image={`${
+              photoUrl ||
+              'https://res.cloudinary.com/we-are-still-dreamers/image/upload/v1629356330/wearestilldreamers/static/azqzjjupu25nwjpcqywe.png'
+            }`}
             title="Test"
           />
           <CardContent

@@ -61,7 +61,7 @@ const LandingSection = () => {
                     <Button>
                       <ArrowForwardIcon />
                     </Button>
-                    <Typography color={'primary'}> Read My Blogs</Typography>
+                    <Typography color={'primary'}>Read My Blogs</Typography>
                   </div>
                 </Link>
               ) : (

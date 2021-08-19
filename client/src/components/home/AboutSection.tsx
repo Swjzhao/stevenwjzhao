@@ -80,7 +80,7 @@ const AboutSection = () => {
                 className={cx(sharedClasses.gridItemCenter, sharedClasses.gridItemContainer)}
               >
                 <div className={classes.photoContainer}>
-                  <img src="/photoOfMe.jpg" />
+                  <img src="https://res.cloudinary.com/we-are-still-dreamers/image/upload/v1629356078/wearestilldreamers/static/imq8reig62icnqoya4er.jpg" />
                 </div>
               </Grid>
             </>

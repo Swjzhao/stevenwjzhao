@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
     '&::before': {
       flexGrow: 1,
       content: '""',
-      background: 'url(/about-background.svg) left',
+      background:
+        'url(https://res.cloudinary.com/we-are-still-dreamers/image/upload/v1629356775/wearestilldreamers/static/about-background_ceh4ew.png) left',
       // @ts-ignore
       boxShadow: `0 0 100px 100px ${theme.palette.backgroundColors.main} inset`,
 

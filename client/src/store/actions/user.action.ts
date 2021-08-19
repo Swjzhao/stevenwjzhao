@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
 
 import * as api from '../../api';
 import { IUpdateUser } from '../../interface';
@@ -9,9 +9,10 @@ import { clearStatus, setStatus } from './status.action';
 
 /* eslint-disable-next-line */
 export const updateUser =
-  (file: File | null | undefined, data: IUpdateUser) => async (dispatch: Dispatch) => {
+  (file: File | null | undefined, data: IUpdateUser) =>
+  async (dispatch: Dispatch<any | Action>) => {
     try {
-      setStatus({ status: 'loading' });
+      dispatch(setStatus({ status: 'loading' }));
       let avatarUrl = '';
       if (file) {
         const uploadPhoto = await imageUpload(file, 'avatar');
@@ -42,9 +43,9 @@ export const updateUser =
         dispatch({ type: types.SET_USER, payload: res.data.user });
       }
 
-      clearStatus();
+      dispatch(clearStatus());
     } catch (err: any) {
-      setStatus({ status: 'error', error: err.response.data.message });
+      dispatch(setStatus({ status: 'error', error: err.response.data.message }));
     }
   };
 

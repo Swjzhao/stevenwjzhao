@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
     '&::before': {
       flexGrow: 1,
       content: '""',
-      background: 'url(/welcomeImage2.jpg) center no-repeat',
+      background:
+        'url(https://res.cloudinary.com/we-are-still-dreamers/image/upload/v1629356594/wearestilldreamers/static/welcomeImage2_b8aeg1.jpg) center no-repeat',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       position: 'absolute',
@@ -41,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     '&::before': {
       flexGrow: 1,
       content: '""',
-      background: 'url(/section-background.svg) center no-repeat',
+      background:
+        'url(https://res.cloudinary.com/we-are-still-dreamers/image/upload/v1629356773/wearestilldreamers/static/section-background_hv1w8f.png) center no-repeat',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       position: 'absolute',
