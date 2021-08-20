@@ -220,7 +220,7 @@ const WorkExpSectionMobile = () => {
           </Grid>
           <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
             <a
-              href="/Wen-Jie-Steven-Zhao_Resume.pdf"
+              href="/Wen-Jie-Steven-Zhao-Resume.pdf"
               download="Resume-Steven (Wen Jie) Zhao"
               style={{ textDecoration: 'none' }}
             >
