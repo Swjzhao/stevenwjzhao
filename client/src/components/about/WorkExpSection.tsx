@@ -109,7 +109,7 @@ const WorkExpSection = () => {
                       Chief Technology Officer
                     </Typography>
                     <Typography color="secondary" variant="body2">
-                      JavaScript, React, NextJs, LoopBack, NodeJs, GraphQL, PostGres, MongoDB,
+                      JavaScript, React, Next.Js, LoopBack, NodeJs, GraphQL, PostGres, MongoDB,
                       Kubernetes, OpenShift, WebSocket, Agora
                     </Typography>
                   </Paper>
