@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 0,
         flex: 0,
       },
+      padding: '6px 4px 6px 10px',
     },
   },
   watermarkWrapper: {
@@ -126,6 +127,13 @@ const useStyles = makeStyles((theme) => ({
     },
     '& b': {
       color: theme.palette.secondary.main,
+    },
+
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: '25px',
+      '& .MuiTypography-root': {
+        paddingBottom: '10px',
+      },
     },
   },
 
