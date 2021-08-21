@@ -61,6 +61,9 @@ const WorkExpSection = () => {
                     <Typography color="primary" variant="subtitle1">
                       Full Stack Engineer
                     </Typography>
+                    <Typography color="secondary" variant="body2">
+                      TypeScript, React, RPC, HighCharts, Python
+                    </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>
                     <li>
@@ -105,6 +108,10 @@ const WorkExpSection = () => {
                     <Typography color="primary" variant="subtitle1">
                       Chief Technology Officer
                     </Typography>
+                    <Typography color="secondary" variant="body2">
+                      JavaScript, React, NextJs, LoopBack, NodeJs, GraphQL, PostGres, MongoDB,
+                      Kubernetes, OpenShift, WebSocket, Agora
+                    </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>
                     <li>
@@ -124,7 +131,7 @@ const WorkExpSection = () => {
                     <li>
                       <Typography color="primary" variant="subtitle2">
                         Led team to build a fully functional Postgres and MongoDB database on
-                        Loopback 4 (Node.js framework withGraphQL) and real-time comments, polls,
+                        Loopback 4 (Node.js framework with GraphQL) and real-time comments, polls,
                         and reactions with WebSocket
                       </Typography>
                     </li>
@@ -157,6 +164,9 @@ const WorkExpSection = () => {
                     </Typography>
                     <Typography color="primary" variant="subtitle1">
                       Software Engineering Intern
+                    </Typography>
+                    <Typography color="secondary" variant="body2">
+                      Java, TypeScript, JavaScript, RPC
                     </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>
@@ -201,6 +211,9 @@ const WorkExpSection = () => {
                     </Typography>
                     <Typography color="primary" variant="subtitle1">
                       Software Engineering Intern
+                    </Typography>
+                    <Typography color="secondary" variant="body2">
+                      Objective C, JavaScript, iOS
                     </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>

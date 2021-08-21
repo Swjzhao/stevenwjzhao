@@ -49,14 +49,21 @@ const WorkExpSectionMobile = () => {
                 </TimelineSeparator>
                 <TimelineContent>
                   <Paper elevation={0} className={classes.paper}>
-                    <Typography variant="body1" color="textSecondary">
+                    <Typography variant="body2" color="textSecondary">
                       June 2021 - Present
                     </Typography>
-                    <Typography color="primary" variant="h4">
+                    <Typography
+                      color="primary"
+                      variant="h6"
+                      style={{ fontSize: '1rem !important' }}
+                    >
                       Crabel Capital Management
                     </Typography>
-                    <Typography color="primary" variant="subtitle1">
+                    <Typography color="primary" variant="body2">
                       Full Stack Engineer
+                    </Typography>
+                    <Typography color="secondary" variant="body2">
+                      TypeScript, React, RPC, HighCharts, Python
                     </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>
@@ -91,14 +98,18 @@ const WorkExpSectionMobile = () => {
                 </TimelineSeparator>
                 <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
-                    <Typography variant="body1" color="textSecondary">
+                    <Typography variant="body2" color="textSecondary">
                       Aug 2020 - May 2021
                     </Typography>
-                    <Typography color="primary" variant="h4">
+                    <Typography color="primary" variant="h6">
                       Dataraction Inc
                     </Typography>
-                    <Typography color="primary" variant="subtitle1">
+                    <Typography color="primary" variant="body2">
                       Chief Technology Officer
+                    </Typography>
+                    <Typography color="secondary" variant="body2">
+                      JavaScript, React, NextJs, LoopBack, NodeJs, GraphQL, PostGres, MongoDB,
+                      Kubernetes, OpenShift, WebSocket, Agora
                     </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>
@@ -142,14 +153,17 @@ const WorkExpSectionMobile = () => {
                 </TimelineSeparator>
                 <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
-                    <Typography variant="body1" color="textSecondary">
+                    <Typography variant="body2" color="textSecondary">
                       May 2020 - Aug 2020
                     </Typography>
-                    <Typography color="primary" variant="h4">
+                    <Typography color="primary" variant="h6">
                       Google
                     </Typography>
-                    <Typography color="primary" variant="subtitle1">
+                    <Typography color="primary" variant="body2">
                       Software Engineering Intern
+                    </Typography>
+                    <Typography color="secondary" variant="body2">
+                      Java, TypeScript, JavaScript, RPC
                     </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>
@@ -184,14 +198,17 @@ const WorkExpSectionMobile = () => {
                 </TimelineSeparator>
                 <TimelineContent style={{ textAlign: 'left' }}>
                   <Paper elevation={0} className={classes.paper}>
-                    <Typography variant="body1" color="textSecondary">
+                    <Typography variant="body2" color="textSecondary">
                       May 2019 - Aug 2019
                     </Typography>
-                    <Typography color="primary" variant="h4">
+                    <Typography color="primary" variant="h6">
                       Google
                     </Typography>
-                    <Typography color="primary" variant="subtitle1">
+                    <Typography color="primary" variant="body2">
                       Software Engineering Intern
+                    </Typography>
+                    <Typography color="secondary" variant="body2">
+                      Objective C, JavaScript, iOS
                     </Typography>
                   </Paper>
                   <ul className={classes.resumeDescription}>

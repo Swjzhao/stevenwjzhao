@@ -17,7 +17,7 @@ const Footer = (props: any) => {
       <div className={cx(classes.outerContainer)}>
         <Container maxWidth={'xl'} className={sharedClasses.sectionContainer}>
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={4} xl={3}>
+            <Grid item xs={12} sm={4} xl={3} className={classes.leftContainer}>
               <img src={'/Logo-white-large.png'} style={{ width: '180px', marginLeft: '-10px' }} />
               <Typography color="primary" variant="subtitle2">
                 This site is for contenders in software who aspire to become exceptional. I aim to

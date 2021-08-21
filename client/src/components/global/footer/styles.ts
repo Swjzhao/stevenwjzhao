@@ -21,6 +21,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     padding: 5,
   },
+  leftContainer: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+  },
 }));
 
 export default useStyles;

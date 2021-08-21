@@ -105,6 +105,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'start',
     padding: '30px 40px',
     borderRadius: '10px',
+    [theme.breakpoints.down('xs')]: {
+      padding: '15px 20px',
+    },
   },
   resumeDescription: {
     paddingTop: '20px',

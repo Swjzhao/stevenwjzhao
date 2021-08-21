@@ -36,6 +36,9 @@ let theme = createTheme({
     body1: {
       fontFamily: 'Poppins',
     },
+    body2: {
+      fontFamily: 'Poppins',
+    },
     overline: {
       fontFamily: 'Poppins',
       color: '#818181',
