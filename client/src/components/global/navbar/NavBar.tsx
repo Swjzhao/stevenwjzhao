@@ -17,12 +17,14 @@ import {
 } from '@material-ui/core';
 import { ExitToApp, Menu as MenuIcon, Search } from '@material-ui/icons';
 import cx from 'clsx';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
+import Logo from '../../../../public/Logo-white-large.png';
 import { IUser, RootStore } from '../../../interface';
 import { signOut } from '../../../store/actions';
 import AuthForm from '../auth/AuthForm';
@@ -103,7 +105,7 @@ const NavBar = (props: any) => {
                 }}
                 disableRipple
               >
-                <img src={'/Logo-white-large.png'} alt="Title" height={40} />
+                <Image src={Logo} alt="Title" height={40} width={70} />
               </IconButton>
             </Link>
             <SwipeableDrawer
