@@ -154,7 +154,7 @@ width=550,height=450,left=1000,top=500`;
               </Grid>
 
               <Grid container item xs={3} justify="center">
-                <Tooltip arrow title="Workplace" TransitionComponent={Zoom}>
+                <Tooltip arrow title="Facebook" TransitionComponent={Zoom}>
                   <FacebookShareButton quote={title} url={url}>
                     <FacebookIcon size={32} round={true} />
                   </FacebookShareButton>
