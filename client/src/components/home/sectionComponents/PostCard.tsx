@@ -48,7 +48,7 @@ const PostCard = (props: any) => {
           >
             <Typography color="primary" variant="h6">
               <LinesEllipsis
-                text={`Title Title Title Title Title`}
+                text={`Coming Soon!`}
                 maxLine="1"
                 ellipsis="..."
                 trimRight
@@ -58,9 +58,7 @@ const PostCard = (props: any) => {
             <br />
             <Typography color="primary" variant="subtitle2" component="p">
               <LinesEllipsis
-                text={`
-              This impressive paella is a perfect party dish and a fun meal to cook together with
-              your guests.`}
+                text={`Greatest fear is mediocrity.`}
                 maxLine="3"
                 ellipsis="..."
                 trimRight
@@ -76,11 +74,13 @@ const PostCard = (props: any) => {
               <ListItemAvatar>
                 <Avatar
                   alt="User"
-                  src=""
+                  src={
+                    'https://media-exp1.licdn.com/dms/image/C5603AQHBMSesjLe3Yw/profile-displayphoto-shrink_200_200/0/1553361214770?e=1634169600&v=beta&t=3PeJof7oM6qgbYEkhL8GgkMN8a_GFL7_Q8xWKN1UU_4'
+                  }
                   style={{ width: '30px', height: '30px', borderRadius: '5px' }}
                 />
               </ListItemAvatar>
-              <ListItemText primary="John Smith" />
+              <ListItemText primary="Steven Zhao" />
             </ListItem>
           </List>
           <IconButton
