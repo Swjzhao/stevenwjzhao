@@ -24,7 +24,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
-import Logo from '../../../../public/Logo-white-large.png';
 import { IUser, RootStore } from '../../../interface';
 import { signOut } from '../../../store/actions';
 import AuthForm from '../auth/AuthForm';
@@ -105,7 +104,7 @@ const NavBar = (props: any) => {
                 }}
                 disableRipple
               >
-                <Image src={Logo} alt="Title" height={40} width={70} />
+                <Image src={'/Logo-white-large.png'} alt="Title" height={40} width={70} />
               </IconButton>
             </Link>
             <SwipeableDrawer
