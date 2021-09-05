@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainMediaWrapper: {
+    width: '100%',
     height: 'fit-content',
     position: 'relative',
     // @ts-ignore

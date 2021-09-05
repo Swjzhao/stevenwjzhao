@@ -23,7 +23,7 @@ const SkillsSection = () => {
           </Grid>
           <Grid item xs={12} sm={4} className={classes.skillsContainer}>
             <Paper>
-              <Typography color="primary" variant="h4">
+              <Typography color="primary" variant="h5">
                 <b>1</b> Expert
               </Typography>
 
@@ -32,6 +32,7 @@ const SkillsSection = () => {
                 Java, JavaScript, HTML/CSS/PHP, React, Next, Node, Objective C, MongoDB, Git,
                 Flutter, Firebase
               </Typography>
+              <div className={classes.flexGrow}></div>
               <div className={cx(classes.ratingSystem)}>
                 <div className={cx(classes.rating, classes.fill)}></div>
                 <div className={cx(classes.rating, classes.fill)}></div>
@@ -43,7 +44,7 @@ const SkillsSection = () => {
           </Grid>
           <Grid item xs={12} sm={4} className={classes.skillsContainer}>
             <Paper>
-              <Typography color="primary" variant="h4">
+              <Typography color="primary" variant="h5">
                 <b>2</b> Advanced
               </Typography>
 
@@ -51,6 +52,7 @@ const SkillsSection = () => {
               <Typography variant="subtitle1">
                 Python, Django, Objective C, Swift, Postgres, MySQL, WebSocket, RPC
               </Typography>
+              <div className={classes.flexGrow}></div>
               <div className={cx(classes.ratingSystem)}>
                 <div className={cx(classes.rating, classes.fill)}></div>
                 <div className={cx(classes.rating, classes.fill)}></div>
@@ -62,13 +64,14 @@ const SkillsSection = () => {
           </Grid>
           <Grid item xs={12} sm={4} className={classes.skillsContainer}>
             <Paper>
-              <Typography color="primary" variant="h4">
+              <Typography color="primary" variant="h5">
                 <b>3</b> Intermediate
               </Typography>
               <br />
               <Typography variant="subtitle1">
                 C++, C, Docker, Kubernetes, OpenShift, SpringBoot, TensorFlow, PyTorch, MATLAB
               </Typography>
+              <div className={classes.flexGrow}></div>
               <div className={cx(classes.ratingSystem)}>
                 <div className={cx(classes.rating, classes.fill)}></div>
                 <div className={cx(classes.rating, classes.fill)}></div>

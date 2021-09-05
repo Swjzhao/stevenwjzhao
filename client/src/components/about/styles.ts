@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  flexGrow: {
+    flexGrow: 1,
+  },
   aboutGridContainer: {
     flexGrow: 1,
     paddingTop: '100px',
@@ -139,6 +142,8 @@ const useStyles = makeStyles((theme) => ({
 
   skillsContainer: {
     '& .MuiPaper-root': {
+      display: 'flex',
+      flexDirection: 'column',
       padding: '50px',
       borderRadius: '10px',
       zIndex: 1,

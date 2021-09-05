@@ -33,6 +33,9 @@ let theme = createTheme({
     h4: {
       fontFamily: 'Poppins',
     },
+    h5: {
+      fontFamily: 'Poppins',
+    },
     body1: {
       fontFamily: 'Poppins',
     },
