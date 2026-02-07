@@ -11,9 +11,30 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "We Are Dreamers",
+  title: {
+    default: "We Are Dreamers",
+    template: "%s | We Are Dreamers",
+  },
   description:
     "A community for young innovators, enthusiasts, entrepreneurs who think mediocre is not enough.",
+  openGraph: {
+    title: "We Are Dreamers",
+    description:
+      "A community for young innovators, enthusiasts, entrepreneurs who think mediocre is not enough.",
+    type: "website",
+    locale: "en_US",
+    siteName: "We Are Dreamers",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "We Are Dreamers",
+    description:
+      "A community for young innovators, enthusiasts, entrepreneurs who think mediocre is not enough.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
