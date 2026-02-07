@@ -6,11 +6,18 @@ import { useEffect, useState } from "react";
 const roles = ["Student", "Dreamer", "Entrepreneur", "Engineer"];
 
 export default function AboutHeroSection() {
+  const [mounted, setMounted] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const currentRole = roles[roleIndex];
 
     const timeout = setTimeout(
@@ -34,7 +41,7 @@ export default function AboutHeroSection() {
     );
 
     return () => clearTimeout(timeout);
-  }, [displayed, isDeleting, roleIndex]);
+  }, [displayed, isDeleting, roleIndex, mounted]);
 
   return (
     <section className="flex min-h-[70vh] items-center">
@@ -54,7 +61,7 @@ export default function AboutHeroSection() {
           <div className="mb-6 flex items-center justify-center gap-2 md:justify-start">
             <span className="text-xl text-muted">I&apos;m a</span>
             <span className="text-xl font-semibold text-accent">
-              {displayed}
+              {mounted ? displayed : ""}
               <span className="animate-pulse">|</span>
             </span>
           </div>
