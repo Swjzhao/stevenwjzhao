@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 interface PostCardProps {
@@ -22,11 +21,11 @@ export default function PostCard({
     <Link href={`/blog/${slug}`} className="group block">
       <article className="overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-accent/30">
         <div className="relative aspect-[16/9] overflow-hidden">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={thumbnail}
             alt={title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-background">
             {category}
