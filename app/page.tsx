@@ -2,43 +2,52 @@ import HeroSection from "@/components/home/HeroSection";
 import CategorySection from "@/components/home/CategorySection";
 import Image from "next/image";
 import Link from "next/link";
+import { connectDB } from "@/lib/db";
+import Post from "@/models/Post";
 
-// Placeholder posts until database is wired up
-const placeholderPosts = {
-  tech: [
-    {
-      title: "Building a Modern Blog with Next.js 15",
-      description:
-        "A deep dive into building a performant blog using the latest Next.js features and App Router.",
-      slug: "building-modern-blog-nextjs",
-      thumbnail: "/images/welcomeImage2.jpg",
-      category: "Tech",
-      date: "Coming soon",
-    },
-  ],
-  life: [],
-  books: [],
-};
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  await connectDB();
+
+  const allPosts = await Post.find({ published: true })
+    .sort({ createdAt: -1 })
+    .limit(9)
+    .lean();
+
+  const formatPosts = (posts: typeof allPosts) =>
+    posts.map((p) => ({
+      title: p.title,
+      description: p.description,
+      slug: p.slug,
+      thumbnail: p.thumbnail || "/images/welcomeImage2.jpg",
+      category: p.category.charAt(0).toUpperCase() + p.category.slice(1),
+      date: new Date(p.createdAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    }));
+
+  const techPosts = formatPosts(
+    allPosts.filter((p) => p.category === "tech").slice(0, 3),
+  );
+  const lifePosts = formatPosts(
+    allPosts.filter((p) => p.category === "life").slice(0, 3),
+  );
+  const booksPosts = formatPosts(
+    allPosts.filter((p) => p.category === "books").slice(0, 3),
+  );
+
   return (
     <main>
       <HeroSection />
 
-      {/* Category Sections */}
-      <CategorySection
-        title="Tech"
-        posts={placeholderPosts.tech}
-        categorySlug="tech"
-      />
-      <CategorySection
-        title="Life"
-        posts={placeholderPosts.life}
-        categorySlug="life"
-      />
+      <CategorySection title="Tech" posts={techPosts} categorySlug="tech" />
+      <CategorySection title="Life" posts={lifePosts} categorySlug="life" />
       <CategorySection
         title="Books"
-        posts={placeholderPosts.books}
+        posts={booksPosts}
         categorySlug="books"
       />
 
