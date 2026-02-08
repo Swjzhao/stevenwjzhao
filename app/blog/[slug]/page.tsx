@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import DeletePostButton from "@/components/blog/DeletePostButton";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -56,12 +57,15 @@ export default async function BlogPostPage({
           &larr; Back to Blog
         </Link>
         {isAdmin && (
-          <Link
-            href={`/admin/editor/${post._id}`}
-            className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-1.5 text-sm font-semibold text-background transition-colors hover:bg-accent-dark"
-          >
-            Edit Post
-          </Link>
+          <div className="flex gap-2">
+            <Link
+              href={`/admin/editor/${post._id}`}
+              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-1.5 text-sm font-semibold text-background transition-colors hover:bg-accent-dark"
+            >
+              Edit Post
+            </Link>
+            <DeletePostButton postId={post._id.toString()} />
+          </div>
         )}
       </div>
 
