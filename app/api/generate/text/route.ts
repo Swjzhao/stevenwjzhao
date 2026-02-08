@@ -44,13 +44,17 @@ Rules for the content field:
       ],
     });
 
-    const text =
+    let text =
       message.content[0].type === "text" ? message.content[0].text : "";
+
+    // Strip markdown fences if Claude wraps the JSON
+    text = text.replace(/^```(?:json)?\s*\n?/i, "").replace(/\n?```\s*$/i, "").trim();
 
     let parsed;
     try {
       parsed = JSON.parse(text);
     } catch {
+      console.error("Failed to parse AI response:", text.substring(0, 500));
       return NextResponse.json(
         { error: "Failed to parse AI response as JSON" },
         { status: 502 },
