@@ -1,88 +1,43 @@
 {
-  "name": "stevenwjzhao",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "name": "we-are-dreamers",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "ts-node-dev server/index.ts",
-    "build": "tsc",
-    "lint": "eslint .",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build && cd .. && npm run build",
-    "lint:fix": "eslint --fix --ext .ts,.tsx .",
-    "prettier": "prettier --write \"./**/*.{md,jsx,json,html,css,js,yml}\"",
-    "prettier:check": "prettier --check \"./**/*.{md,jsx,json,html,css,js,yml}\"",
-    "deployToHeroku": "git push heroku master"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
-  "engines": {
-    "node": "14.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Swjzhao/stevenwjzhao.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Swjzhao/stevenwjzhao/issues"
-  },
-  "homepage": "https://github.com/Swjzhao/stevenwjzhao#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "express": "^4.17.1",
-    "google-auth-library": "^7.2.0",
-    "husky": "^4.3.0",
-    "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "mongoose": "^5.12.15",
-    "morgan": "^1.10.0",
-    "nodemailer": "^6.6.2",
-    "redis": "^3.1.2",
-    "ts-node-dev": "^1.1.6",
-    "typescript": "^4.3.4",
-    "winston": "^3.3.3"
+    "@anthropic-ai/sdk": "^0.74.0",
+    "@tiptap/extension-code-block-lowlight": "^3.19.0",
+    "@tiptap/extension-heading": "^3.19.0",
+    "@tiptap/extension-image": "^3.19.0",
+    "@tiptap/extension-link": "^3.19.0",
+    "@tiptap/extension-placeholder": "^3.19.0",
+    "@tiptap/react": "^3.19.0",
+    "@tiptap/starter-kit": "^3.19.0",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.9.0",
+    "lowlight": "^3.3.0",
+    "mongoose": "^9.1.6",
+    "next": "16.1.6",
+    "next-auth": "^5.0.0-beta.30",
+    "openai": "^6.18.0",
+    "playwright": "^1.58.2",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/cookie-parser": "^1.4.2",
-    "@types/cors": "^2.8.10",
-    "@types/dotenv": "^8.2.0",
-    "@types/jsonwebtoken": "^8.5.2",
-    "@types/lodash": "^4.14.170",
-    "@types/mongoose": "^5.11.97",
-    "@types/morgan": "^1.9.2",
-    "@types/node": "^15.12.4",
-    "@types/nodemailer": "^6.4.2",
-    "@types/redis": "^2.8.30",
-    "@typescript-eslint/eslint-plugin": "^4.28.0",
-    "@typescript-eslint/parser": "^4.28.0",
-    "eslint": "^7.30.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-prettier": "^3.4.0",
-    "lint-staged": "^11.0.1",
-    "mrm": "^3.0.2",
-    "prettier": "^2.3.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && cd client && lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.+(ts|tsx)": [
-      "eslint --fix",
-      "prettier --write --ignore-unknown"
-    ],
-    "*.+(json|css|md)": [
-      "prettier --write"
-    ]
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
