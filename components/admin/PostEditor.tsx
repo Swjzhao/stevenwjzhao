@@ -41,6 +41,7 @@ function ToolbarButton({
 
 export default function PostEditor({ content, onChange }: PostEditorProps) {
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [
       StarterKit.configure({
         heading: { levels: [1, 2, 3] },
