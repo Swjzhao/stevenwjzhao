@@ -2,11 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 export async function middleware(request: NextRequest) {
-  const isAdminRoute =
-    request.nextUrl.pathname.startsWith("/admin") &&
-    !request.nextUrl.pathname.startsWith("/admin/login");
+  const { pathname } = request.nextUrl;
 
-  if (!isAdminRoute) return NextResponse.next();
+  const isAdminRoute =
+    pathname.startsWith("/admin") && !pathname.startsWith("/admin/login");
+  const isGenerateApi = pathname.startsWith("/api/generate");
+
+  if (!isAdminRoute && !isGenerateApi) return NextResponse.next();
 
   const token = await getToken({
     req: request,
@@ -14,6 +16,9 @@ export async function middleware(request: NextRequest) {
   });
 
   if (!token) {
+    if (isGenerateApi) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
     return NextResponse.redirect(new URL("/admin/login", request.url));
   }
 
@@ -21,5 +26,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/generate/:path*"],
 };

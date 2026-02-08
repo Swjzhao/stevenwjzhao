@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import PostEditor from "@/components/admin/PostEditor";
+import GeneratePostModal from "@/components/admin/GeneratePostModal";
 
 export default function NewPostPage() {
   const router = useRouter();
@@ -12,6 +13,8 @@ export default function NewPostPage() {
   const [thumbnail, setThumbnail] = useState("");
   const [content, setContent] = useState("");
   const [saving, setSaving] = useState(false);
+  const [showGenerate, setShowGenerate] = useState(false);
+  const [editorKey, setEditorKey] = useState(0);
 
   async function handleSave(published: boolean) {
     if (!title || !description || !content) {
@@ -44,11 +47,34 @@ export default function NewPostPage() {
     }
   }
 
+  function handleGenerated(data: {
+    title?: string;
+    description?: string;
+    category?: string;
+    content?: string;
+    thumbnail?: string;
+  }) {
+    if (data.title) setTitle(data.title);
+    if (data.description) setDescription(data.description);
+    if (data.category) setCategory(data.category);
+    if (data.thumbnail) setThumbnail(data.thumbnail);
+    if (data.content) {
+      setContent(data.content);
+      setEditorKey((k) => k + 1);
+    }
+  }
+
   return (
     <main className="mx-auto min-h-screen max-w-4xl px-4 py-8">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-primary">New Post</h1>
         <div className="flex gap-3">
+          <button
+            onClick={() => setShowGenerate(true)}
+            className="rounded-md border border-accent px-4 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-background"
+          >
+            Generate with AI
+          </button>
           <button
             onClick={() => handleSave(false)}
             disabled={saving}
@@ -130,9 +156,15 @@ export default function NewPostPage() {
           <label className="mb-1 block text-sm font-medium text-muted">
             Content
           </label>
-          <PostEditor content={content} onChange={setContent} />
+          <PostEditor key={editorKey} content={content} onChange={setContent} />
         </div>
       </div>
+
+      <GeneratePostModal
+        open={showGenerate}
+        onClose={() => setShowGenerate(false)}
+        onGenerated={handleGenerated}
+      />
     </main>
   );
 }
