@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/db";
 import Post from "@/models/Post";
+import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -41,15 +42,28 @@ export default async function BlogPostPage({
 
   if (!post) notFound();
 
+  const session = await auth();
+  const isAdmin = !!session?.user;
+
   return (
     <main className="mx-auto min-h-screen max-w-3xl px-4 py-16">
-      {/* Back link */}
-      <Link
-        href="/blog"
-        className="mb-8 inline-block text-sm text-muted transition-colors hover:text-accent"
-      >
-        &larr; Back to Blog
-      </Link>
+      {/* Back link + admin actions */}
+      <div className="mb-8 flex items-center justify-between">
+        <Link
+          href="/blog"
+          className="text-sm text-muted transition-colors hover:text-accent"
+        >
+          &larr; Back to Blog
+        </Link>
+        {isAdmin && (
+          <Link
+            href={`/admin/editor/${post._id}`}
+            className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-1.5 text-sm font-semibold text-background transition-colors hover:bg-accent-dark"
+          >
+            Edit Post
+          </Link>
+        )}
+      </div>
 
       {/* Category & Date */}
       <div className="mb-4 flex items-center gap-3">
